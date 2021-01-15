@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:background="@drawable/rounded"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/Black"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+            <EditText
+                android:id="@+id/NamaSurat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Surat"
+                android:ems="10"
+                android:textColor="@color/Primary"
+                android:inputType="text"
+                android:textSize="20sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/btnSubmit"
+            android:textColor="@color/White"
+            android:fontFamily="@font/gotham"/>
+        <Button
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tutup"
+            android:id="@+id/btnClose"
+            android:textColor="@color/White"
+            android:fontFamily="@font/gotham"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -55,7 +55,7 @@
                             android:fontFamily="@font/gotham"/>
                         <ImageView
                             android:layout_margin="5dp"
-                            android:layout_width="70dp"
+                            android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:src="@drawable/ic_baseline_notifications_24"/>
                     </LinearLayout>
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="30dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
@@ -195,6 +195,7 @@
                                             android:textStyle="bold" />
                                     </LinearLayout>
                                     <LinearLayout
+                                        android:id="@+id/linearECommerce"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
@@ -305,6 +306,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
+                                        android:id="@+id/linearBerita"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
@@ -339,7 +341,7 @@
                                             android:textStyle="bold" />
                                     </LinearLayout>
                                     <LinearLayout
-                                        android:visibility="invisible"
+                                        android:id="@+id/linearPariwisata"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
@@ -358,7 +360,7 @@
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_margin="10dp"
-                                                android:src="@drawable/user" />
+                                                android:src="@drawable/pariwisata" />
                                         </LinearLayout>
 
 
@@ -368,7 +370,7 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="Berita"
+                                            android:text="Pariwisata"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />
@@ -382,8 +384,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/White"
-                        android:orientation="vertical"
-                        android:visibility="gone">
+                        android:orientation="vertical">
                         <LinearLayout
                             android:layout_marginRight="10dp"
                             android:layout_marginLeft="10dp"
@@ -406,7 +407,7 @@
                                 android:orientation="horizontal"
                                 android:layout_weight="1"
                                 android:gravity="right|center"
-                                android:id="@+id/linearLihatSemuaKabarBerita">
+                                android:id="@+id/linearLihatSemuaBerita">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -438,64 +439,9 @@
                             android:background="@drawable/gradient_background"/>
                         <androidx.recyclerview.widget.RecyclerView
                             android:layout_width="match_parent"
-                            android:layout_height="300dp"
+                            android:layout_height="match_parent"
                             android:id="@+id/recyclerKabarBerita"/>
-                        <LinearLayout
-                            android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="Gallery"
-                                android:gravity="center|left"
-                                android:textSize="@dimen/text_xtra_large"
-                                android:textColor="@color/Primary"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/gotham"
-                                android:textStyle="bold"/>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_weight="1"
-                                android:gravity="right|center"
-                                android:id="@+id/linearLihatSemuaGallery">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Lihat Semua"
-                                    android:gravity="center|right"
-                                    android:textColor="@color/Black"
-                                    android:textSize="@dimen/text_xtra_large" />
-                                <RelativeLayout
-                                    android:background="@drawable/rounded"
-                                    android:layout_width="20dp"
-                                    android:layout_margin="10dp"
-                                    android:layout_height="20dp"
-                                    android:elevation="5dp"
-                                    android:gravity="center"
-                                    android:id="@+id/relativeBackGallery">
-                                    <ImageView
-                                        android:layout_margin="5dp"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"/>
-                                </RelativeLayout>
-                            </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="5dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp"
-                            android:background="@drawable/gradient_background"/>
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:layout_width="match_parent"
-                            android:layout_height="300dp"
-                            android:id="@+id/recyclerGallery"/>
+
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"

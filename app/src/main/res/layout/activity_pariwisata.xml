@@ -38,7 +38,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Surat"
+                    android:text="Pariwisata"
                     android:gravity="center|left"
                     android:textColor="@color/White"
                     android:textStyle="bold"
@@ -46,16 +46,6 @@
                     android:textSize="20sp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_menu"
-            android:layout_margin="10dp"
-            android:id="@+id/btnPermintaan"
-            android:text="Permintaan Surat"
-            android:textColor="@color/White"
-            android:fontFamily="@font/gotham"
-            android:elevation="10dp"/>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

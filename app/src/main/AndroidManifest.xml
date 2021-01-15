@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.destinyapp.desainovatif">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,14 +15,22 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/village"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@drawable/village"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeNoAction">
-        <activity android:name=".Activity.ui.Menu.SuratActivity"></activity>
+        android:theme="@style/AppThemeNoAction"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Activity.ui.Menu.Pariwisata.DetailPariwisataActivity"></activity>
+        <activity android:name=".Activity.ui.Menu.ECommerce.ECommerceActivity" />
+        <activity android:name=".Activity.ui.Menu.Pariwisata.PariwisataActivity" />
+        <activity android:name=".Activity.ui.Menu.Berita.BeritaActivity" />
+        <activity android:name=".Activity.ui.Menu.Berita.DetailBeritaActivity" />
+        <activity android:name=".Activity.ui.Menu.SuratActivity" />
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.SplashActivity">

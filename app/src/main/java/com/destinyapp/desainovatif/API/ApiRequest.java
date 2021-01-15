@@ -15,7 +15,18 @@ public interface ApiRequest {
     Call<ResponseModel> login(@Field("username") String username,
                               @Field("password") String password);
 
+    @FormUrlEncoded
+    @POST("surat")
+    Call<ResponseModel> Surat(@Header("Authorization") String authHeader,
+                              @Field("namaSurat") String namaSurat);
+
     //GET
     @GET("surat")
     Call<ResponseModel> Surat(@Header("Authorization") String authHeader);
+
+    @GET("berita")
+    Call<ResponseModel> Berita(@Header("Authorization") String authHeader);
+
+    @GET("pariwisata")
+    Call<ResponseModel> Pariwisata(@Header("Authorization") String authHeader);
 }

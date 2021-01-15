@@ -52,7 +52,7 @@
             android:background="@drawable/rounded_menu"
             android:layout_margin="10dp"
             android:id="@+id/btnPermintaan"
-            android:text="Permintaan Surat"
+            android:text="Permintaan Toko"
             android:textColor="@color/White"
             android:fontFamily="@font/gotham"
             android:elevation="10dp"/>
