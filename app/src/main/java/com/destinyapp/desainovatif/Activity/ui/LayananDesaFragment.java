@@ -1,8 +1,9 @@
 package com.destinyapp.desainovatif.Activity.ui;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,19 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
-import com.destinyapp.desainovatif.Activity.MainActivity;
-import com.destinyapp.desainovatif.Activity.ui.Menu.Berita.BeritaActivity;
-import com.destinyapp.desainovatif.Activity.ui.Menu.ECommerce.ECommerceActivity;
-import com.destinyapp.desainovatif.Activity.ui.Menu.Pariwisata.PariwisataActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.SuratActivity;
-import com.destinyapp.desainovatif.Adapter.AdapterBerita;
+import com.destinyapp.desainovatif.Adapter.AdapterSurat;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
 import com.destinyapp.desainovatif.Model.ResponseModel;
@@ -40,20 +37,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
-    LinearLayout LihatSemuaBerita;
-    TextView nama;
+public class LayananDesaFragment extends Fragment {
+    Destiny destiny;
     DB_Helper dbHelper;
-    LinearLayout Pariwisata,UMKM,Bansos,DPT;
     String Username,Password,Nama,Token,Photo;
     RecyclerView recycler;
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mManager;
-    Destiny destiny;
-    public HomeFragment() {
+    Dialog dialog;
+    Button Permintaan,Submit,Tutup;
+    EditText NamaSurat;
+
+    public LayananDesaFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,20 +63,22 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_layanan_desa, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        recycler = view.findViewById(R.id.recycler);
+        Permintaan = view.findViewById(R.id.btnPermintaan);
         destiny = new Destiny();
-        nama = view.findViewById(R.id.tvNama);
-        LihatSemuaBerita = view.findViewById(R.id.linearLihatSemuaBerita);
-        Pariwisata = view.findViewById(R.id.linearPariwisata);
-        UMKM = view.findViewById(R.id.linearUMKM);
-        Bansos = view.findViewById(R.id.linearBansos);
-        DPT = view.findViewById(R.id.linearDPT);
-        recycler = view.findViewById(R.id.recyclerKabarBerita);
+        //Dialog
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.dialog_permintaan_surat);
+        NamaSurat = dialog.findViewById(R.id.NamaSurat);
+        Submit = dialog.findViewById(R.id.btnSubmit);
+        Tutup = dialog.findViewById(R.id.btnClose);
+        //DB Helper
         dbHelper = new DB_Helper(getActivity());
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){
@@ -89,66 +90,84 @@ public class HomeFragment extends Fragment {
                 Photo = cursor.getString(4);
             }
         }
-        nama.setText("Selamat Datang, "+Nama);
-        ONClick();
-        KabarBerita();
+        OnClick();
+        Logic();
     }
-    private void ONClick(){
-        LihatSemuaBerita.setOnClickListener(new View.OnClickListener() {
+    private void OnClick(){
+        Permintaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), BeritaActivity.class);
-                startActivity(intent);
+                dialog.show();
             }
         });
-        Pariwisata.setOnClickListener(new View.OnClickListener() {
+        Tutup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PariwisataActivity.class);
-                startActivity(intent);
+                dialog.hide();
             }
         });
-        UMKM.setOnClickListener(new View.OnClickListener() {
+        Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://eform.bri.co.id/bpum"));
-                startActivity(browserIntent);
-            }
-        });
-        Bansos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://dtks.kemensos.go.id"));
-                startActivity(browserIntent);
-            }
-        });
-        DPT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://lindungihakpilihmu.kpu.go.id"));
-                startActivity(browserIntent);
+                SubmitLogic();
             }
         });
     }
-    private void KabarBerita(){
+    private void SubmitLogic(){
+        final ProgressDialog pd = new ProgressDialog(getActivity());
+        pd.setMessage("Sedang Memasukan Surat");
+        pd.show();
+        pd.setCancelable(false);
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> Surat = api.Surat(destiny.AUTH(Token),NamaSurat.getText().toString());
+        Surat.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                pd.hide();
+                try {
+                    if (response.body().getStatusCode().equals("000")){
+                        dialog.hide();
+                        Toast.makeText(getActivity(), "Surat berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                        Logic();
+                    }else if (response.body().getStatusCode().equals("001") || response.body().getStatusCode().equals("002")){
+                        destiny.AutoLogin(Username,Password,getActivity());
+                        Logic();
+                    }else{
+                        Toast.makeText(getActivity(), "Terjadi Kesalahan ", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getActivity(), "Terjadi Kesalahan User akan Terlogout", Toast.LENGTH_SHORT).show();
+                    dbHelper.Logout();
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                pd.hide();
+                Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void Logic(){
         mManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.Berita(destiny.AUTH(Token));
+        Call<ResponseModel> KabarBerita = api.Surat(destiny.AUTH(Token));
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 try {
                     if (response.body().getStatusCode().equals("000")){
                         mItems=response.body().getData();
-                        mAdapter = new AdapterBerita(getActivity(),mItems);
+                        mAdapter = new AdapterSurat(getActivity(),mItems);
                         recycler.setAdapter(mAdapter);
                         mAdapter.notifyDataSetChanged();
                     }else if (response.body().getStatusCode().equals("001") || response.body().getStatusCode().equals("002")){
                         destiny.AutoLogin(Username,Password,getActivity());
-                        Intent intent = new Intent(getActivity(), LoginActivity.class);
-                        startActivity(intent);
-                        getActivity().finish();
+                        Logic();
                     }else{
                         Toast.makeText(getActivity(), "Terjadi Kesalahan ", Toast.LENGTH_SHORT).show();
                     }

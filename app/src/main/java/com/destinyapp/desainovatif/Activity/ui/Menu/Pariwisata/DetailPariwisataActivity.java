@@ -18,7 +18,6 @@ import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
 
 public class DetailPariwisataActivity extends AppCompatActivity {
     Destiny destiny;
-    RelativeLayout Back;
     DB_Helper dbHelper;
     String Username,Password,Nama,Token,Level,Photo;
 
@@ -32,7 +31,6 @@ public class DetailPariwisataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_pariwisata);
         destiny = new Destiny();
-        Back = findViewById(R.id.relativeBack);
         dbHelper = new DB_Helper(this);
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){
@@ -47,15 +45,9 @@ public class DetailPariwisataActivity extends AppCompatActivity {
         }
         Declaration();
         GETDATA();
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+
     }
     private void Declaration(){
-        nama = findViewById(R.id.tvNamaPariwisata);
         alamat = findViewById(R.id.tvAlamat);
         deskripsi = findViewById(R.id.webDeskripsiPariwisata);
         harga = findViewById(R.id.webDeskripsiHarga);
@@ -68,7 +60,7 @@ public class DetailPariwisataActivity extends AppCompatActivity {
         DESKRIPSI = intent.getExtras().getString("DESKRIPSI");
         HARGA = intent.getExtras().getString("HARGA");
         GAMBAR = intent.getExtras().getString("GAMBAR");
-        nama.setText(NAMA);
+        getSupportActionBar().setTitle(NAMA);
         alamat.setText(ALAMAT);
         deskripsi.loadData(DESKRIPSI,"text/html","UTF-8");
         harga.loadData(HARGA,"text/html","UTF-8");

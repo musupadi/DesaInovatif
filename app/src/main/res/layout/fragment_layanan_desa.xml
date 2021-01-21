@@ -9,13 +9,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded"
+            android:elevation="10dp">
+            <Spinner
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/Surat"
+                android:id="@+id/spinner"/>
+        </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_menu"
             android:layout_margin="10dp"
             android:id="@+id/btnPermintaan"
-            android:text="Permintaan Toko"
+            android:text="Permintaan Surat"
             android:textColor="@color/White"
             android:fontFamily="@font/gotham"
             android:elevation="10dp"/>

@@ -113,7 +113,7 @@
                                                 android:layout_margin="10dp"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
-                                                android:src="@drawable/anggaran" />
+                                                android:src="@drawable/boy" />
                                         </LinearLayout>
                                         <TextView
                                             android:layout_width="match_parent"
@@ -121,7 +121,7 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="Anggaran"
+                                            android:text="Profil"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />
@@ -131,7 +131,8 @@
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
                                         android:layout_weight="1"
-                                        android:orientation="vertical">
+                                        android:orientation="vertical"
+                                        android:id="@+id/linearPariwisata">
 
                                         <LinearLayout
                                             android:layout_height="match_parent"
@@ -145,7 +146,7 @@
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_margin="10dp"
-                                                android:src="@drawable/dpt" />
+                                                android:src="@drawable/pariwisata" />
                                         </LinearLayout>
 
 
@@ -155,86 +156,11 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="DPT"
+                                            android:text="Pariwisata"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />
                                     </LinearLayout>
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_margin="5dp"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical">
-
-                                        <LinearLayout
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1"
-                                            android:layout_margin="5dp"
-                                            android:layout_width="50dp"
-                                            android:layout_gravity="center"
-                                            android:background="@drawable/round_menu"
-                                            android:elevation="5dp">
-                                            <ImageView
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:layout_margin="10dp"
-                                                android:src="@drawable/layanan_desa" />
-                                        </LinearLayout>
-
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="2"
-                                            android:fontFamily="@font/gotham"
-                                            android:gravity="center|top"
-                                            android:text="Layanan Desa"
-                                            android:textColor="@color/Black"
-                                            android:textSize="@dimen/text_medium"
-                                            android:textStyle="bold" />
-                                    </LinearLayout>
-                                    <LinearLayout
-                                        android:id="@+id/linearECommerce"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_margin="5dp"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical">
-
-                                        <LinearLayout
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1"
-                                            android:layout_margin="5dp"
-                                            android:layout_width="50dp"
-                                            android:layout_gravity="center"
-                                            android:background="@drawable/round_menu"
-                                            android:elevation="5dp">
-                                            <ImageView
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:layout_margin="10dp"
-                                                android:src="@drawable/e_pasar" />
-                                        </LinearLayout>
-
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="2"
-                                            android:fontFamily="@font/gotham"
-                                            android:gravity="center|top"
-                                            android:text="E-Pasar"
-                                            android:textColor="@color/Black"
-                                            android:textSize="@dimen/text_medium"
-                                            android:textStyle="bold" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:orientation="horizontal">
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
@@ -264,13 +190,13 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="Kemajuan\nDesa"
+                                            android:text="Kemajuan Desa"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />
                                     </LinearLayout>
                                     <LinearLayout
-                                        android:id="@+id/linearSurat"
+                                        android:id="@+id/linearECommerce"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
@@ -299,14 +225,89 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="Surat"
+                                            android:text="No Telpon\nPenting"
+                                            android:textColor="@color/Black"
+                                            android:textSize="@dimen/text_medium"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:layout_margin="5dp"
+                                            android:layout_width="50dp"
+                                            android:layout_gravity="center"
+                                            android:background="@drawable/round_menu"
+                                            android:elevation="5dp">
+                                            <ImageView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_margin="10dp"
+                                                android:src="@drawable/anggaran" />
+                                        </LinearLayout>
+
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:fontFamily="@font/gotham"
+                                            android:gravity="center|top"
+                                            android:text="Penggunaan\nAnggaran"
+                                            android:textColor="@color/Black"
+                                            android:textSize="@dimen/text_medium"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:id="@+id/linearDPT"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:layout_margin="5dp"
+                                            android:layout_width="50dp"
+                                            android:layout_gravity="center"
+                                            android:background="@drawable/round_menu"
+                                            android:elevation="5dp">
+                                            <ImageView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_margin="10dp"
+                                                android:src="@drawable/dpt" />
+                                        </LinearLayout>
+
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:fontFamily="@font/gotham"
+                                            android:gravity="center|top"
+                                            android:text="Cek DPT"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:id="@+id/linearBerita"
+                                        android:id="@+id/linearBansos"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
@@ -335,18 +336,18 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="Berita"
+                                            android:text="Cek Bansos"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />
                                     </LinearLayout>
                                     <LinearLayout
-                                        android:id="@+id/linearPariwisata"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
                                         android:layout_weight="1"
-                                        android:orientation="vertical">
+                                        android:orientation="vertical"
+                                        android:id="@+id/linearUMKM">
 
                                         <LinearLayout
                                             android:layout_height="match_parent"
@@ -356,11 +357,12 @@
                                             android:layout_gravity="center"
                                             android:background="@drawable/round_menu"
                                             android:elevation="5dp">
+
                                             <ImageView
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
+                                                android:layout_width="30dp"
+                                                android:layout_height="30dp"
                                                 android:layout_margin="10dp"
-                                                android:src="@drawable/pariwisata" />
+                                                android:src="@drawable/e_pasar" />
                                         </LinearLayout>
 
 
@@ -370,7 +372,7 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="Pariwisata"
+                                            android:text="Cek Bantuan UMKM"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />

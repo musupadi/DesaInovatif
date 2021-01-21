@@ -25,12 +25,42 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoAction"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.ui.Menu.Pariwisata.DetailPariwisataActivity"></activity>
-        <activity android:name=".Activity.ui.Menu.ECommerce.ECommerceActivity" />
-        <activity android:name=".Activity.ui.Menu.Pariwisata.PariwisataActivity" />
-        <activity android:name=".Activity.ui.Menu.Berita.BeritaActivity" />
-        <activity android:name=".Activity.ui.Menu.Berita.DetailBeritaActivity" />
-        <activity android:name=".Activity.ui.Menu.SuratActivity" />
+        <activity
+            android:name=".Activity.ui.Menu.Toko.DetailProductActivity"
+            android:parentActivityName=".Activity.ui.Menu.Pariwisata.PariwisataActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".Activity.ui.Menu.Toko.DetailTokoActivity"
+            android:parentActivityName=".Activity.ui.Menu.Pariwisata.PariwisataActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.Pariwisata.DetailPariwisataActivity"
+            android:parentActivityName=".Activity.ui.Menu.Pariwisata.PariwisataActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.ECommerce.ECommerceActivity"
+            android:label="E-Commerce"
+            android:parentActivityName=".Activity.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.Pariwisata.PariwisataActivity"
+            android:label="Pariwisata"
+            android:parentActivityName=".Activity.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.Berita.BeritaActivity"
+            android:label="Berita"
+            android:parentActivityName=".Activity.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.Berita.DetailBeritaActivity"
+            android:parentActivityName=".Activity.ui.Menu.Berita.BeritaActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.SuratActivity"
+            android:label="Surat"
+            android:parentActivityName=".Activity.MainActivity"
+            android:theme="@style/AppTheme" />
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.SplashActivity">
@@ -40,6 +70,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

@@ -34,7 +34,6 @@ import retrofit2.Response;
 
 public class SuratActivity extends AppCompatActivity {
     Destiny destiny;
-    RelativeLayout Back;
     DB_Helper dbHelper;
     String Username,Password,Nama,Token,Photo;
     RecyclerView recycler;
@@ -54,7 +53,6 @@ public class SuratActivity extends AppCompatActivity {
     }
     private void DECLARATION(){
         destiny = new Destiny();
-        Back = findViewById(R.id.relativeBack);
         recycler = findViewById(R.id.recycler);
         Permintaan = findViewById(R.id.btnPermintaan);
         //Dialog
@@ -78,12 +76,6 @@ public class SuratActivity extends AppCompatActivity {
 
     }
     private void OnClick(){
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
         Permintaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

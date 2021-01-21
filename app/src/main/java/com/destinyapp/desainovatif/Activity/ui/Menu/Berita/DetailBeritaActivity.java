@@ -18,7 +18,6 @@ import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
 
 public class DetailBeritaActivity extends AppCompatActivity {
     Destiny destiny;
-    RelativeLayout Back;
     DB_Helper dbHelper;
     String Username,Password,Nama,Token,Level,Photo;
 
@@ -32,7 +31,6 @@ public class DetailBeritaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_berita);
         destiny = new Destiny();
-        Back = findViewById(R.id.relativeBack);
         dbHelper = new DB_Helper(this);
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){
@@ -47,15 +45,8 @@ public class DetailBeritaActivity extends AppCompatActivity {
         }
         Declaration();
         GETDATA();
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
     }
     private void Declaration(){
-        judul = findViewById(R.id.tvJudulKabar);
         isi = findViewById(R.id.webIsi);
         tanggal = findViewById(R.id.tvTanggal);
         gambar = findViewById(R.id.ivGambar);
@@ -66,7 +57,7 @@ public class DetailBeritaActivity extends AppCompatActivity {
         ISI = intent.getExtras().getString("ISI");
         TANGGAL = intent.getExtras().getString("TANGGAL");
         GANBAR = intent.getExtras().getString("GAMBAR");
-        judul.setText(JUDUL);
+        getSupportActionBar().setTitle(JUDUL);
         isi.loadData(ISI,"text/html","UTF-8");
         tanggal.setText(destiny.MagicDateChange(TANGGAL));
         Glide.with(this)

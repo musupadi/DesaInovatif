@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_menu"
+            android:layout_margin="10dp"
+            android:id="@+id/btnPermintaan"
+            android:text="Permintaan Pembuatan Toko"
+            android:textColor="@color/White"
+            android:fontFamily="@font/gotham"
+            android:elevation="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LinearMyToko"
+            android:orientation="vertical">
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toko Saya"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Primary"
+                android:fontFamily="@font/gotham"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/recyclerTokoSaya">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seluruh Toko"
+            android:textSize="@dimen/text_xtra_large"
+            android:textColor="@color/Primary"
+            android:fontFamily="@font/gotham"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
+</RelativeLayout>

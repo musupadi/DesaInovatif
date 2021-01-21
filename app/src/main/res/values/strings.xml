@@ -2,4 +2,8 @@
     <string name="app_name">Desa Inovatif</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Surat">
+        <item>Surat Pindah</item>
+        <item>Surat RT</item>
+    </string-array>
 </resources>

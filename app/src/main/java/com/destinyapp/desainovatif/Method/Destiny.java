@@ -10,7 +10,10 @@ import com.destinyapp.desainovatif.API.RetroServer;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +46,18 @@ public class Destiny {
         String replace18 = replace17.replace("<a href=","");
         return replace17;
     }
+    public String ChangeNumToInt(String num){
+        String replaces = num.replace(".","");
+        String replace2 = replaces.replace(",","");
+        return replace2;
+    }
+    public String MagicRP(double nilai){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        BigDecimal bd1 = new BigDecimal(nilai).setScale(0, RoundingMode.HALF_UP);
+        String replace = formatRupiah.format(bd1).replace("Rp","Rp ");
+        return replace;
+    }
     public void AutoLogin(String username, String password, Context ctx){
         DB_Helper dbHelper = new DB_Helper(ctx);
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
@@ -53,7 +68,7 @@ public class Destiny {
                 try {
                     if (response.body().getStatusCode().equals("000")){
                         dbHelper.Logout();
-                        dbHelper.SaveUser(response.body().getData().get(0).getUsernameUser(),password,response.body().getData().get(0).getNamaUser(),response.body().getData().get(0).getAccessToken(),response.body().getData().get(0).getFotoUser(),response.body().getData().get(0).getEmailUser());
+                        dbHelper.SaveUser(response.body().getData().get(0).getUsernameUser(),password,response.body().getData().get(0).getNamaUser(),response.body().getData().get(0).getAccessToken(),response.body().getData().get(0).getFotoUser(),response.body().getData().get(0).getEmailUser(),response.body().getData().get(0).getNoTelp());
                     }else{
                         Toast.makeText(ctx, response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
                     }

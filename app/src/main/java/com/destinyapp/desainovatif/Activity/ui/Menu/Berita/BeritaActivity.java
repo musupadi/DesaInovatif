@@ -30,7 +30,6 @@ import retrofit2.Response;
 
 public class BeritaActivity extends AppCompatActivity {
     Destiny destiny;
-    RelativeLayout Back;
     DB_Helper dbHelper;
     String Username,Password,Nama,Token,Level,Photo;
     RecyclerView recycler;
@@ -42,7 +41,6 @@ public class BeritaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_berita);
         destiny = new Destiny();
-        Back = findViewById(R.id.relativeBack);
         recycler = findViewById(R.id.recycler);
         dbHelper = new DB_Helper(this);
         Cursor cursor = dbHelper.checkUser();
@@ -57,12 +55,6 @@ public class BeritaActivity extends AppCompatActivity {
             }
         }
         Logic();
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
     }
     private void Logic(){
         mManager = new LinearLayoutManager(BeritaActivity.this,RecyclerView.VERTICAL,false);

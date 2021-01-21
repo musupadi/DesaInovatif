@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
+import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Model.ResponseData;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.R;
 import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
@@ -58,10 +60,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 try {
                     if (response.body().getStatusCode().equals("000")){
-                        dbHelper.SaveUser(response.body().getData().get(0).getUsernameUser(),password.getText().toString(),response.body().getData().get(0).getNamaUser(),response.body().getData().get(0).getAccessToken(),response.body().getData().get(0).getFotoUser(),response.body().getData().get(0).getEmailUser());
-                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        dbHelper.SaveUser(response.body().getData().get(0).getUsernameUser(),password.getText().toString(),response.body().getData().get(0).getNamaUser(),response.body().getData().get(0).getAccessToken(),response.body().getData().get(0).getFotoUser(),response.body().getData().get(0).getEmailUser(),response.body().getData().get(0).getNoTelp());
+                        GetID(response.body().getData().get(0).getNoTelp());
                     }else{
                         Toast.makeText(LoginActivity.this, response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -78,6 +78,28 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
                 pd.hide();
                 Log.i("Login Logic : ",t.toString());
+            }
+        });
+    }
+    private void GetID(String number){
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        final Call<ResponseData> Data =api.Kyoko(number);
+        Data.enqueue(new Callback<ResponseData>() {
+            @Override
+            public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                try {
+                    dbHelper.SaveID(response.body().getData().getId_user());
+                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    finishAffinity();
+                }catch (Exception e){
+                    Toast.makeText(LoginActivity.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseData> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
     }

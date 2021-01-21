@@ -32,7 +32,6 @@ import retrofit2.Response;
 
 public class PariwisataActivity extends AppCompatActivity {
     Destiny destiny;
-    RelativeLayout Back;
     DB_Helper dbHelper;
     String Username,Password,Nama,Token,Level,Photo;
     RecyclerView recycler;
@@ -45,7 +44,6 @@ public class PariwisataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pariwisata);
         destiny = new Destiny();
-        Back = findViewById(R.id.relativeBack);
         recycler = findViewById(R.id.recycler);
         dbHelper = new DB_Helper(this);
         Cursor cursor = dbHelper.checkUser();
@@ -60,12 +58,6 @@ public class PariwisataActivity extends AppCompatActivity {
             }
         }
         Logic();
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
     }
     private void Logic(){
         mManager = new LinearLayoutManager(PariwisataActivity.this,RecyclerView.VERTICAL,false);

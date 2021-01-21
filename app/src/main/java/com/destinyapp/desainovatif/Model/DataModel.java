@@ -170,7 +170,93 @@ public class DataModel {
     @Expose
     public String tgl_upload_pariwisata;
 
+    //Kategori Surat
+    @SerializedName("id_surat_kategori")
+    @Expose
+    public String id_surat_kategori;
 
+    @SerializedName("nama_kategori_surat")
+    @Expose
+    public String nama_kategori_surat;
+
+    @SerializedName("deskripsi_kategori_surat")
+    @Expose
+    public String deskripsi_kategori_surat;
+
+    //Toko
+    @SerializedName("id_toko")
+    @Expose
+    public String id_toko;
+
+    @SerializedName("nama_toko")
+    @Expose
+    public String nama_toko;
+
+    @SerializedName("deskripsi_toko")
+    @Expose
+    public String deskripsi_toko;
+
+    @SerializedName("id_foto_cover")
+    @Expose
+    public String id_foto_cover;
+
+    @SerializedName("tgl_toko_request")
+    @Expose
+    public String tgl_toko_request;
+
+    @SerializedName("tgl_toko_disetujui")
+    @Expose
+    public String tgl_toko_disetujui;
+
+    @SerializedName("status_toko")
+    @Expose
+    public String status_toko;
+
+    @SerializedName("nama_user")
+    @Expose
+    public String nama_user;
+
+    @SerializedName("link_file_toko_foto")
+    @Expose
+    public String link_file_toko_foto;
+
+    //Produk
+    @SerializedName("id_toko_produk")
+    @Expose
+    public String id_toko_produk;
+
+    @SerializedName("nama_produk")
+    @Expose
+    public String nama_produk;
+
+    @SerializedName("deskripsi_produk")
+    @Expose
+    public String deskripsi_produk;
+
+    @SerializedName("id_cover_produk_foto")
+    @Expose
+    public String id_cover_produk_foto;
+
+    @SerializedName("tgl_upload_produk")
+    @Expose
+    public String tgl_upload_produk;
+
+    @SerializedName("status_produk")
+    @Expose
+    public String status_produk;
+
+    @SerializedName("link_file_produk_foto")
+    @Expose
+    public String link_file_produk_foto;
+
+    @SerializedName("harga_produk")
+    @Expose
+    public String harga_produk;
+
+    //Gallery
+    @SerializedName("id_toko_foto")
+    @Expose
+    public String id_toko_foto;
 
 
     public String getAccessToken() {
@@ -491,5 +577,173 @@ public class DataModel {
 
     public void setTgl_upload_pariwisata(String tgl_upload_pariwisata) {
         this.tgl_upload_pariwisata = tgl_upload_pariwisata;
+    }
+
+    public String getId_surat_kategori() {
+        return id_surat_kategori;
+    }
+
+    public void setId_surat_kategori(String id_surat_kategori) {
+        this.id_surat_kategori = id_surat_kategori;
+    }
+
+    public String getNama_kategori_surat() {
+        return nama_kategori_surat;
+    }
+
+    public void setNama_kategori_surat(String nama_kategori_surat) {
+        this.nama_kategori_surat = nama_kategori_surat;
+    }
+
+    public String getDeskripsi_kategori_surat() {
+        return deskripsi_kategori_surat;
+    }
+
+    public void setDeskripsi_kategori_surat(String deskripsi_kategori_surat) {
+        this.deskripsi_kategori_surat = deskripsi_kategori_surat;
+    }
+
+    public String getId_toko() {
+        return id_toko;
+    }
+
+    public void setId_toko(String id_toko) {
+        this.id_toko = id_toko;
+    }
+
+    public String getNama_toko() {
+        return nama_toko;
+    }
+
+    public void setNama_toko(String nama_toko) {
+        this.nama_toko = nama_toko;
+    }
+
+    public String getDeskripsi_toko() {
+        return deskripsi_toko;
+    }
+
+    public void setDeskripsi_toko(String deskripsi_toko) {
+        this.deskripsi_toko = deskripsi_toko;
+    }
+
+    public String getId_foto_cover() {
+        return id_foto_cover;
+    }
+
+    public void setId_foto_cover(String id_foto_cover) {
+        this.id_foto_cover = id_foto_cover;
+    }
+
+    public String getTgl_toko_request() {
+        return tgl_toko_request;
+    }
+
+    public void setTgl_toko_request(String tgl_toko_request) {
+        this.tgl_toko_request = tgl_toko_request;
+    }
+
+    public String getTgl_toko_disetujui() {
+        return tgl_toko_disetujui;
+    }
+
+    public void setTgl_toko_disetujui(String tgl_toko_disetujui) {
+        this.tgl_toko_disetujui = tgl_toko_disetujui;
+    }
+
+    public String getStatus_toko() {
+        return status_toko;
+    }
+
+    public void setStatus_toko(String status_toko) {
+        this.status_toko = status_toko;
+    }
+
+    public String getNama_user() {
+        return nama_user;
+    }
+
+    public void setNama_user(String nama_user) {
+        this.nama_user = nama_user;
+    }
+
+    public String getLink_file_toko_foto() {
+        return link_file_toko_foto;
+    }
+
+    public void setLink_file_toko_foto(String link_file_toko_foto) {
+        this.link_file_toko_foto = link_file_toko_foto;
+    }
+
+    public String getId_toko_produk() {
+        return id_toko_produk;
+    }
+
+    public void setId_toko_produk(String id_toko_produk) {
+        this.id_toko_produk = id_toko_produk;
+    }
+
+    public String getNama_produk() {
+        return nama_produk;
+    }
+
+    public void setNama_produk(String nama_produk) {
+        this.nama_produk = nama_produk;
+    }
+
+    public String getDeskripsi_produk() {
+        return deskripsi_produk;
+    }
+
+    public void setDeskripsi_produk(String deskripsi_produk) {
+        this.deskripsi_produk = deskripsi_produk;
+    }
+
+    public String getId_cover_produk_foto() {
+        return id_cover_produk_foto;
+    }
+
+    public void setId_cover_produk_foto(String id_cover_produk_foto) {
+        this.id_cover_produk_foto = id_cover_produk_foto;
+    }
+
+    public String getTgl_upload_produk() {
+        return tgl_upload_produk;
+    }
+
+    public void setTgl_upload_produk(String tgl_upload_produk) {
+        this.tgl_upload_produk = tgl_upload_produk;
+    }
+
+    public String getStatus_produk() {
+        return status_produk;
+    }
+
+    public void setStatus_produk(String status_produk) {
+        this.status_produk = status_produk;
+    }
+
+    public String getLink_file_produk_foto() {
+        return link_file_produk_foto;
+    }
+
+    public void setLink_file_produk_foto(String link_file_produk_foto) {
+        this.link_file_produk_foto = link_file_produk_foto;
+    }
+
+    public String getId_toko_foto() {
+        return id_toko_foto;
+    }
+
+    public void setId_toko_foto(String id_toko_foto) {
+        this.id_toko_foto = id_toko_foto;
+    }
+
+    public String getHarga_produk() {
+        return harga_produk;
+    }
+
+    public void setHarga_produk(String harga_produk) {
+        this.harga_produk = harga_produk;
     }
 }

@@ -56,8 +56,80 @@
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:text="Home"
-                    android:textSize="@dimen/text_medium"
+                    android:textSize="@dimen/text_smoll"
                     android:textColor="@color/Primary"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearEPasar"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/ivEpasar"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/home" />
+                </RelativeLayout>
+
+                <TextView
+                    android:fontFamily="@font/gotham"
+                    android:id="@+id/tvEPasar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Toko"
+                    android:textSize="@dimen/text_smoll"
+                    android:textColor="@color/Black"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearSurat"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/ivSurat"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/home" />
+                </RelativeLayout>
+
+                <TextView
+                    android:fontFamily="@font/gotham"
+                    android:id="@+id/tvSurat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Layanan Desa"
+                    android:textSize="@dimen/text_smoll"
+                    android:textColor="@color/Black"
                     android:gravity="center"/>
             </LinearLayout>
             <LinearLayout
@@ -93,7 +165,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:text="User"
-                    android:textSize="@dimen/text_medium"
+                    android:textSize="@dimen/text_smoll"
                     android:textColor="@color/Black"
                     android:gravity="center"/>
             </LinearLayout>

@@ -9,44 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            card_view:cardElevation="4dp"
-            card_view:cardCornerRadius="4dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:background="@color/Primary">
-                <RelativeLayout
-                    android:background="@drawable/rounded"
-                    android:layout_width="40dp"
-                    android:layout_margin="10dp"
-                    android:layout_height="40dp"
-                    android:elevation="5dp"
-                    android:gravity="center"
-                    android:id="@+id/relativeBack"
-                    android:padding="5dp">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"/>
-                </RelativeLayout>
-                <TextView
-                    android:id="@+id/tvJudulKabar"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Judul Berita"
-                    android:gravity="center|left"
-                    android:textColor="@color/White"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
