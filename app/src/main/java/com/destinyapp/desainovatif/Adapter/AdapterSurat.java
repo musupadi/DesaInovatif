@@ -2,10 +2,12 @@ package com.destinyapp.desainovatif.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +48,20 @@ public class AdapterSurat extends RecyclerView.Adapter<AdapterSurat.HolderData> 
         destiny = new Destiny();
         final DataModel dm = mList.get(posistion);
         holderData.Nama.setText(dm.getNama_surat());
+        holderData.Tanggal.setText(destiny.MagicDateChange(dm.getTgl_request()));
+        if (dm.getStatus_surat().equals("requested")){
+            holderData.Status.setText(" Meminta");
+            holderData.Status.setTextColor(Color.rgb(255,227,179));
+            holderData.StatusImage.setImageResource(R.drawable.round_secondary);
+        }else if(dm.getStatus_surat().equals("terkirim")){
+            holderData.Status.setText(" Terkirim");
+            holderData.Status.setTextColor(Color.rgb(83,210,220));
+            holderData.StatusImage.setImageResource(R.drawable.round_primary);
+        }else{
+            holderData.Status.setText(" Ditolak");
+            holderData.Status.setTextColor(Color.rgb(255,0,0));
+            holderData.StatusImage.setImageResource(R.drawable.round_red);
+        }
         holderData.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,12 +81,16 @@ public class AdapterSurat extends RecyclerView.Adapter<AdapterSurat.HolderData> 
     }
 
     class HolderData extends RecyclerView.ViewHolder{ ;
-        TextView Nama;
+        TextView Nama,Tanggal,Status;
+        ImageView StatusImage;
         LinearLayout card;
         public HolderData(View v){
             super(v);
             Nama = v.findViewById(R.id.tvNama);
             card = v.findViewById(R.id.LayoutCardView);
+            Status= v.findViewById(R.id.tvStatus);
+            Tanggal = v.findViewById(R.id.tvTanggal);
+            StatusImage = v.findViewById(R.id.ivStatus);
         }
     }
 }

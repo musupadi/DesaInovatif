@@ -4,23 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SplashActivity">
+    tools:context=".Activity.SplashActivity"
+    android:background="@drawable/background">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/kampung"
-        android:scaleType="fitXY"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@color/Black"
-        android:alpha="0.4"/>
+        android:orientation="vertical">
+        <ImageView
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bogor_maju"/>
+        <ImageView
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_above="@+id/tvFaba"
         android:gravity="center"
-        android:text="Desa Inovatif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Untuk Keperluan Kampung yang lebih baik"
+        android:textSize="10sp"
+        android:textColor="@color/White"/>
+    <TextView
+        android:id="@+id/tvFaba"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="by Destiny"
+        android:textSize="15sp"
+        android:textStyle="bold"
         android:textColor="@color/White"
-        android:textSize="30sp"/>
+        android:layout_marginBottom="30dp"/>
+
+
 </RelativeLayout>
