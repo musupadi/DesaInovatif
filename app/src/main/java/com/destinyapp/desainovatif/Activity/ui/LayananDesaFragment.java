@@ -17,12 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
+import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.SuratActivity;
+import com.destinyapp.desainovatif.Adapter.AdapterKategoriSurat;
 import com.destinyapp.desainovatif.Adapter.AdapterSurat;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
@@ -48,7 +51,7 @@ public class LayananDesaFragment extends Fragment {
     Dialog dialog;
     Button Permintaan,Submit,Tutup;
     EditText NamaSurat;
-
+    Spinner spinner;
     public LayananDesaFragment() {
         // Required empty public constructor
     }
@@ -71,6 +74,7 @@ public class LayananDesaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recycler = view.findViewById(R.id.recycler);
         Permintaan = view.findViewById(R.id.btnPermintaan);
+        spinner = view.findViewById(R.id.spinner);
         destiny = new Destiny();
         //Dialog
         dialog = new Dialog(getActivity());
@@ -90,8 +94,30 @@ public class LayananDesaFragment extends Fragment {
                 Photo = cursor.getString(4);
             }
         }
+        GetKategori();
         OnClick();
         Logic();
+    }
+    private void GetKategori(){
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getProvinsi = api.Kategori_Surat();
+        getProvinsi.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                try {
+                    mItems=response.body().getData();
+                    AdapterKategoriSurat adapter = new AdapterKategoriSurat(getActivity(),mItems);
+                    spinner.setAdapter(adapter);
+                }catch (Exception e){
+                    Toast.makeText(getActivity(), "Terjadi kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void OnClick(){
         Permintaan.setOnClickListener(new View.OnClickListener() {
