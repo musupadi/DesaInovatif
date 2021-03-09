@@ -28,7 +28,7 @@ public class UserFragment extends Fragment {
     DB_Helper dbHelper;
     String Username,Password,Nama,Token,Photo,Email;
     Destiny destiny;
-    Button logout;
+    Button logout,Laporan;
     public UserFragment() {
         // Required empty public constructor
     }
@@ -55,6 +55,7 @@ public class UserFragment extends Fragment {
         Telpon = view.findViewById(R.id.tvNoTelpon);
         Picture = view.findViewById(R.id.ivProfile);
         logout = view.findViewById(R.id.btnLogot);
+        Laporan = view.findViewById(R.id.btnLaporan);
         dbHelper = new DB_Helper(getActivity());
         destiny = new Destiny();
         Cursor cursor = dbHelper.checkUser();
@@ -77,6 +78,13 @@ public class UserFragment extends Fragment {
                     .load(destiny.BASE_URL()+Photo)
                     .into(Picture);
         }
+        Laporan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),LaporanActivity.class);
+                startActivity(intent);
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -258,6 +258,18 @@ public class DataModel {
     @Expose
     public String id_toko_foto;
 
+    //Laporan
+    @SerializedName("iid_laporan_kategori")
+    @Expose
+    public String id_laporan_kategori;
+
+    @SerializedName("nama_laporan_kategor")
+    @Expose
+    public String nama_laporan_kategor;
+
+    @SerializedName("deskripsi_laporan_kategori")
+    @Expose
+    public String deskripsi_laporan_kategori;
 
     public String getAccessToken() {
         return accessToken;
@@ -745,5 +757,29 @@ public class DataModel {
 
     public void setHarga_produk(String harga_produk) {
         this.harga_produk = harga_produk;
+    }
+
+    public String getId_laporan_kategori() {
+        return id_laporan_kategori;
+    }
+
+    public void setId_laporan_kategori(String id_laporan_kategori) {
+        this.id_laporan_kategori = id_laporan_kategori;
+    }
+
+    public String getNama_laporan_kategor() {
+        return nama_laporan_kategor;
+    }
+
+    public void setNama_laporan_kategor(String nama_laporan_kategor) {
+        this.nama_laporan_kategor = nama_laporan_kategor;
+    }
+
+    public String getDeskripsi_laporan_kategori() {
+        return deskripsi_laporan_kategori;
+    }
+
+    public void setDeskripsi_laporan_kategori(String deskripsi_laporan_kategori) {
+        this.deskripsi_laporan_kategori = deskripsi_laporan_kategori;
     }
 }

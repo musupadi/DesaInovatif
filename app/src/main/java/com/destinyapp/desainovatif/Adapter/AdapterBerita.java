@@ -16,21 +16,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Berita.DetailBeritaActivity;
 import com.destinyapp.desainovatif.Method.Destiny;
-import com.destinyapp.desainovatif.Model.DataModel;
+import com.destinyapp.desainovatif.Model.NewModel.Data;
 import com.destinyapp.desainovatif.R;
 import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
 
 import java.util.List;
 
 public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.HolderData> {
-    private List<DataModel> mList;
+    private List<Data> mList;
     private Context ctx;
 
     DB_Helper dbHelper;
     Boolean onClick=false;
     RecyclerView recyclerView;
     Destiny destiny;
-    public AdapterBerita(Context ctx, List<DataModel> mList){
+    public AdapterBerita(Context ctx, List<Data> mList){
         this.ctx = ctx;
         this.mList = mList;
     }
@@ -46,22 +46,22 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.HolderData
     @Override
     public void onBindViewHolder(@NonNull final HolderData holderData, int posistion) {
         destiny = new Destiny();
-        final DataModel dm = mList.get(posistion);
-        holderData.Judul.setText(dm.getJudul_berita());
-        holderData.Deskripsi.setText(destiny.SmallDescription(destiny.FilterTextToJava(dm.getIsi_berita())));
-        holderData.web.loadData(dm.getIsi_berita(),"text/html","UTF-8");
-        holderData.Tanggal.setText(destiny.MagicDateChange(dm.getCreated_at_berita()));
+        final Data dm = mList.get(posistion);
+        holderData.Judul.setText(dm.getTitle().getRendered());
+        holderData.Deskripsi.setText(destiny.SmallDescription(destiny.FilterTextToJava(dm.getContent().getRendered())));
+        holderData.web.loadData(dm.getContent().getRendered(),"text/html","UTF-8");
+        holderData.Tanggal.setText(destiny.MagicDateChange(dm.getDate()));
         Glide.with(ctx)
-                .load(destiny.BASE_URL()+dm.getCover_berita())
+                .load(dm.getImg_cover())
                 .into(holderData.Image);
         holderData.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ctx, DetailBeritaActivity.class);
-                i.putExtra("JUDUL", dm.getJudul_berita());
-                i.putExtra("ISI",dm.getIsi_berita());
-                i.putExtra("TANGGAL",dm.getCreated_at_berita());
-                i.putExtra("GAMBAR", destiny.BASE_URL()+dm.getCover_berita());
+                i.putExtra("JUDUL", dm.getTitle().getRendered());
+                i.putExtra("ISI",dm.getContent().getRendered());
+                i.putExtra("TANGGAL",dm.getDate());
+                i.putExtra("GAMBAR", dm.getImg_cover());
                 ctx.startActivity(i);
             }
         });

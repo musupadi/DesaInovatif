@@ -1,5 +1,7 @@
 package com.destinyapp.desainovatif.API;
 
+import com.destinyapp.desainovatif.Model.NewModel.Covid.ResponseCovid;
+import com.destinyapp.desainovatif.Model.NewModel.Response;
 import com.destinyapp.desainovatif.Model.ResponseData;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.Model.Ress;
@@ -42,6 +44,12 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("toko/gallery_produk")
     Call<ResponseModel> GalleryProduk(@Field("id_produk") String id_produk);
+
+    @FormUrlEncoded
+    @POST("laporan/surat")
+    Call<ResponseModel> SuratLaporan(@Field("id_user") String id_user,
+                                     @Field("id_surat_kategori") String id_surat_kategori,
+                                     @Field("nama_surat") String nama_surat);
 
     @FormUrlEncoded
     @POST("toko/gallery")
@@ -135,9 +143,16 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("toko/produk")
     Call<ResponseModel> Produk(@Field("id_toko") String id_toko);
+
+    @FormUrlEncoded
+    @POST("berita_bogor")
+    Call<Response> Berita_bogor(@Field("page") Integer page);
     //GET
     @GET("kat_surat")
     Call<ResponseModel> Kategori_Surat();
+
+    @GET("laporan/kategori")
+    Call<ResponseModel> Kategori_Laporan();
 
     @GET("surat")
     Call<ResponseModel> Surat(@Header("Authorization") String authHeader);
@@ -147,4 +162,7 @@ public interface ApiRequest {
 
     @GET("pariwisata")
     Call<ResponseModel> Pariwisata(@Header("Authorization") String authHeader);
+
+    @GET("prov.json")
+    Call<ResponseCovid> Covid();
 }

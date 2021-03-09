@@ -58,6 +58,13 @@ public class Destiny {
         String replace = formatRupiah.format(bd1).replace("Rp","Rp ");
         return replace;
     }
+    public String MagicNumber(double nilai){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        BigDecimal bd1 = new BigDecimal(nilai).setScale(0, RoundingMode.HALF_UP);
+        String replace = formatRupiah.format(bd1).replace("Rp","");
+        return replace;
+    }
     public void AutoLogin(String username, String password, Context ctx){
         DB_Helper dbHelper = new DB_Helper(ctx);
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);

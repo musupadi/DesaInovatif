@@ -54,6 +54,7 @@ public class AdapterPariwisata extends RecyclerView.Adapter<AdapterPariwisata.Ho
             holderData.Status.setBackgroundColor(Color.rgb(83,210,220));
         }else{
             holderData.Status.setBackgroundColor(Color.rgb(255,0,0));
+            holderData.Status.setText("Tutup");
         }
         Glide.with(ctx)
                 .load(destiny.BASE_URL()+dm.getCover_pariwisata())

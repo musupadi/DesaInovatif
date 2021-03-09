@@ -13,10 +13,12 @@ import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
+import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
 import com.destinyapp.desainovatif.Adapter.AdapterBerita;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
+import com.destinyapp.desainovatif.Model.NewModel.Data;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.R;
 import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
@@ -34,6 +36,7 @@ public class BeritaActivity extends AppCompatActivity {
     String Username,Password,Nama,Token,Level,Photo;
     RecyclerView recycler;
     private List<DataModel> mItems = new ArrayList<>();
+    private List<Data> Datas = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mManager;
     @Override
@@ -59,35 +62,20 @@ public class BeritaActivity extends AppCompatActivity {
     private void Logic(){
         mManager = new LinearLayoutManager(BeritaActivity.this,RecyclerView.VERTICAL,false);
         recycler.setLayoutManager(mManager);
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.Berita(destiny.AUTH(Token));
-        KabarBerita.enqueue(new Callback<ResponseModel>() {
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<com.destinyapp.desainovatif.Model.NewModel.Response> KabarBerita = api.Berita_bogor(1);
+        KabarBerita.enqueue(new Callback<com.destinyapp.desainovatif.Model.NewModel.Response>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                try {
-                    if (response.body().getStatusCode().equals("000")){
-                        mItems=response.body().getData();
-                        mAdapter = new AdapterBerita(BeritaActivity.this,mItems);
-                        recycler.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
-                    }else if (response.body().getStatusCode().equals("001") || response.body().getStatusCode().equals("002")){
-                        destiny.AutoLogin(Username,Password,BeritaActivity.this);
-                        Logic();
-                    }else{
-                        Toast.makeText(BeritaActivity.this, "Terjadi Kesalahan ", Toast.LENGTH_SHORT).show();
-                    }
-                }catch (Exception e){
-                    Toast.makeText(BeritaActivity.this, "Terjadi Kesalahan User akan Terlogout", Toast.LENGTH_SHORT).show();
-                    dbHelper.Logout();
-                    Intent intent = new Intent(BeritaActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+            public void onResponse(Call<com.destinyapp.desainovatif.Model.NewModel.Response> call, retrofit2.Response<com.destinyapp.desainovatif.Model.NewModel.Response> response) {
+                Datas=response.body().getData();
+                mAdapter = new AdapterBerita(BeritaActivity.this,Datas);
+                recycler.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(BeritaActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<com.destinyapp.desainovatif.Model.NewModel.Response> call, Throwable t) {
+
             }
         });
     }

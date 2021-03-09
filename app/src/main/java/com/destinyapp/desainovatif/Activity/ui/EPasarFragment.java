@@ -435,13 +435,22 @@ public class EPasarFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (GalleryNum==1){
-                    Submit1();
+                    if (Checker().equals("1")){
+                        Submit1();
+                    }
                 }else if (GalleryNum==2){
+                    if (Checker().equals("1")){
+                        Submit2();
+                    }
                     Submit2();
                 }else if(GalleryNum==3){
-                    Submit3();
+                    if (Checker().equals("1")){
+                        Submit3();
+                    }
                 }else{
-                    Submit4();
+                    if (Checker().equals("1")){
+                        Submit4();
+                    }
                 }
 
             }
@@ -495,7 +504,8 @@ public class EPasarFragment extends Fragment {
         MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery1);
 
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.PostToko(
+        Call<ResponseModel> Data = api.
+                PostToko(
                 destiny.AUTH(Token),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
@@ -698,6 +708,26 @@ public class EPasarFragment extends Fragment {
                 Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private String Checker(){
+        String ok = "1";
+        if (NamaToko.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(), "Nama Toko Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+            ok="0";
+        }else if(NoToko.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(), "Nomor Toko Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+            ok="0";
+        }else if(Deskripsi.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(), "Deskripsi Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+            ok="0";
+        }else if(postFoto.isEmpty()){
+            Toast.makeText(getActivity(), "Foto Cover Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+            ok="0";
+        }else if(postGallery1.isEmpty()){
+            Toast.makeText(getActivity(), "Foto Gallery Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+            ok="0";
+        }
+        return ok;
     }
     private void Logic(){
         mManager = new GridLayoutManager(getActivity(),2);

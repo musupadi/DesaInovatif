@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
+import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.API.RetroServerCovid;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Berita.BeritaActivity;
@@ -29,6 +31,10 @@ import com.destinyapp.desainovatif.Activity.ui.Menu.SuratActivity;
 import com.destinyapp.desainovatif.Adapter.AdapterBerita;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
+import com.destinyapp.desainovatif.Model.NewModel.Covid.CovidData;
+import com.destinyapp.desainovatif.Model.NewModel.Covid.ResponseCovid;
+import com.destinyapp.desainovatif.Model.NewModel.Data;
+import com.destinyapp.desainovatif.Model.NewModel.Response;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.R;
 import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
@@ -38,7 +44,6 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     LinearLayout LihatSemuaBerita;
@@ -48,9 +53,16 @@ public class HomeFragment extends Fragment {
     String Username,Password,Nama,Token,Photo;
     RecyclerView recycler;
     private List<DataModel> mItems = new ArrayList<>();
+    private List<Data> Datas = new ArrayList<>();
+    private List<CovidData> CovidData = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mManager;
     Destiny destiny;
+    TextView Positif,Sembuh,Meninggal,Kasus;
+    int rawat;
+    int kasus;
+    int sembuh;
+    int meninggal;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -78,6 +90,11 @@ public class HomeFragment extends Fragment {
         Bansos = view.findViewById(R.id.linearBansos);
         DPT = view.findViewById(R.id.linearDPT);
         recycler = view.findViewById(R.id.recyclerKabarBerita);
+        //COVID
+        Positif = view.findViewById(R.id.tvPositif);
+        Sembuh = view.findViewById(R.id.tvSembuh);
+        Meninggal = view.findViewById(R.id.tvMeninggal);
+        Kasus = view.findViewById(R.id.tvKasus);
         dbHelper = new DB_Helper(getActivity());
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){
@@ -91,7 +108,36 @@ public class HomeFragment extends Fragment {
         }
         nama.setText("Selamat Datang, "+Nama);
         ONClick();
+        GetCovid();
         KabarBerita();
+
+    }
+    private void GetCovid(){
+        ApiRequest api = RetroServerCovid.getClient().create(ApiRequest.class);
+        Call<ResponseCovid> Corona = api.Covid();
+        Corona.enqueue(new Callback<ResponseCovid>() {
+            @Override
+            public void onResponse(Call<ResponseCovid> call, retrofit2.Response<ResponseCovid> response) {
+                CovidData=response.body().getList_data();
+                for (int i=1;i<CovidData.size();i++){
+                    rawat = rawat + Integer.parseInt(CovidData.get(i).getJumlah_dirawat());
+                    kasus = kasus + Integer.parseInt(CovidData.get(i).getJumlah_kasus());
+                    sembuh = sembuh + Integer.parseInt(CovidData.get(i).getJumlah_kasus());
+                    meninggal = meninggal + Integer.parseInt(CovidData.get(i).getJumlah_meninggal());
+                }
+
+                Positif.setText(destiny.MagicNumber(Double.parseDouble(String.valueOf(rawat))));
+                Meninggal.setText(destiny.MagicNumber(Double.parseDouble(String.valueOf(meninggal))));
+                Sembuh.setText(destiny.MagicNumber(Double.parseDouble(String.valueOf(sembuh))));
+                Kasus.setText(destiny.MagicNumber(Double.parseDouble(String.valueOf(kasus))));
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCovid> call, Throwable t) {
+
+            }
+        });
     }
     private void ONClick(){
         LihatSemuaBerita.setOnClickListener(new View.OnClickListener() {
@@ -133,37 +179,20 @@ public class HomeFragment extends Fragment {
     private void KabarBerita(){
         mManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(mManager);
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.Berita(destiny.AUTH(Token));
-        KabarBerita.enqueue(new Callback<ResponseModel>() {
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<Response> KabarBerita = api.Berita_bogor(1);
+        KabarBerita.enqueue(new Callback<Response>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                try {
-                    if (response.body().getStatusCode().equals("000")){
-                        mItems=response.body().getData();
-                        mAdapter = new AdapterBerita(getActivity(),mItems);
-                        recycler.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
-                    }else if (response.body().getStatusCode().equals("001") || response.body().getStatusCode().equals("002")){
-                        destiny.AutoLogin(Username,Password,getActivity());
-                        Intent intent = new Intent(getActivity(), LoginActivity.class);
-                        startActivity(intent);
-                        getActivity().finish();
-                    }else{
-                        Toast.makeText(getActivity(), "Terjadi Kesalahan ", Toast.LENGTH_SHORT).show();
-                    }
-                }catch (Exception e){
-                    Toast.makeText(getActivity(), "Terjadi Kesalahan User akan Terlogout", Toast.LENGTH_SHORT).show();
-                    dbHelper.Logout();
-                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
-                }
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                Datas=response.body().getData();
+                mAdapter = new AdapterBerita(getActivity(),Datas);
+                recycler.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Response> call, Throwable t) {
+
             }
         });
     }

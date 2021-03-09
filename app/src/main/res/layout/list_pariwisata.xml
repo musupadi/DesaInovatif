@@ -83,7 +83,6 @@
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@color/Primary"
                             android:layout_margin="5dp"
                             android:elevation="5dp"
                             android:text="Buka"
