@@ -14,10 +14,9 @@ public class DB_Helper extends SQLiteOpenHelper {
     public static final String COLUMN_USERNAME = "username";
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_TOKEN = "token";
     public static final String COLUMN_PROFILE = "profile";
-    public static final String COLUMN_EMAIL = "email";
-    public static final String COLUMN_TELPON = "telpon";
+    public static final String COLUMN_IDS = "ID";
+    public static final String COLUMN_ID_DESA = "id_desa";
 
     //ID User
     public static final String TABLE_ID_USER = "user";
@@ -33,10 +32,9 @@ public class DB_Helper extends SQLiteOpenHelper {
                 COLUMN_USERNAME+" TEXT NOT NULL, "+
                 COLUMN_PASSWORD+" TEXT NOT NULL, "+
                 COLUMN_NAME+" TEXT NOT NULL, "+
-                COLUMN_TOKEN+" TEXT NOT NULL, "+
                 COLUMN_PROFILE+" TEXT NOT NULL, "+
-                COLUMN_EMAIL+" TEXT NOT NULL, "+
-                COLUMN_TELPON+" TEXT NOT NULL);"
+                COLUMN_IDS+" TEXT NOT NULL, "+
+                COLUMN_ID_DESA+" TEXT NOT NULL);"
         );
         db.execSQL("CREATE TABLE "+TABLE_ID_USER+" (" +
                 COLUMN_ID+" TEXT NOT NULL);"
@@ -50,16 +48,15 @@ public class DB_Helper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
     //Save
-    public void SaveUser(String username, String password, String name, String token, String profile,String Email,String telpon){
+    public void SaveUser(String username, String password,String name,String profile,String id,String id_desa){
         SQLiteDatabase db =this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_PASSWORD, password);
         values.put(COLUMN_NAME, name);
-        values.put(COLUMN_TOKEN, token);
         values.put(COLUMN_PROFILE,profile);
-        values.put(COLUMN_EMAIL,Email);
-        values.put(COLUMN_TELPON,telpon);
+        values.put(COLUMN_IDS,id);
+        values.put(COLUMN_ID_DESA,id_desa);
         db.insert(TABLE_NAME_ACCOUNT,null,values);
         db.close();
     }

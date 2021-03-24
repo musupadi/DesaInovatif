@@ -24,6 +24,7 @@ import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.API.RetroServerCovid;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
+import com.destinyapp.desainovatif.Activity.ui.Menu.BankSampah.BankSampah;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Berita.BeritaActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.ECommerce.ECommerceActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Pariwisata.PariwisataActivity;
@@ -49,8 +50,8 @@ public class HomeFragment extends Fragment {
     LinearLayout LihatSemuaBerita;
     TextView nama;
     DB_Helper dbHelper;
-    LinearLayout Pariwisata,UMKM,Bansos,DPT;
-    String Username,Password,Nama,Token,Photo;
+    String Username,Password,Nama,Photo,ID,ID_Desa;
+    LinearLayout Pariwisata,UMKM,Bansos,DPT,Sampah;
     RecyclerView recycler;
     private List<DataModel> mItems = new ArrayList<>();
     private List<Data> Datas = new ArrayList<>();
@@ -89,6 +90,7 @@ public class HomeFragment extends Fragment {
         UMKM = view.findViewById(R.id.linearUMKM);
         Bansos = view.findViewById(R.id.linearBansos);
         DPT = view.findViewById(R.id.linearDPT);
+        Sampah = view.findViewById(R.id.linearSampah);
         recycler = view.findViewById(R.id.recyclerKabarBerita);
         //COVID
         Positif = view.findViewById(R.id.tvPositif);
@@ -102,11 +104,15 @@ public class HomeFragment extends Fragment {
                 Username = cursor.getString(0);
                 Password = cursor.getString(1);
                 Nama = cursor.getString(2);
-                Token = cursor.getString(3);
-                Photo = cursor.getString(4);
+                Photo = cursor.getString(3);
+                ID = cursor.getString(4);
+                ID_Desa = cursor.getString(5);
             }
+            nama.setText("Selamat Datang, "+Nama);
+        }else{
+            nama.setText("Selamat Datang, Guest");
         }
-        nama.setText("Selamat Datang, "+Nama);
+
         ONClick();
         GetCovid();
         KabarBerita();
@@ -122,7 +128,7 @@ public class HomeFragment extends Fragment {
                 for (int i=1;i<CovidData.size();i++){
                     rawat = rawat + Integer.parseInt(CovidData.get(i).getJumlah_dirawat());
                     kasus = kasus + Integer.parseInt(CovidData.get(i).getJumlah_kasus());
-                    sembuh = sembuh + Integer.parseInt(CovidData.get(i).getJumlah_kasus());
+                    sembuh = sembuh + Integer.parseInt(CovidData.get(i).getJumlah_sembuh());
                     meninggal = meninggal + Integer.parseInt(CovidData.get(i).getJumlah_meninggal());
                 }
 
@@ -145,6 +151,26 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), BeritaActivity.class);
                 startActivity(intent);
+            }
+        });
+        Sampah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Cursor cursor = dbHelper.checkUser();
+//                if (cursor.getCount()>0){
+//                    nama.setText("Selamat Datang, "+Nama);
+//                }else{
+//                    nama.setText("Selamat Datang, Guest");
+//                }
+                if (Username == null){
+                    Toast.makeText(getActivity(), "Anda Harus Login untuk Menggunakan Fitur ini", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(),LoginActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getActivity(), BankSampah.class);
+                    startActivity(intent);
+
+                }
             }
         });
         Pariwisata.setOnClickListener(new View.OnClickListener() {

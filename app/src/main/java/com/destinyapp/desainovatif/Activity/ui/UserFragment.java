@@ -17,16 +17,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.destinyapp.desainovatif.API.ApiRequest;
+import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Laporan.LaporanActivity;
 import com.destinyapp.desainovatif.Method.Destiny;
+import com.destinyapp.desainovatif.Model.NewModel.NewResponse;
 import com.destinyapp.desainovatif.R;
 import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class UserFragment extends Fragment {
     ImageView Picture;
-    TextView nama,Username1,Username2,email,Telpon;
+    TextView nama,email,pekerjaan,saldo;
     DB_Helper dbHelper;
-    String Username,Password,Nama,Token,Photo,Email;
+    String Username,Password,Nama,Photo,Email,ID;
     Destiny destiny;
     Button logout,Laporan;
     public UserFragment() {
@@ -49,10 +57,9 @@ public class UserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         nama = view.findViewById(R.id.tvNama);
-        Username1 = view.findViewById(R.id.tvUsername);
-        Username2 = view.findViewById(R.id.tvUsername2);
+        saldo = view.findViewById(R.id.tvSaldo);
+        pekerjaan = view.findViewById(R.id.tvPekerjaan);
         email = view.findViewById(R.id.tvEmail);
-        Telpon = view.findViewById(R.id.tvNoTelpon);
         Picture = view.findViewById(R.id.ivProfile);
         logout = view.findViewById(R.id.btnLogot);
         Laporan = view.findViewById(R.id.btnLaporan);
@@ -64,24 +71,36 @@ public class UserFragment extends Fragment {
                 Username = cursor.getString(0);
                 Password = cursor.getString(1);
                 Nama = cursor.getString(2);
-                Token = cursor.getString(3);
-                Photo = cursor.getString(4);
-                Email = cursor.getString(5);
+                Photo = cursor.getString(3);
+                ID = cursor.getString(4);
             }
         }
-        nama.setText(Nama);
-        Username1.setText(Username);
-        Username2.setText(Username);
-        email.setText(Email);
-        if (!Photo.isEmpty()){
-            Glide.with(getActivity())
-                    .load(destiny.BASE_URL()+Photo)
-                    .into(Picture);
-        }
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<NewResponse> User = api.user_detail(ID);
+        User.enqueue(new Callback<NewResponse>() {
+            @Override
+            public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
+                if (!Photo.isEmpty()){
+                    Glide.with(getActivity())
+                            .load(destiny.BASE_URL()+Photo)
+                            .into(Picture);
+                }
+                nama.setText(response.body().getData().getNama_user());
+                email.setText(response.body().getData().getEmail_user());
+                pekerjaan.setText(response.body().getData().getPekerjaan_user());
+                saldo.setText(response.body().getData().getSaldo_user());
+            }
+
+            @Override
+            public void onFailure(Call<NewResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         Laporan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),LaporanActivity.class);
+                Intent intent = new Intent(getActivity(), LaporanActivity.class);
                 startActivity(intent);
             }
         });

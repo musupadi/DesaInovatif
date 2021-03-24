@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
 import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Model.NewModel.NewResponse;
 import com.destinyapp.desainovatif.Model.ResponseData;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.R;
@@ -53,33 +54,48 @@ public class LoginActivity extends AppCompatActivity {
         pd.setMessage("Sedang Mencoba Login");
         pd.show();
         pd.setCancelable(false);
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        final Call<ResponseModel> login =api.login(user.getText().toString(),password.getText().toString());
-        login.enqueue(new Callback<ResponseModel>() {
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        final Call<NewResponse> login =api.Login_user(user.getText().toString(),password.getText().toString());
+        login.enqueue(new Callback<NewResponse>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                try {
-                    if (response.body().getStatusCode().equals("000")){
-                        dbHelper.SaveUser(response.body().getData().get(0).getUsernameUser(),password.getText().toString(),response.body().getData().get(0).getNamaUser(),response.body().getData().get(0).getAccessToken(),response.body().getData().get(0).getFotoUser(),response.body().getData().get(0).getEmailUser(),response.body().getData().get(0).getNoTelp());
-                        GetID(response.body().getData().get(0).getNoTelp());
-                    }else{
-                        Toast.makeText(LoginActivity.this, response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                    pd.hide();
-                }catch (Exception e){
-                    Toast.makeText(LoginActivity.this, "Terjadi Kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();
-                    pd.hide();
-                }
+            public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
+                dbHelper.SaveUser(user.getText().toString(),password.getText().toString(),response.body().getData().getNama_user(),response.body().getData().getFoto_user(),response.body().getData().getId_user(),response.body().getData().getId_desa());
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+                finishAffinity();
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
-//                Toast.makeText(LoginActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
-                Toast.makeText(LoginActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<NewResponse> call, Throwable t) {
                 pd.hide();
-                Log.i("Login Logic : ",t.toString());
+                Toast.makeText(LoginActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
+//        login.enqueue(new Callback<ResponseModel>() {
+//            @Override
+//            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+//                try {
+//                    if (response.body().getStatusCode().equals("000")){
+//                        dbHelper.SaveUser(response.body().getData().get(0).getUsernameUser(),password.getText().toString(),response.body().getData().get(0).getNamaUser(),response.body().getData().get(0).getAccessToken(),response.body().getData().get(0).getFotoUser(),response.body().getData().get(0).getEmailUser(),response.body().getData().get(0).getNoTelp());
+//                        GetID(response.body().getData().get(0).getNoTelp());
+//                    }else{
+//                        Toast.makeText(LoginActivity.this, response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                    pd.hide();
+//                }catch (Exception e){
+//                    Toast.makeText(LoginActivity.this, "Terjadi Kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();
+//                    pd.hide();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseModel> call, Throwable t) {
+////                Toast.makeText(LoginActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(LoginActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+//                pd.hide();
+//                Log.i("Login Logic : ",t.toString());
+//            }
+//        });
     }
     private void GetID(String number){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);

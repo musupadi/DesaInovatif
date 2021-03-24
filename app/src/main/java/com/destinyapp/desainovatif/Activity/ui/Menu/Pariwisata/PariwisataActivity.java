@@ -13,8 +13,10 @@ import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
+import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Berita.BeritaActivity;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Laporan.LaporanActivity;
 import com.destinyapp.desainovatif.Adapter.AdapterBerita;
 import com.destinyapp.desainovatif.Adapter.AdapterPariwisata;
 import com.destinyapp.desainovatif.Method.Destiny;
@@ -33,7 +35,7 @@ import retrofit2.Response;
 public class PariwisataActivity extends AppCompatActivity {
     Destiny destiny;
     DB_Helper dbHelper;
-    String Username,Password,Nama,Token,Level,Photo;
+    String Username,Password,Nama,Photo,ID,ID_Desa;
     RecyclerView recycler;
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
@@ -45,16 +47,16 @@ public class PariwisataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pariwisata);
         destiny = new Destiny();
         recycler = findViewById(R.id.recycler);
-        dbHelper = new DB_Helper(this);
+        dbHelper = new DB_Helper(PariwisataActivity.this);
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
                 Username = cursor.getString(0);
                 Password = cursor.getString(1);
                 Nama = cursor.getString(2);
-                Token = cursor.getString(3);
-                Level = cursor.getString(4);
-                Photo = cursor.getString(5);
+                Photo = cursor.getString(3);
+                ID = cursor.getString(4);
+                ID_Desa = cursor.getString(5);
             }
         }
         Logic();
@@ -62,33 +64,16 @@ public class PariwisataActivity extends AppCompatActivity {
     private void Logic(){
         mManager = new LinearLayoutManager(PariwisataActivity.this,RecyclerView.VERTICAL,false);
         recycler.setLayoutManager(mManager);
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.Pariwisata(destiny.AUTH(Token));
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<ResponseModel> KabarBerita = api.Pariwisata(ID_Desa);
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 try {
-                    if (response.body().getStatusCode().equals("000")){
-                        mItems=response.body().getData();
-                        mAdapter = new AdapterPariwisata(PariwisataActivity.this,mItems);
-                        recycler.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
-                    }else if (response.body().getStatusCode().equals("001") || response.body().getStatusCode().equals("002")){
-                        destiny.AutoLogin(Username,Password,PariwisataActivity.this);
-                        loops= loops+1;
-                        if (loops>4){
-                            Toast.makeText(PariwisataActivity.this, "Terjadi Kesalahan User akan Terlogout", Toast.LENGTH_SHORT).show();
-                            dbHelper.Logout();
-                            Intent intent = new Intent(PariwisataActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            Logic();
-                        }
-
-                    }else{
-                        Toast.makeText(PariwisataActivity.this, "Terjadi Kesalahan ", Toast.LENGTH_SHORT).show();
-                    }
+                    mItems=response.body().getData();
+                    mAdapter = new AdapterPariwisata(PariwisataActivity.this,mItems);
+                    recycler.setAdapter(mAdapter);
+                    mAdapter.notifyDataSetChanged();
                 }catch (Exception e){
                     Toast.makeText(PariwisataActivity.this, "Terjadi Kesalahan User akan Terlogout", Toast.LENGTH_SHORT).show();
                     dbHelper.Logout();

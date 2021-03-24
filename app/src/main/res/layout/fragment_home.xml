@@ -372,7 +372,7 @@
                                             android:textStyle="bold" />
                                     </LinearLayout>
                                     <LinearLayout
-                                        android:id="@+id/linearECommerce"
+                                        android:id="@+id/linearSampah"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
@@ -391,7 +391,7 @@
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_margin="10dp"
-                                                android:src="@drawable/surat" />
+                                                android:src="@drawable/sampah" />
                                         </LinearLayout>
 
 
@@ -401,7 +401,7 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="No Telpon\nPenting"
+                                            android:text="Bank Sampah"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />

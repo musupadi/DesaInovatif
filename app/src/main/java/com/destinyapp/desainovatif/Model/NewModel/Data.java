@@ -16,9 +16,37 @@ public class Data {
     @Nullable
     String status;
 
+    @SerializedName("id_user")
+    @Nullable
+    String id_user;
+
+    @SerializedName("nama_user")
+    @Nullable
+    String nama_user;
+
+    @SerializedName("foto_user")
+    @Nullable
+    String foto_user;
+
+    @SerializedName("email_user")
+    @Nullable
+    String email_user;
+
+    @SerializedName("saldo_user")
+    @Nullable
+    String saldo_user;
+
+    @SerializedName("pekerjaan_user")
+    @Nullable
+    String pekerjaan_user;
+
     @SerializedName("img_cover")
     @Nullable
     String img_cover;
+
+    @SerializedName("id_desa")
+    @Nullable
+    String id_desa;
 
     @SerializedName("title")
     @Nullable
@@ -84,5 +112,68 @@ public class Data {
 
     public void setExcerpt(@Nullable Excerpt excerpt) {
         this.excerpt = excerpt;
+    }
+
+    @Nullable
+    public String getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(@Nullable String id_user) {
+        this.id_user = id_user;
+    }
+
+    @Nullable
+    public String getNama_user() {
+        return nama_user;
+    }
+
+    public void setNama_user(@Nullable String nama_user) {
+        this.nama_user = nama_user;
+    }
+
+    @Nullable
+    public String getFoto_user() {
+        return foto_user;
+    }
+
+    public void setFoto_user(@Nullable String foto_user) {
+        this.foto_user = foto_user;
+    }
+
+    @Nullable
+    public String getSaldo_user() {
+        return saldo_user;
+    }
+
+    public void setSaldo_user(@Nullable String saldo_user) {
+        this.saldo_user = saldo_user;
+    }
+
+    @Nullable
+    public String getEmail_user() {
+        return email_user;
+    }
+
+    public void setEmail_user(@Nullable String email_user) {
+        this.email_user = email_user;
+    }
+
+    @Nullable
+    public String getPekerjaan_user() {
+        return pekerjaan_user;
+    }
+
+    public void setPekerjaan_user(@Nullable String pekerjaan_user) {
+        this.pekerjaan_user = pekerjaan_user;
+    }
+
+    @Nullable
+    public String getId_desa() {
+        return id_desa;
+    }
+
+    public void setId_desa(@Nullable String id_desa) {
+        this.id_desa = id_desa;
     }
 }

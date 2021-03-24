@@ -69,6 +69,7 @@ public class DataModel {
     @Expose
     public String status_surat;
 
+    //Berita
     @SerializedName("id_berita")
     @Expose
     public String id_berita;
@@ -259,17 +260,359 @@ public class DataModel {
     public String id_toko_foto;
 
     //Laporan
-    @SerializedName("iid_laporan_kategori")
+    @SerializedName("id_laporan_kategori")
     @Expose
     public String id_laporan_kategori;
 
-    @SerializedName("nama_laporan_kategor")
+    @SerializedName("nama_laporan_kategori")
     @Expose
-    public String nama_laporan_kategor;
+    public String nama_laporan_kategori;
 
     @SerializedName("deskripsi_laporan_kategori")
     @Expose
     public String deskripsi_laporan_kategori;
+
+    //Lokasi
+    @SerializedName("id_lokasi_bs")
+    @Expose
+    public String id_lokasi_bs;
+
+    @SerializedName("nama_lokasi_bs")
+    @Expose
+    public String nama_lokasi_bs;
+
+    @SerializedName("alamat_bs")
+    @Expose
+    public String alamat_bs;
+
+    @SerializedName("latitude_bs")
+    @Expose
+    public String latitude_bs;
+
+    @SerializedName("longitude_bs")
+    @Expose
+    public String longitude_bs;
+
+    @SerializedName("tgl_tambah_bs")
+    @Expose
+    public String tgl_tambah_bs;
+
+    //Laporan
+    @SerializedName("tgl_upload_laporan")
+    @Expose
+    public String tgl_upload_laporan;
+
+    @SerializedName("id_laporan")
+    @Expose
+    public String id_laporan;
+
+    @SerializedName("nama_laporan")
+    @Expose
+    public String nama_laporan;
+
+    @SerializedName("deskripsi_laporan")
+    @Expose
+    public String deskripsi_laporan;
+
+    @SerializedName("status_laporan")
+    @Expose
+    public String status_laporan;
+
+    //Jenis Sampah
+    @SerializedName("id_jenis_sampah")
+    @Expose
+    public String id_jenis_sampah;
+
+    @SerializedName("id_user_penambah")
+    @Expose
+    public String id_user_penambah;
+
+    @SerializedName("nama_jenis_sampah")
+    @Expose
+    public String nama_jenis_sampah;
+
+    @SerializedName("kode_jenis_sampah")
+    @Expose
+    public String kode_jenis_sampah;
+
+    @SerializedName("satuan_jenis_sampah")
+    @Expose
+    public String satuan_jenis_sampah;
+
+    @SerializedName("harga_jenis_sampah")
+    @Expose
+    public String harga_jenis_sampah;
+
+    //Transaksi Sampah
+    @SerializedName("tgl_transaksi_bs")
+    @Expose
+    public String tgl_transaksi_bs;
+
+    //Reward Bank Sampah
+    @SerializedName("id_reward_bs")
+    @Expose
+    public String id_reward_bs;
+
+    @SerializedName("nama_reward")
+    @Expose
+    public String nama_reward;
+
+    @SerializedName("nilai_dibutuhkan")
+    @Expose
+    public String nilai_dibutuhkan;
+
+    @SerializedName("qty_reward")
+    @Expose
+    public String qty_reward;
+
+    //History Transaksi BS
+    @SerializedName("id_transaksi_reward_bs")
+    @Expose
+    public String id_transaksi_reward_bs;
+
+    @SerializedName("qty_get_reward")
+    @Expose
+    public String qty_get_reward;
+
+    @SerializedName("total_nilai")
+    @Expose
+    public String total_nilai;
+
+    @SerializedName("status_transaksi_reward")
+    @Expose
+    public String status_transaksi_reward;
+
+    @SerializedName("tgl_klaim_reward")
+    @Expose
+    public String tgl_klaim_reward;
+
+    @SerializedName("tgl_ambil_reward")
+    @Expose
+    public String tgl_ambil_reward;
+
+    public String getId_transaksi_reward_bs() {
+        return id_transaksi_reward_bs;
+    }
+
+    public void setId_transaksi_reward_bs(String id_transaksi_reward_bs) {
+        this.id_transaksi_reward_bs = id_transaksi_reward_bs;
+    }
+
+    public String getQty_get_reward() {
+        return qty_get_reward;
+    }
+
+    public void setQty_get_reward(String qty_get_reward) {
+        this.qty_get_reward = qty_get_reward;
+    }
+
+    public String getTotal_nilai() {
+        return total_nilai;
+    }
+
+    public void setTotal_nilai(String total_nilai) {
+        this.total_nilai = total_nilai;
+    }
+
+    public String getStatus_transaksi_reward() {
+        return status_transaksi_reward;
+    }
+
+    public void setStatus_transaksi_reward(String status_transaksi_reward) {
+        this.status_transaksi_reward = status_transaksi_reward;
+    }
+
+    public String getTgl_klaim_reward() {
+        return tgl_klaim_reward;
+    }
+
+    public void setTgl_klaim_reward(String tgl_klaim_reward) {
+        this.tgl_klaim_reward = tgl_klaim_reward;
+    }
+
+    public String getTgl_ambil_reward() {
+        return tgl_ambil_reward;
+    }
+
+    public void setTgl_ambil_reward(String tgl_ambil_reward) {
+        this.tgl_ambil_reward = tgl_ambil_reward;
+    }
+
+    public String getId_reward_bs() {
+        return id_reward_bs;
+    }
+
+    public void setId_reward_bs(String id_reward_bs) {
+        this.id_reward_bs = id_reward_bs;
+    }
+
+    public String getNama_reward() {
+        return nama_reward;
+    }
+
+    public void setNama_reward(String nama_reward) {
+        this.nama_reward = nama_reward;
+    }
+
+    public String getNilai_dibutuhkan() {
+        return nilai_dibutuhkan;
+    }
+
+    public void setNilai_dibutuhkan(String nilai_dibutuhkan) {
+        this.nilai_dibutuhkan = nilai_dibutuhkan;
+    }
+
+    public String getQty_reward() {
+        return qty_reward;
+    }
+
+    public void setQty_reward(String qty_reward) {
+        this.qty_reward = qty_reward;
+    }
+
+    public String getTgl_upload_laporan() {
+        return tgl_upload_laporan;
+    }
+
+    public void setTgl_upload_laporan(String tgl_upload_laporan) {
+        this.tgl_upload_laporan = tgl_upload_laporan;
+    }
+
+    public String getTgl_transaksi_bs() {
+        return tgl_transaksi_bs;
+    }
+
+    public void setTgl_transaksi_bs(String tgl_transaksi_bs) {
+        this.tgl_transaksi_bs = tgl_transaksi_bs;
+    }
+
+    public String getId_laporan() {
+        return id_laporan;
+    }
+
+    public void setId_laporan(String id_laporan) {
+        this.id_laporan = id_laporan;
+    }
+
+    public String getNama_laporan() {
+        return nama_laporan;
+    }
+
+    public void setNama_laporan(String nama_laporan) {
+        this.nama_laporan = nama_laporan;
+    }
+
+    public String getDeskripsi_laporan() {
+        return deskripsi_laporan;
+    }
+
+    public void setDeskripsi_laporan(String deskripsi_laporan) {
+        this.deskripsi_laporan = deskripsi_laporan;
+    }
+
+    public String getStatus_laporan() {
+        return status_laporan;
+    }
+
+    public void setStatus_laporan(String status_laporan) {
+        this.status_laporan = status_laporan;
+    }
+
+    public String getId_jenis_sampah() {
+        return id_jenis_sampah;
+    }
+
+    public void setId_jenis_sampah(String id_jenis_sampah) {
+        this.id_jenis_sampah = id_jenis_sampah;
+    }
+
+    public String getId_user_penambah() {
+        return id_user_penambah;
+    }
+
+    public void setId_user_penambah(String id_user_penambah) {
+        this.id_user_penambah = id_user_penambah;
+    }
+
+    public String getNama_jenis_sampah() {
+        return nama_jenis_sampah;
+    }
+
+    public void setNama_jenis_sampah(String nama_jenis_sampah) {
+        this.nama_jenis_sampah = nama_jenis_sampah;
+    }
+
+    public String getKode_jenis_sampah() {
+        return kode_jenis_sampah;
+    }
+
+    public void setKode_jenis_sampah(String kode_jenis_sampah) {
+        this.kode_jenis_sampah = kode_jenis_sampah;
+    }
+
+    public String getSatuan_jenis_sampah() {
+        return satuan_jenis_sampah;
+    }
+
+    public void setSatuan_jenis_sampah(String satuan_jenis_sampah) {
+        this.satuan_jenis_sampah = satuan_jenis_sampah;
+    }
+
+    public String getHarga_jenis_sampah() {
+        return harga_jenis_sampah;
+    }
+
+    public void setHarga_jenis_sampah(String harga_jenis_sampah) {
+        this.harga_jenis_sampah = harga_jenis_sampah;
+    }
+
+    public String getId_lokasi_bs() {
+        return id_lokasi_bs;
+    }
+
+    public void setId_lokasi_bs(String id_lokasi_bs) {
+        this.id_lokasi_bs = id_lokasi_bs;
+    }
+
+    public String getNama_lokasi_bs() {
+        return nama_lokasi_bs;
+    }
+
+    public void setNama_lokasi_bs(String nama_lokasi_bs) {
+        this.nama_lokasi_bs = nama_lokasi_bs;
+    }
+
+    public String getAlamat_bs() {
+        return alamat_bs;
+    }
+
+    public void setAlamat_bs(String alamat_bs) {
+        this.alamat_bs = alamat_bs;
+    }
+
+    public String getLatitude_bs() {
+        return latitude_bs;
+    }
+
+    public void setLatitude_bs(String latitude_bs) {
+        this.latitude_bs = latitude_bs;
+    }
+
+    public String getLongitude_bs() {
+        return longitude_bs;
+    }
+
+    public void setLongitude_bs(String longitude_bs) {
+        this.longitude_bs = longitude_bs;
+    }
+
+    public String getTgl_tambah_bs() {
+        return tgl_tambah_bs;
+    }
+
+    public void setTgl_tambah_bs(String tgl_tambah_bs) {
+        this.tgl_tambah_bs = tgl_tambah_bs;
+    }
 
     public String getAccessToken() {
         return accessToken;
@@ -767,12 +1110,12 @@ public class DataModel {
         this.id_laporan_kategori = id_laporan_kategori;
     }
 
-    public String getNama_laporan_kategor() {
-        return nama_laporan_kategor;
+    public String getNama_laporan_kategori() {
+        return nama_laporan_kategori;
     }
 
-    public void setNama_laporan_kategor(String nama_laporan_kategor) {
-        this.nama_laporan_kategor = nama_laporan_kategor;
+    public void setNama_laporan_kategori(String nama_laporan_kategori) {
+        this.nama_laporan_kategori = nama_laporan_kategori;
     }
 
     public String getDeskripsi_laporan_kategori() {

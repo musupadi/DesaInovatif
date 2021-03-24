@@ -6,4 +6,5 @@
         <item>Surat Pindah</item>
         <item>Surat RT</item>
     </string-array>
+    <string name="title_activity_lokasi_bank_sampah">Map</string>
 </resources>

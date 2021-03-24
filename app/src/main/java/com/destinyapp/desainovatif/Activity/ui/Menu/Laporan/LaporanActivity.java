@@ -1,4 +1,4 @@
-package com.destinyapp.desainovatif.Activity.ui;
+package com.destinyapp.desainovatif.Activity.ui.Menu.Laporan;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,13 +31,13 @@ import com.bumptech.glide.Glide;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.MainActivity;
-import com.destinyapp.desainovatif.Activity.ui.Menu.Toko.DetailTokoActivity;
 import com.destinyapp.desainovatif.Adapter.AdapterKategoriLaporan;
 import com.destinyapp.desainovatif.Adapter.AdapterKategoriSurat;
 import com.destinyapp.desainovatif.BuildConfig;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
 import com.destinyapp.desainovatif.Model.ResponseModel;
+import com.destinyapp.desainovatif.Model.Ress;
 import com.destinyapp.desainovatif.R;
 import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
 
@@ -50,6 +50,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Logger;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,14 +60,14 @@ import retrofit2.Response;
 public class LaporanActivity extends AppCompatActivity {
     Destiny destiny;
     DB_Helper dbHelper;
-    String Username,Password,Nama,Token,Photo;
+    String Username,Password,Nama,Photo,ID,ID_Desa;
     RecyclerView recycler;
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mManager;
     Dialog dialog;
     Button Permintaan,Submit,Tutup;
-    EditText NamaSurat;
+    EditText NamaLaporan,DeskripsiLaporan;
     Spinner spinner;
     Button submit;
     TextView kat;
@@ -126,7 +129,8 @@ public class LaporanActivity extends AppCompatActivity {
         spinner = findViewById(R.id.spinner);
         submit = findViewById(R.id.btnSubmit);
         kat = findViewById(R.id.tvKat);
-
+        NamaLaporan = findViewById(R.id.etNamaLaporan);
+        DeskripsiLaporan = findViewById(R.id.etDeskripsiLaporan);
         //Gallery 1
         btnGallery1 = findViewById(R.id.btnUploadGallery1);
         Tambah1 = findViewById(R.id.btnTambah1);
@@ -150,12 +154,24 @@ public class LaporanActivity extends AppCompatActivity {
         tvGallery4 = findViewById(R.id.tvGambarGallery4);
         Gallery4 = findViewById(R.id.ivGambarGallery4);
 
+        dbHelper = new DB_Helper(LaporanActivity.this);
+        Cursor cursor = dbHelper.checkUser();
+        if (cursor.getCount()>0){
+            while (cursor.moveToNext()){
+                Username = cursor.getString(0);
+                Password = cursor.getString(1);
+                Nama = cursor.getString(2);
+                Photo = cursor.getString(3);
+                ID = cursor.getString(4);
+                ID_Desa = cursor.getString(5);
+            }
+        }
         GetKategori();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
-                String clickedItems = clickedItem.getId_surat_kategori();
+                String clickedItems = clickedItem.getId_laporan_kategori();
                 kat.setText(clickedItems);
                 Toast.makeText(LaporanActivity.this, clickedItems, Toast.LENGTH_SHORT).show();
             }
@@ -167,18 +183,231 @@ public class LaporanActivity extends AppCompatActivity {
         });
         OnClick();
     }
+    private void Logic1(){
+        final ProgressDialog pd = new ProgressDialog(LaporanActivity.this);
+        pd.setMessage("Sedang Mengirimkan Laporan");
+        pd.show();
+        pd.setCancelable(false);
+
+        //File 1
+        File fileGallery1 = new File(postGallery1);
+        RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
+        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery1.getName(), fileReqBodyGallery1);
+
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<Ress> Data = api.PostLaporan1(
+                RequestBody.create(MediaType.parse("text/plain"),ID),
+                RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),NamaLaporan.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),DeskripsiLaporan.getText().toString()),
+                partGallery1);
+        Data.enqueue(new Callback<Ress>() {
+            @Override
+            public void onResponse(Call<Ress> call, Response<Ress> response) {
+                pd.hide();
+                try {
+                    if (response.isSuccessful()){
+                        Toast.makeText(LaporanActivity.this, "Laporan berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LaporanActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Toast.makeText(LaporanActivity.this, "Laporan Tidak berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Ress> call, Throwable t) {
+                pd.hide();
+                Toast.makeText(LaporanActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void Logic2(){
+        final ProgressDialog pd = new ProgressDialog(LaporanActivity.this);
+        pd.setMessage("Sedang Mengirimkan Laporan");
+        pd.show();
+        pd.setCancelable(false);
+
+        //File 1
+        File fileGallery1 = new File(postGallery1);
+        RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
+        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery1.getName(), fileReqBodyGallery1);
+
+        //File 2
+        File fileGallery2 = new File(postGallery2);
+        RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
+        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery2.getName(), fileReqBodyGallery2);
+
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<Ress> Data = api.PostLaporan2(
+                RequestBody.create(MediaType.parse("text/plain"),ID),
+                RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),NamaLaporan.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),DeskripsiLaporan.getText().toString()),
+                partGallery1,
+                partGallery2);
+        Data.enqueue(new Callback<Ress>() {
+            @Override
+            public void onResponse(Call<Ress> call, Response<Ress> response) {
+                pd.hide();
+                try {
+                    if (response.isSuccessful()){
+                        Toast.makeText(LaporanActivity.this, "Laporan berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LaporanActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Toast.makeText(LaporanActivity.this, "Laporan Tidak berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Ress> call, Throwable t) {
+                pd.hide();
+                Toast.makeText(LaporanActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void Logic3(){
+        final ProgressDialog pd = new ProgressDialog(LaporanActivity.this);
+        pd.setMessage("Sedang Mengirimkan Laporan");
+        pd.show();
+        pd.setCancelable(false);
+
+        //File 1
+        File fileGallery1 = new File(postGallery1);
+        RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
+        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery1.getName(), fileReqBodyGallery1);
+
+        //File 2
+        File fileGallery2 = new File(postGallery2);
+        RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
+        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery2.getName(), fileReqBodyGallery2);
+
+        //File 3
+        File fileGallery3 = new File(postGallery3);
+        RequestBody fileReqBodyGallery3 = RequestBody.create(MediaType.parse("image/*"), fileGallery3);
+        MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery3.getName(), fileReqBodyGallery3);
+
+
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<Ress> Data = api.PostLaporan3(
+                RequestBody.create(MediaType.parse("text/plain"),ID),
+                RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),NamaLaporan.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),DeskripsiLaporan.getText().toString()),
+                partGallery1,
+                partGallery2,
+                partGallery3);
+        Data.enqueue(new Callback<Ress>() {
+            @Override
+            public void onResponse(Call<Ress> call, Response<Ress> response) {
+                pd.hide();
+                try {
+                    if (response.isSuccessful()){
+                        Toast.makeText(LaporanActivity.this, "Laporan berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LaporanActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Toast.makeText(LaporanActivity.this, "Laporan Tidak berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Ress> call, Throwable t) {
+                pd.hide();
+                Toast.makeText(LaporanActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void Logic4(){
+        final ProgressDialog pd = new ProgressDialog(LaporanActivity.this);
+        pd.setMessage("Sedang Mengirimkan Laporan");
+        pd.show();
+        pd.setCancelable(false);
+
+        //File 1
+        File fileGallery1 = new File(postGallery1);
+        RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
+        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery1.getName(), fileReqBodyGallery1);
+
+        //File 2
+        File fileGallery2 = new File(postGallery2);
+        RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
+        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery2.getName(), fileReqBodyGallery2);
+
+        //File 3
+        File fileGallery3 = new File(postGallery3);
+        RequestBody fileReqBodyGallery3 = RequestBody.create(MediaType.parse("image/*"), fileGallery3);
+        MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery3.getName(), fileReqBodyGallery3);
+
+        //File 4
+        File fileGallery4 = new File(postGallery4);
+        RequestBody fileReqBodyGallery4 = RequestBody.create(MediaType.parse("image/*"), fileGallery4);
+        MultipartBody.Part partGallery4 = MultipartBody.Part.createFormData("foto_laporan[]", fileGallery4.getName(), fileReqBodyGallery4);
+
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<Ress> Data = api.PostLaporan4(
+                RequestBody.create(MediaType.parse("text/plain"),ID),
+                RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),NamaLaporan.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),DeskripsiLaporan.getText().toString()),
+                partGallery1,
+                partGallery2,
+                partGallery3,
+                partGallery4);
+        Data.enqueue(new Callback<Ress>() {
+            @Override
+            public void onResponse(Call<Ress> call, Response<Ress> response) {
+                pd.hide();
+                try {
+                    if (response.isSuccessful()){
+                        Toast.makeText(LaporanActivity.this, "Laporan berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LaporanActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Toast.makeText(LaporanActivity.this, "Laporan Tidak berhasil Terkirim", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Ress> call, Throwable t) {
+                pd.hide();
+                Toast.makeText(LaporanActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void OnClick(){
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (GalleryNum==1){
-                    Toast.makeText(LaporanActivity.this, kat.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Logic1();
                 }else if(GalleryNum==2){
-
+                    Logic2();
                 }else if(GalleryNum==3){
-
+                    Logic3();
                 }else{
-
+                    Logic4();
                 }
             }
         });
@@ -362,13 +591,13 @@ public class LaporanActivity extends AppCompatActivity {
     }
     private void GetKategori(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getProvinsi = api.Kategori_Surat();
+        Call<ResponseModel> getProvinsi = api.Laporan_Kategori("2");
         getProvinsi.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 try {
                     mItems=response.body().getData();
-                    AdapterKategoriSurat adapter = new AdapterKategoriSurat(LaporanActivity.this,mItems);
+                    AdapterKategoriLaporan adapter = new AdapterKategoriLaporan(LaporanActivity.this,mItems);
                     spinner.setAdapter(adapter);
                 }catch (Exception e){
                     Toast.makeText(LaporanActivity.this, "Terjadi kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();

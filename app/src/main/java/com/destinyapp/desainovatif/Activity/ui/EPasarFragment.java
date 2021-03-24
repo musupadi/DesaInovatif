@@ -43,7 +43,9 @@ import com.destinyapp.desainovatif.Adapter.AdapterTokoSaya;
 import com.destinyapp.desainovatif.BuildConfig;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
+import com.destinyapp.desainovatif.Model.NewModel.NewResponse;
 import com.destinyapp.desainovatif.Model.ResponseModel;
+import com.destinyapp.desainovatif.Model.Ress;
 import com.destinyapp.desainovatif.R;
 import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
 
@@ -67,8 +69,7 @@ public class EPasarFragment extends Fragment {
     Dialog DialogPermintaan;
     Destiny destiny;
     DB_Helper dbHelper;
-    String Username,Password,Nama,Token,Photo;
-    String ID;
+    String Username,Password,Nama,Photo,ID,ID_DESA;
     RecyclerView recycler,recyclerMyShop;
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
@@ -163,14 +164,9 @@ public class EPasarFragment extends Fragment {
                 Username = cursor.getString(0);
                 Password = cursor.getString(1);
                 Nama = cursor.getString(2);
-                Token = cursor.getString(3);
-                Photo = cursor.getString(4);
-            }
-        }
-        Cursor cursors = dbHelper.checkID();
-        if (cursors.getCount()>0){
-            while (cursors.moveToNext()){
-                ID= cursors.getString(0);
+                Photo = cursor.getString(3);
+                ID = cursor.getString(4);
+                ID_DESA = cursor.getString(5);
             }
         }
         Permintaan = view.findViewById(R.id.btnPermintaan);
@@ -214,7 +210,6 @@ public class EPasarFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DialogPermintaan.show();
-                Toast.makeText(getActivity(), Token, Toast.LENGTH_SHORT).show();
             }
         });
         //Tambah
@@ -442,7 +437,6 @@ public class EPasarFragment extends Fragment {
                     if (Checker().equals("1")){
                         Submit2();
                     }
-                    Submit2();
                 }else if(GalleryNum==3){
                     if (Checker().equals("1")){
                         Submit3();
@@ -501,31 +495,25 @@ public class EPasarFragment extends Fragment {
 
         File fileGallery1 = new File(postGallery1);
         RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
-        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery1);
+        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery1.getName(), fileReqBodyGallery1);
 
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<Ress> Data = api.
                 PostToko(
-                destiny.AUTH(Token),
-                RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
-                RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
-                RequestBody.create(MediaType.parse("text/plain"),Deskripsi.getText().toString()),
-                partCover,
-                partGallery1);
-        Data.enqueue(new Callback<ResponseModel>() {
+                        RequestBody.create(MediaType.parse("text/plain"),ID),
+                        RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
+                        RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
+                        RequestBody.create(MediaType.parse("text/plain"),Deskripsi.getText().toString()),
+                        RequestBody.create(MediaType.parse("text/plain"),ID_DESA),
+                        partGallery1);
+        Data.enqueue(new Callback<Ress>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+            public void onResponse(Call<Ress> call, Response<Ress> response) {
                 try {
-                    if (response.body().getStatusCode().equals("000")){
-                        Toast.makeText(getActivity(), "Data Berhasil Di input", Toast.LENGTH_SHORT).show();
-                        pd.hide();
-                        Intent intent  = new Intent(getActivity(),MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(getActivity(), response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
-                        pd.hide();
-                        DialogPermintaan.hide();
-                    }
+                    Toast.makeText(getActivity(), "Data Berhasil Terinput", Toast.LENGTH_SHORT).show();
+                    pd.hide();
+                    Intent intent  = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
                 }catch (Exception e){
                     Toast.makeText(getActivity(), "Terjadi kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();
                     pd.hide();
@@ -533,7 +521,8 @@ public class EPasarFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
+            public void onFailure(Call<Ress> call, Throwable t) {
+                pd.hide();
                 Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
@@ -555,29 +544,24 @@ public class EPasarFragment extends Fragment {
         RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
         MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery2);
 
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.PostToko(
-                destiny.AUTH(Token),
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<NewResponse> Data = api.PostToko(
+                RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Deskripsi.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),ID_DESA),
                 partCover,
                 partGallery1,
                 partGallery2);
-        Data.enqueue(new Callback<ResponseModel>() {
+        Data.enqueue(new Callback<NewResponse>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+            public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
                 try {
-                    if (response.body().getStatusCode().equals("000")){
-                        Toast.makeText(getActivity(), "Data Berhasil Di input", Toast.LENGTH_SHORT).show();
-                        pd.hide();
-                        Intent intent  = new Intent(getActivity(),MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(getActivity(), response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
-                        pd.hide();
-                        DialogPermintaan.hide();
-                    }
+                    Toast.makeText(getActivity(), "Data Berhasil Terinput", Toast.LENGTH_SHORT).show();
+                    pd.hide();
+                    Intent intent  = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
                 }catch (Exception e){
                     Toast.makeText(getActivity(), "Terjadi kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();
                     pd.hide();
@@ -585,7 +569,7 @@ public class EPasarFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
+            public void onFailure(Call<NewResponse> call, Throwable t) {
                 Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
@@ -611,30 +595,25 @@ public class EPasarFragment extends Fragment {
         RequestBody fileReqBodyGallery3 = RequestBody.create(MediaType.parse("image/*"), fileGallery3);
         MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery3);
 
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.PostToko(
-                destiny.AUTH(Token),
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<NewResponse> Data = api.PostToko(
+                RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Deskripsi.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),ID_DESA),
                 partCover,
                 partGallery1,
                 partGallery2,
                 partGallery3);
-        Data.enqueue(new Callback<ResponseModel>() {
+        Data.enqueue(new Callback<NewResponse>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+            public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
                 try {
-                    if (response.body().getStatusCode().equals("000")){
-                        Toast.makeText(getActivity(), "Data Berhasil Di input", Toast.LENGTH_SHORT).show();
-                        pd.hide();
-                        Intent intent  = new Intent(getActivity(),MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(getActivity(), response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
-                        pd.hide();
-                        DialogPermintaan.hide();
-                    }
+                    Toast.makeText(getActivity(), "Data Berhasil Terinput", Toast.LENGTH_SHORT).show();
+                    pd.hide();
+                    Intent intent  = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
                 }catch (Exception e){
                     Toast.makeText(getActivity(), "Terjadi kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();
                     pd.hide();
@@ -642,7 +621,7 @@ public class EPasarFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
+            public void onFailure(Call<NewResponse> call, Throwable t) {
                 Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
@@ -672,31 +651,26 @@ public class EPasarFragment extends Fragment {
         RequestBody fileReqBodyGallery4 = RequestBody.create(MediaType.parse("image/*"), fileGallery4);
         MultipartBody.Part partGallery4 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery4);
 
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.PostToko(
-                destiny.AUTH(Token),
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<NewResponse> Data = api.PostToko(
+                RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Deskripsi.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"),ID_DESA),
                 partCover,
                 partGallery1,
                 partGallery2,
                 partGallery3,
                 partGallery4);
-        Data.enqueue(new Callback<ResponseModel>() {
+        Data.enqueue(new Callback<NewResponse>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+            public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
                 try {
-                    if (response.body().getStatusCode().equals("000")){
-                        Toast.makeText(getActivity(), "Data Berhasil Di input", Toast.LENGTH_SHORT).show();
-                        pd.hide();
-                        Intent intent  = new Intent(getActivity(),MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(getActivity(), response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
-                        pd.hide();
-                        DialogPermintaan.hide();
-                    }
+                    Toast.makeText(getActivity(), "Data Berhasil Terinput", Toast.LENGTH_SHORT).show();
+                    pd.hide();
+                    Intent intent  = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
                 }catch (Exception e){
                     Toast.makeText(getActivity(), "Terjadi kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();
                     pd.hide();
@@ -704,7 +678,7 @@ public class EPasarFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
+            public void onFailure(Call<NewResponse> call, Throwable t) {
                 Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
@@ -720,10 +694,7 @@ public class EPasarFragment extends Fragment {
         }else if(Deskripsi.getText().toString().isEmpty()){
             Toast.makeText(getActivity(), "Deskripsi Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
             ok="0";
-        }else if(postFoto.isEmpty()){
-            Toast.makeText(getActivity(), "Foto Cover Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
-            ok="0";
-        }else if(postGallery1.isEmpty()){
+        }if(postGallery1.isEmpty()){
             Toast.makeText(getActivity(), "Foto Gallery Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
             ok="0";
         }

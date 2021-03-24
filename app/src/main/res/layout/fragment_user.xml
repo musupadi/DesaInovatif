@@ -39,15 +39,15 @@
                         android:textStyle="bold"
                         android:id="@+id/tvNama"
                         android:textSize="@dimen/header_text"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="musupadi"
-                        android:gravity="center"
-                        android:textColor="@color/White"
-                        android:textStyle="bold"
-                        android:id="@+id/tvUsername"
-                        android:textSize="@dimen/header_text_smoll"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="musupadi"-->
+<!--                        android:gravity="center"-->
+<!--                        android:textColor="@color/White"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:id="@+id/tvUsername"-->
+<!--                        android:textSize="@dimen/header_text_smoll"/>-->
                 </LinearLayout>
                 <LinearLayout
                     android:layout_marginTop="250dp"
@@ -60,33 +60,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_margin="30dp">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Username"
-                            android:textSize="@dimen/text_xtra_large"
-                            android:fontFamily="@font/gotham"
-                            android:layout_marginTop="40dp"
-                            android:textColor="@color/Black"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:textSize="@dimen/text_xtra_large"
-                            android:fontFamily="@font/gotham"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="musupadi"
-                            android:id="@+id/tvUsername2"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/Black"
-                            android:textStyle="bold"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/Black"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/Black"/>
                         <TextView
                             android:textSize="@dimen/text_xtra_large"
                             android:fontFamily="@font/gotham"
@@ -101,7 +74,7 @@
                             android:fontFamily="@font/gotham"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="musupadi159@gmail.com"
+                            android:text="Sedang Memuata Data...."
                             android:layout_marginBottom="10dp"
                             android:textColor="@color/Black"
                             android:textStyle="bold"
@@ -111,11 +84,11 @@
                             android:layout_height="1dp"
                             android:background="@color/Black"/>
                         <TextView
-                            android:textSize="@dimen/text_xtra_large"
-                            android:fontFamily="@font/gotham"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nomor Telpon"
+                            android:text="Pekerjaan"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:fontFamily="@font/gotham"
                             android:layout_marginTop="40dp"
                             android:textColor="@color/Black"
                             android:textStyle="bold"/>
@@ -124,11 +97,38 @@
                             android:fontFamily="@font/gotham"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="123456"
+                            android:text="Sedang Memuata Data..."
+                            android:id="@+id/tvPekerjaan"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/Black"
+                            android:textStyle="bold"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/Black"/>
+                        <TextView
+                            android:textSize="@dimen/text_xtra_large"
+                            android:fontFamily="@font/gotham"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Saldo User"
+                            android:layout_marginTop="40dp"
+                            android:textColor="@color/Black"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:textSize="@dimen/text_xtra_large"
+                            android:fontFamily="@font/gotham"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Sedang Memuata Data..."
                             android:layout_marginBottom="10dp"
                             android:textColor="@color/Black"
                             android:textStyle="bold"
-                            android:id="@+id/tvNoTelpon"/>
+                            android:id="@+id/tvSaldo"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="1dp"

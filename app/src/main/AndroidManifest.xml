@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.destinyapp.desainovatif">
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
+        android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/logos"
         android:label="@string/app_name"
         android:largeHeap="true"
@@ -25,11 +25,63 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoAction"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activity.ui.Menu.BankSampah.Hadiah.DaftarRewardActivity"
+            android:label="Daftar Reward Bank Sampah"
+            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".Activity.ui.Menu.BankSampah.Hadiah.HistoryTransaksi.TransaksiRewardActivity"
+            android:label="Transaksi Bank Sampah"
+            android:parentActivityName=".Activity.ui.Menu.BankSampah.Hadiah.HadiahBankSampahActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".Activity.ui.Menu.BankSampah.Hadiah.AmbilReward.AmbilRewardActivity"
+            android:label="Ambil Reward Bank Sampah"
+            android:parentActivityName=".Activity.ui.Menu.BankSampah.Hadiah.HadiahBankSampahActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".Activity.ui.Menu.BankSampah.Hadiah.HadiahBankSampahActivity"
+            android:label="Hadiah Bank Sampah"
+            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
+            android:theme="@style/AppTheme"/>
         <activity
-            android:name=".Activity.ui.LaporanActivity"
+            android:name=".Activity.ui.Menu.BankSampah.Transaksi.TransaksiSampahActivity"
+            android:label="Transaksi Bank Sampah"
+            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.BankSampah.Jenis.JenisSampahActivity"
+            android:label="Jenis Bank Sampah"
+            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.ui.Menu.Laporan.ListLaporanActivity" />
+        <activity
+            android:name=".Activity.ui.Menu.BankSampah.Lokasi.LokasiSampah"
+            android:label="Lokasi Bank Sampah"
+            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
+            android:theme="@style/AppTheme" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".Activity.ui.Menu.BankSampah.Lokasi.LokasiBankSampahActivity"
+            android:label="@string/title_activity_lokasi_bank_sampah" />
+        <activity
+            android:name=".Activity.ui.Menu.BankSampah.BankSampah"
+            android:label="Bank Sampah"
+            android:parentActivityName=".Activity.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.Laporan.LaporanActivity"
             android:label="Laporan"
             android:parentActivityName=".Activity.MainActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.ui.Menu.Toko.DetailProductActivity"
             android:parentActivityName=".Activity.ui.Menu.Pariwisata.PariwisataActivity"

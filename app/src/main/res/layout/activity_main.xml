@@ -61,6 +61,42 @@
                     android:gravity="center"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linearSurat"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/ivSurat"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/home" />
+                </RelativeLayout>
+
+                <TextView
+                    android:fontFamily="@font/gotham"
+                    android:id="@+id/tvSurat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Layanan Desa"
+                    android:textSize="@dimen/text_smoll"
+                    android:textColor="@color/Black"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/linearEPasar"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
@@ -97,7 +133,7 @@
                     android:gravity="center"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/linearSurat"
+                android:id="@+id/linearLaporan"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -109,12 +145,13 @@
                     android:layout_weight="1">
                     <ImageView
                         android:layout_centerInParent="true"
+                        android:id="@+id/ivBackLaporan"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
                     <ImageView
                         android:layout_centerInParent="true"
-                        android:id="@+id/ivSurat"
+                        android:id="@+id/ivLaporan"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -123,11 +160,11 @@
 
                 <TextView
                     android:fontFamily="@font/gotham"
-                    android:id="@+id/tvSurat"
+                    android:id="@+id/tvLaporan"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:text="Layanan Desa"
+                    android:text="Laporan"
                     android:textSize="@dimen/text_smoll"
                     android:textColor="@color/Black"
                     android:gravity="center"/>
@@ -169,6 +206,7 @@
                     android:textColor="@color/Black"
                     android:gravity="center"/>
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

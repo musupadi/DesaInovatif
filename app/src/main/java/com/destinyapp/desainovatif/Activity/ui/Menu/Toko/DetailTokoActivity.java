@@ -73,8 +73,7 @@ public class DetailTokoActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mManager;
     DB_Helper dbHelper;
-    String Username,Password,Nama,Token,Photo;
-    String IDS;
+    String Username,Password,Nama,Photo,IDS,ID_Desa;
     FloatingActionButton fab;
     Dialog dialog;
     EditText NamaProduk,DeskripsiProduk,HargaProduk;
@@ -581,21 +580,16 @@ public class DetailTokoActivity extends AppCompatActivity {
         tvDeskripsi.setVisibility(View.VISIBLE);
         tvDeskripsi.setText(DESKRIPSI);
 //        deskripsi.loadData(DESKRIPSI,"text/html","UTF-8");
-        dbHelper = new DB_Helper(this);
+        dbHelper = new DB_Helper(DetailTokoActivity.this);
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
                 Username = cursor.getString(0);
                 Password = cursor.getString(1);
                 Nama = cursor.getString(2);
-                Token = cursor.getString(3);
-                Photo = cursor.getString(4);
-            }
-        }
-        Cursor cursors = dbHelper.checkID();
-        if (cursors.getCount()>0){
-            while (cursors.moveToNext()){
-                IDS = cursors.getString(0);
+                Photo = cursor.getString(3);
+                IDS = cursor.getString(4);
+                ID_Desa = cursor.getString(5);
             }
         }
         if (!IDS.equals(ID_USER)){

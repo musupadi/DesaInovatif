@@ -16,6 +16,7 @@ public class Response {
     @Nullable
     List<Data> data;
 
+
     @Nullable
     public String getStatus() {
         return status;

@@ -70,7 +70,7 @@
                     android:hint="No HP Toko"
                     android:ems="10"
                     android:textColor="@color/Primary"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textSize="20sp"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout

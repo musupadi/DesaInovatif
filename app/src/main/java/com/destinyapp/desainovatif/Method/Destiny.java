@@ -42,14 +42,21 @@ public class Destiny {
         String replace14 = replace13.replace("<div>","");
         String replace15 = replace14.replace("</div>","");
         String replace16 = replace15.replace("<p>1.","");
-        String replace17 = replace16.replace("<p style=\\\"text-align: left;\\\">","");
-        String replace18 = replace17.replace("<a href=","");
-        return replace17;
+        String replace17 = replace16.replace("<p style=\"text-align: center;\">","");
+        String replace18 = replace17.replace("<p style=\"text-align: left;\">","");
+        String replace19 = replace18.replace("<p style=\"text-align: right;\">","");
+        String replace20 = replace19.replace("<a href=","");
+        String replace21 = replace20.replace("\"http://bogor-kita.com\">","");
+        String replace22 = replace21.replace("</a>","");
+        String replace23 = replace22.replace("&#8211","");
+        String replace24 = replace23.replace("\"http://BOGOR-KITA.com\">","");
+        return replace24;
     }
     public String ChangeNumToInt(String num){
         String replaces = num.replace(".","");
         String replace2 = replaces.replace(",","");
-        return replace2;
+        String replace3 = replace2.replace("Rp ","");
+        return replace3;
     }
     public String MagicRP(double nilai){
         Locale localeID = new Locale("in", "ID");
@@ -75,7 +82,7 @@ public class Destiny {
                 try {
                     if (response.body().getStatusCode().equals("000")){
                         dbHelper.Logout();
-                        dbHelper.SaveUser(response.body().getData().get(0).getUsernameUser(),password,response.body().getData().get(0).getNamaUser(),response.body().getData().get(0).getAccessToken(),response.body().getData().get(0).getFotoUser(),response.body().getData().get(0).getEmailUser(),response.body().getData().get(0).getNoTelp());
+//                        dbHelper.SaveUser(response.body().getData().get(0).getUsernameUser(),password,response.body().getData().get(0).getNamaUser(),response.body().getData().get(0).getAccessToken(),response.body().getData().get(0).getFotoUser(),response.body().getData().get(0).getEmailUser(),response.body().getData().get(0).getNoTelp());
                     }else{
                         Toast.makeText(ctx, response.body().getStatusMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -93,7 +100,7 @@ public class Destiny {
         });
     }
     public String BASE_URL(){
-        String BASE_URL = "https://kampungonline.rumahcantikratu.com";
+        String BASE_URL = "https://kampungonline.fabakonsultan.com/";
         return BASE_URL;
     }
     public String AUTH(String auth){
@@ -152,6 +159,19 @@ public class Destiny {
         }
         String Dates = day+"-"+MONTH+"-"+year;
         return Dates;
+    }
+    public String Dates(String dates){
+        String result = "Nope";
+        String year = dates.substring(0,4);
+        String month = dates.substring(5,7);
+        String day = dates.substring(8,10);
+        String date= year+"-"+month+"-"+day;
+        if (date.equals("0000-00-00")){
+            result = "Nope";
+        }else{
+            result = "Yup";
+        }
+        return result;
     }
     public String MagicDateChange(String dates){
         String result = "";
