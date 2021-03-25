@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DB_Helper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "desa.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     //Account
     public static final String TABLE_NAME_ACCOUNT = "account";
     public static final String COLUMN_USERNAME = "username";
@@ -38,15 +38,11 @@ public class DB_Helper extends SQLiteOpenHelper {
                 COLUMN_ID_DESA+" TEXT NOT NULL, "+
                 COLUMN_LEVEL+" TEXT NOT NULL);"
         );
-        db.execSQL("CREATE TABLE "+TABLE_ID_USER+" (" +
-                COLUMN_ID+" TEXT NOT NULL);"
-        );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_ACCOUNT);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ID_USER);
         this.onCreate(db);
     }
     //Save
@@ -88,6 +84,5 @@ public class DB_Helper extends SQLiteOpenHelper {
     public void Logout(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM "+TABLE_NAME_ACCOUNT+"");
-        db.execSQL("DELETE FROM "+TABLE_ID_USER+"");
     }
 }

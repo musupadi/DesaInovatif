@@ -112,7 +112,6 @@ public class HomeFragment extends Fragment {
         }else{
             nama.setText("Selamat Datang, Guest");
         }
-
         ONClick();
         GetCovid();
         KabarBerita();
@@ -156,12 +155,6 @@ public class HomeFragment extends Fragment {
         Sampah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Cursor cursor = dbHelper.checkUser();
-//                if (cursor.getCount()>0){
-//                    nama.setText("Selamat Datang, "+Nama);
-//                }else{
-//                    nama.setText("Selamat Datang, Guest");
-//                }
                 if (Username == null){
                     Toast.makeText(getActivity(), "Anda Harus Login untuk Menggunakan Fitur ini", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(),LoginActivity.class);
