@@ -79,6 +79,53 @@ public interface ApiRequest {
     @POST("toko/gallery")
     Call<ResponseModel> GalleryToko(@Field("id_toko") String id_toko);
 
+    @FormUrlEncoded
+    @POST("user/list_user_rt")
+    Call<ResponseModel> ListUserRT(@Field("id_user") String id_user);
+
+    //Insert Surat 1
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
+                            @Part("id_user") RequestBody id_user,
+                            @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                            @Part("nama_surat") RequestBody nama_surat,
+                            @Part MultipartBody.Part FileSyarat1,
+                            @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
+                          @Part("id_user") RequestBody id_user,
+                          @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                          @Part("nama_surat") RequestBody nama_surat,
+                          @Part MultipartBody.Part FileSyarat1,
+                          @Part MultipartBody.Part FileSyarat2,
+                          @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
+                         @Part("id_user") RequestBody id_user,
+                         @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                         @Part("nama_surat") RequestBody nama_surat,
+                         @Part MultipartBody.Part FileSyarat1,
+                         @Part MultipartBody.Part FileSyarat2,
+                         @Part MultipartBody.Part FileSyarat3,
+                         @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
+                         @Part("id_user") RequestBody id_user,
+                         @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                         @Part("nama_surat") RequestBody nama_surat,
+                         @Part MultipartBody.Part FileSyarat1,
+                         @Part MultipartBody.Part FileSyarat2,
+                         @Part MultipartBody.Part FileSyarat3,
+                         @Part MultipartBody.Part FileSyarat4,
+                         @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
 
     //Insert Laporan 1
     @Multipart
@@ -222,7 +269,8 @@ public interface ApiRequest {
     @POST("bank_sampah/ambil_reward")
     Call<Ress> AmbilReward(@Field("id_user") String id_user,
                                   @Field("id_reward_bs") String id_reward_bs,
-                                  @Field("qty") String qty);
+                                  @Field("qty") String qty,
+                                  @Field("id_desa") String id_desa);
 
     @FormUrlEncoded
     @POST("toko/produk")

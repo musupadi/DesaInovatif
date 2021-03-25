@@ -36,6 +36,10 @@ public class DataModel {
     @Expose
     public String statusUser;
 
+    @SerializedName("level")
+    @Expose
+    public String level;
+
     //Surat
     @SerializedName("id_surat")
     @Expose
@@ -389,6 +393,32 @@ public class DataModel {
     @SerializedName("tgl_ambil_reward")
     @Expose
     public String tgl_ambil_reward;
+
+
+    //List User
+    @SerializedName("email_user")
+    @Expose
+    public String email_user;
+
+    @SerializedName("alamat_user")
+    @Expose
+    public String alamat_user;
+
+    public String getEmail_user() {
+        return email_user;
+    }
+
+    public void setEmail_user(String email_user) {
+        this.email_user = email_user;
+    }
+
+    public String getAlamat_user() {
+        return alamat_user;
+    }
+
+    public void setAlamat_user(String alamat_user) {
+        this.alamat_user = alamat_user;
+    }
 
     public String getId_transaksi_reward_bs() {
         return id_transaksi_reward_bs;
@@ -1124,5 +1154,13 @@ public class DataModel {
 
     public void setDeskripsi_laporan_kategori(String deskripsi_laporan_kategori) {
         this.deskripsi_laporan_kategori = deskripsi_laporan_kategori;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 }

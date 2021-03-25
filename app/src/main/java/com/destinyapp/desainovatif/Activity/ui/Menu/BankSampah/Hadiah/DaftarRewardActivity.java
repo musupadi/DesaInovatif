@@ -67,7 +67,7 @@ public class DaftarRewardActivity extends AppCompatActivity {
                 try {
                     if(response.isSuccessful()){
                         mItems=response.body().getData();
-                        mAdapter = new AdapterListHadiahBankSampah(DaftarRewardActivity.this,mItems);
+                        mAdapter = new AdapterListHadiahBankSampah(DaftarRewardActivity.this,mItems,recycler,Saldo);
                         recycler.setAdapter(mAdapter);
                         mAdapter.notifyDataSetChanged();
                     }

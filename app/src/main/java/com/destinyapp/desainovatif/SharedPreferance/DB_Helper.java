@@ -17,6 +17,7 @@ public class DB_Helper extends SQLiteOpenHelper {
     public static final String COLUMN_PROFILE = "profile";
     public static final String COLUMN_IDS = "ID";
     public static final String COLUMN_ID_DESA = "id_desa";
+    public static final String COLUMN_LEVEL = "level";
 
     //ID User
     public static final String TABLE_ID_USER = "user";
@@ -34,7 +35,8 @@ public class DB_Helper extends SQLiteOpenHelper {
                 COLUMN_NAME+" TEXT NOT NULL, "+
                 COLUMN_PROFILE+" TEXT NOT NULL, "+
                 COLUMN_IDS+" TEXT NOT NULL, "+
-                COLUMN_ID_DESA+" TEXT NOT NULL);"
+                COLUMN_ID_DESA+" TEXT NOT NULL, "+
+                COLUMN_LEVEL+" TEXT NOT NULL);"
         );
         db.execSQL("CREATE TABLE "+TABLE_ID_USER+" (" +
                 COLUMN_ID+" TEXT NOT NULL);"
@@ -48,7 +50,7 @@ public class DB_Helper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
     //Save
-    public void SaveUser(String username, String password,String name,String profile,String id,String id_desa){
+    public void SaveUser(String username, String password,String name,String profile,String id,String id_desa,String level){
         SQLiteDatabase db =this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME, username);
@@ -57,6 +59,7 @@ public class DB_Helper extends SQLiteOpenHelper {
         values.put(COLUMN_PROFILE,profile);
         values.put(COLUMN_IDS,id);
         values.put(COLUMN_ID_DESA,id_desa);
+        values.put(COLUMN_LEVEL,level);
         db.insert(TABLE_NAME_ACCOUNT,null,values);
         db.close();
     }

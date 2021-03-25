@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.destinyapp.desainovatif.Model.NewModel.Model.Content;
 import com.destinyapp.desainovatif.Model.NewModel.Model.Excerpt;
 import com.destinyapp.desainovatif.Model.NewModel.Model.Title;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Data {
@@ -47,6 +48,10 @@ public class Data {
     @SerializedName("id_desa")
     @Nullable
     String id_desa;
+
+    @SerializedName("level")
+    @Expose
+    public String level;
 
     @SerializedName("title")
     @Nullable
@@ -175,5 +180,13 @@ public class Data {
 
     public void setId_desa(@Nullable String id_desa) {
         this.id_desa = id_desa;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 }

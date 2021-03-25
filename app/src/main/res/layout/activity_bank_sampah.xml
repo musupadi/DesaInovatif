@@ -60,13 +60,14 @@
                         android:layout_height="200dp"
                         android:orientation="vertical"
                         android:id="@+id/linearLokasi">
-                        <de.hdodenhof.circleimageview.CircleImageView
+                        <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@drawable/bogor_maju">
+                            android:src="@drawable/location"
+                            android:layout_margin="5dp">
 
-                        </de.hdodenhof.circleimageview.CircleImageView>
+                        </ImageView>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -92,13 +93,14 @@
                         android:layout_height="200dp"
                         android:orientation="vertical"
                         android:id="@+id/linearReward">
-                        <de.hdodenhof.circleimageview.CircleImageView
+                        <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@drawable/bogor_maju">
+                            android:src="@drawable/reward"
+                            android:layout_margin="5dp">
 
-                        </de.hdodenhof.circleimageview.CircleImageView>
+                        </ImageView>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -131,13 +133,14 @@
                         android:layout_height="200dp"
                         android:orientation="vertical"
                         android:id="@+id/linearJenis">
-                        <de.hdodenhof.circleimageview.CircleImageView
+                        <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@drawable/bogor_maju">
+                            android:src="@drawable/jenis"
+                            android:layout_margin="5dp">
 
-                        </de.hdodenhof.circleimageview.CircleImageView>
+                        </ImageView>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -163,13 +166,14 @@
                         android:layout_height="200dp"
                         android:orientation="vertical"
                         android:id="@+id/linearTransaksi">
-                        <de.hdodenhof.circleimageview.CircleImageView
+                        <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@drawable/bogor_maju">
+                            android:src="@drawable/transaction"
+                            android:layout_margin="5dp">
 
-                        </de.hdodenhof.circleimageview.CircleImageView>
+                        </ImageView>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
