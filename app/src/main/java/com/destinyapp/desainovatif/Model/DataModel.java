@@ -404,6 +404,19 @@ public class DataModel {
     @Expose
     public String alamat_user;
 
+    //Sub Kategori
+    @SerializedName("id_surat_kategori_sub")
+    @Expose
+    public String id_surat_kategori_sub;
+
+    @SerializedName("nama_surat_kategori_sub")
+    @Expose
+    public String nama_surat_kategori_sub;
+
+    @SerializedName("syarat_sub_kategori")
+    @Expose
+    public String syarat_sub_kategori;
+
     public String getEmail_user() {
         return email_user;
     }
@@ -1162,5 +1175,29 @@ public class DataModel {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getId_surat_kategori_sub() {
+        return id_surat_kategori_sub;
+    }
+
+    public void setId_surat_kategori_sub(String id_surat_kategori_sub) {
+        this.id_surat_kategori_sub = id_surat_kategori_sub;
+    }
+
+    public String getNama_surat_kategori_sub() {
+        return nama_surat_kategori_sub;
+    }
+
+    public void setNama_surat_kategori_sub(String nama_surat_kategori_sub) {
+        this.nama_surat_kategori_sub = nama_surat_kategori_sub;
+    }
+
+    public String getSyarat_sub_kategori() {
+        return syarat_sub_kategori;
+    }
+
+    public void setSyarat_sub_kategori(String syarat_sub_kategori) {
+        this.syarat_sub_kategori = syarat_sub_kategori;
     }
 }

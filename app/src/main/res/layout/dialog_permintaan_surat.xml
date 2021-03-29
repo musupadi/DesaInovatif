@@ -65,6 +65,45 @@
                     android:id="@+id/spinnerBersangkutan"
                     android:entries="@array/Surat"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori Sub Surat"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:fontFamily="@font/gotham"/>
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerSubKat"
+                    android:entries="@array/Surat"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Syarat"
+                android:fontFamily="@font/gotham"
+                android:gravity="center"
+                android:id="@+id/tvSyarat"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Primary"/>
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/web"
+                tools:ignore="WebViewLayout" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
@@ -88,6 +127,45 @@
                     android:inputType="text"
                     android:textSize="20sp"/>
             </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tolong Upload File Berdasarkan Syarat diatas dengan data berupa Gambar"
+                android:fontFamily="@font/gotham"
+                android:gravity="center"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Primary"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/Black"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+                <EditText
+                    android:id="@+id/NoteSurat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Note (Optional)"
+                    android:ems="10"
+                    android:textColor="@color/Primary"
+                    android:inputType="text"
+                    android:textSize="20sp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Syarat-syarat"
+                android:fontFamily="@font/gotham"
+                android:gravity="center"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Primary"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

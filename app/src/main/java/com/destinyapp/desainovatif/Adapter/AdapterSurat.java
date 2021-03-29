@@ -65,12 +65,12 @@ public class AdapterSurat extends RecyclerView.Adapter<AdapterSurat.HolderData> 
         holderData.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (dm.getLink_file_surat().isEmpty()){
-                    Toast.makeText(ctx, "File Surat Belum Ada", Toast.LENGTH_SHORT).show();
-                }else{
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(destiny.BASE_URL()+dm.getLink_file_surat()));
-                    ctx.startActivity(browserIntent);
-                }
+//                if (dm.getLink_file_surat().isEmpty()){
+//                    Toast.makeText(ctx, "File Surat Belum Ada", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(destiny.BASE_URL()+dm.getLink_file_surat()));
+//                    ctx.startActivity(browserIntent);
+//                }
             }
         });
     }

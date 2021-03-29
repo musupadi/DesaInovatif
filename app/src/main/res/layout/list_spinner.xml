@@ -9,12 +9,17 @@
         android:textSize="0.1sp"
         android:id="@+id/tvId"/>
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="0.1sp"
+        android:id="@+id/tvWeb"/>
+    <TextView
         android:textSize="@dimen/text_xtra_large"
         android:fontFamily="@font/gotham"
         android:textColor="@color/Black"
         android:id="@+id/tvSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Nama"/>
+        tools:text="Nama" />
 
 </LinearLayout>

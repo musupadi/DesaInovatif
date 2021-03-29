@@ -538,25 +538,24 @@ public class EPasarFragment extends Fragment {
 
         File fileGallery1 = new File(postGallery1);
         RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
-        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery1);
+        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery1.getName(), fileReqBodyGallery1);
 
         File fileGallery2 = new File(postGallery2);
         RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
-        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery2);
+        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery2.getName(), fileReqBodyGallery2);
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<NewResponse> Data = api.PostToko(
+        Call<Ress> Data = api.PostToko(
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Deskripsi.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),ID_DESA),
-                partCover,
                 partGallery1,
                 partGallery2);
-        Data.enqueue(new Callback<NewResponse>() {
+        Data.enqueue(new Callback<Ress>() {
             @Override
-            public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
+            public void onResponse(Call<Ress> call, Response<Ress> response) {
                 try {
                     Toast.makeText(getActivity(), "Data Berhasil Terinput", Toast.LENGTH_SHORT).show();
                     pd.hide();
@@ -569,7 +568,8 @@ public class EPasarFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<NewResponse> call, Throwable t) {
+            public void onFailure(Call<Ress> call, Throwable t) {
+                pd.hide();
                 Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
@@ -585,30 +585,29 @@ public class EPasarFragment extends Fragment {
 
         File fileGallery1 = new File(postGallery1);
         RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
-        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery1);
+        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery1.getName(), fileReqBodyGallery1);
 
         File fileGallery2 = new File(postGallery2);
         RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
-        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery2);
+        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery2.getName(), fileReqBodyGallery2);
 
         File fileGallery3 = new File(postGallery3);
         RequestBody fileReqBodyGallery3 = RequestBody.create(MediaType.parse("image/*"), fileGallery3);
-        MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery3);
+        MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery3.getName(), fileReqBodyGallery3);
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<NewResponse> Data = api.PostToko(
+        Call<Ress> Data = api.PostToko(
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Deskripsi.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),ID_DESA),
-                partCover,
                 partGallery1,
                 partGallery2,
                 partGallery3);
-        Data.enqueue(new Callback<NewResponse>() {
+        Data.enqueue(new Callback<Ress>() {
             @Override
-            public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
+            public void onResponse(Call<Ress> call, Response<Ress> response) {
                 try {
                     Toast.makeText(getActivity(), "Data Berhasil Terinput", Toast.LENGTH_SHORT).show();
                     pd.hide();
@@ -621,7 +620,8 @@ public class EPasarFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<NewResponse> call, Throwable t) {
+            public void onFailure(Call<Ress> call, Throwable t) {
+                pd.hide();
                 Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
@@ -637,35 +637,34 @@ public class EPasarFragment extends Fragment {
 
         File fileGallery1 = new File(postGallery1);
         RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
-        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery1);
+        MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery1.getName(), fileReqBodyGallery1);
 
         File fileGallery2 = new File(postGallery2);
         RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
-        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery2);
+        MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery2.getName(), fileReqBodyGallery2);
 
         File fileGallery3 = new File(postGallery3);
         RequestBody fileReqBodyGallery3 = RequestBody.create(MediaType.parse("image/*"), fileGallery3);
-        MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery3);
+        MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery3.getName(), fileReqBodyGallery3);
 
         File fileGallery4 = new File(postGallery4);
         RequestBody fileReqBodyGallery4 = RequestBody.create(MediaType.parse("image/*"), fileGallery4);
-        MultipartBody.Part partGallery4 = MultipartBody.Part.createFormData("foto[]", file.getName(), fileReqBodyGallery4);
+        MultipartBody.Part partGallery4 = MultipartBody.Part.createFormData("foto_toko[]", fileGallery4.getName(), fileReqBodyGallery4);
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<NewResponse> Data = api.PostToko(
+        Call<Ress> Data = api.PostToko(
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Deskripsi.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),ID_DESA),
-                partCover,
                 partGallery1,
                 partGallery2,
                 partGallery3,
                 partGallery4);
-        Data.enqueue(new Callback<NewResponse>() {
+        Data.enqueue(new Callback<Ress>() {
             @Override
-            public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
+            public void onResponse(Call<Ress> call, Response<Ress> response) {
                 try {
                     Toast.makeText(getActivity(), "Data Berhasil Terinput", Toast.LENGTH_SHORT).show();
                     pd.hide();
@@ -678,7 +677,8 @@ public class EPasarFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<NewResponse> call, Throwable t) {
+            public void onFailure(Call<Ress> call, Throwable t) {
+                pd.hide();
                 Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });

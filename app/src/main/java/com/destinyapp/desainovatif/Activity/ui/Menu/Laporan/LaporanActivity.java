@@ -170,10 +170,13 @@ public class LaporanActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
-                String clickedItems = clickedItem.getId_laporan_kategori();
-                kat.setText(clickedItems);
-                Toast.makeText(LaporanActivity.this, clickedItems, Toast.LENGTH_SHORT).show();
+                try {
+                    DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
+                    String clickedItems = clickedItem.getId_laporan_kategori();
+                    kat.setText(clickedItems);
+                }catch (Exception e){
+
+                }
             }
 
             @Override

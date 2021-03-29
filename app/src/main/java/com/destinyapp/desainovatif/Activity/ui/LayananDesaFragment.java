@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +41,7 @@ import com.destinyapp.desainovatif.Activity.LoginActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.SuratActivity;
 import com.destinyapp.desainovatif.Adapter.AdapterKategoriSurat;
+import com.destinyapp.desainovatif.Adapter.AdapterListSubKatSurat;
 import com.destinyapp.desainovatif.Adapter.AdapterListUserRT;
 import com.destinyapp.desainovatif.Adapter.AdapterSurat;
 import com.destinyapp.desainovatif.BuildConfig;
@@ -77,9 +79,10 @@ public class LayananDesaFragment extends Fragment {
     private RecyclerView.LayoutManager mManager;
     Dialog dialog;
     Button Permintaan,Submit,Tutup;
-    EditText NamaSurat;
-    Spinner spinner,spinn,spinnerBersangkutan;
-    TextView kat,ber;
+    EditText NamaSurat,Note;
+    Spinner spinner,spinn,spinnerBersangkutan,spinnerSub;
+    TextView kat,ber,sub;
+    WebView web;
 
     //Gambar1
     Button btnGallery1,Tambah1;
@@ -158,14 +161,18 @@ public class LayananDesaFragment extends Fragment {
         spinner = view.findViewById(R.id.spinner);
         kat = view.findViewById(R.id.tvKat);
         ber = view.findViewById(R.id.tvBersangkutan);
+        sub = view.findViewById(R.id.tvSub);
         destiny = new Destiny();
         //Dialog
         dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_permintaan_surat);
         NamaSurat = dialog.findViewById(R.id.NamaSurat);
+        Note = dialog.findViewById(R.id.NoteSurat);
         Submit = dialog.findViewById(R.id.btnSubmit);
         Tutup = dialog.findViewById(R.id.btnClose);
         spinn = dialog.findViewById(R.id.spinner);
+        spinnerSub = dialog.findViewById(R.id.spinnerSubKat);
+        web = dialog.findViewById(R.id.web);
 
 
         //Image
@@ -215,7 +222,21 @@ public class LayananDesaFragment extends Fragment {
                 DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
                 String clickedItems = clickedItem.getId_surat_kategori();
                 kat.setText(clickedItems);
-                Toast.makeText(getActivity(), kat.getText().toString(), Toast.LENGTH_SHORT).show();
+                GetSubKategori(kat.getText().toString());
+                spinnerSub.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
+                        String clickedItems = clickedItem.getId_surat_kategori_sub();
+                        sub.setText(clickedItems);
+                        web.loadData(clickedItem.getSyarat_sub_kategori(),"text/html","UTF-8");
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
 
             @Override
@@ -240,6 +261,27 @@ public class LayananDesaFragment extends Fragment {
         });
         OnClick();
         Logic();
+    }
+    private void GetSubKategori(String id){
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getProvinsi = api.SubKatSurat(id);
+        getProvinsi.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                try {
+                    mItems=response.body().getData();
+                    AdapterListSubKatSurat adapter = new AdapterListSubKatSurat(getActivity(),mItems);
+                    spinnerSub.setAdapter(adapter);
+                }catch (Exception e){
+//                    Toast.makeText(getActivity(), "Terjadi kesalahan "+e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void GetOrangBersangkutan(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
@@ -509,6 +551,8 @@ public class LayananDesaFragment extends Fragment {
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),sub.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Note.getText().toString()),
                     partGallery1,
                     RequestBody.create(MediaType.parse("text/plain"),""));
             Surat.enqueue(new Callback<Ress>() {
@@ -533,11 +577,13 @@ public class LayananDesaFragment extends Fragment {
         }else{
             Call<Ress> Surat = api.PostSurat(
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
-                    RequestBody.create(MediaType.parse("text/plain"),ber.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),sub.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Note.getText().toString()),
                     partGallery1,
-                    RequestBody.create(MediaType.parse("text/plain"),ID));
+                    RequestBody.create(MediaType.parse("text/plain"),""));
             Surat.enqueue(new Callback<Ress>() {
                 @Override
                 public void onResponse(Call<Ress> call, Response<Ress> response) {
@@ -575,38 +621,68 @@ public class LayananDesaFragment extends Fragment {
         MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery2.getName(), fileReqBodyGallery2);
 
 
-        String member = "";
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        if (!Level.equals("member")){
-            member = ber.getText().toString();
-        }
-        Call<Ress> Surat = api.PostSurat(
-                RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
-                RequestBody.create(MediaType.parse("text/plain"),ID),
-                RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
-                RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                partGallery1,
-                partGallery2,
-                RequestBody.create(MediaType.parse("text/plain"),member));
-        Surat.enqueue(new Callback<Ress>() {
-            @Override
-            public void onResponse(Call<Ress> call, Response<Ress> response) {
-                pd.hide();
-                try {
-                    Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
-                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+        if (Level.equals("member")){
+            Call<Ress> Surat = api.PostSurat(
+                    RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                    RequestBody.create(MediaType.parse("text/plain"),ID),
+                    RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),sub.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Note.getText().toString()),
+                    partGallery1,
+                    partGallery2,
+                    RequestBody.create(MediaType.parse("text/plain"),""));
+            Surat.enqueue(new Callback<Ress>() {
+                @Override
+                public void onResponse(Call<Ress> call, Response<Ress> response) {
+                    pd.hide();
+                    try {
+                        Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
                 }
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                startActivity(intent);
-            }
 
-            @Override
-            public void onFailure(Call<Ress> call, Throwable t) {
-                pd.hide();
-                Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Ress> call, Throwable t) {
+                    pd.hide();
+                    Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            Call<Ress> Surat = api.PostSurat(
+                    RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                    RequestBody.create(MediaType.parse("text/plain"),ID),
+                    RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),sub.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Note.getText().toString()),
+                    partGallery1,
+                    partGallery2,
+                    RequestBody.create(MediaType.parse("text/plain"),""));
+            Surat.enqueue(new Callback<Ress>() {
+                @Override
+                public void onResponse(Call<Ress> call, Response<Ress> response) {
+                    pd.hide();
+                    try {
+                        Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onFailure(Call<Ress> call, Throwable t) {
+                    pd.hide();
+                    Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
     private void LogicSurat3(){
         final ProgressDialog pd = new ProgressDialog(getActivity());
@@ -627,39 +703,70 @@ public class LayananDesaFragment extends Fragment {
         MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery3.getName(), fileReqBodyGallery3);
 
 
-        String member = "";
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        if (!Level.equals("member")){
-            member = ber.getText().toString();
-        }
-        Call<Ress> Surat = api.PostSurat(
-                RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
-                RequestBody.create(MediaType.parse("text/plain"),ID),
-                RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
-                RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                partGallery1,
-                partGallery2,
-                partGallery3,
-                RequestBody.create(MediaType.parse("text/plain"),member));
-        Surat.enqueue(new Callback<Ress>() {
-            @Override
-            public void onResponse(Call<Ress> call, Response<Ress> response) {
-                pd.hide();
-                try {
-                    Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
-                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+        if (Level.equals("member")){
+            Call<Ress> Surat = api.PostSurat(
+                    RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                    RequestBody.create(MediaType.parse("text/plain"),ID),
+                    RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),sub.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Note.getText().toString()),
+                    partGallery1,
+                    partGallery2,
+                    partGallery3,
+                    RequestBody.create(MediaType.parse("text/plain"),""));
+            Surat.enqueue(new Callback<Ress>() {
+                @Override
+                public void onResponse(Call<Ress> call, Response<Ress> response) {
+                    pd.hide();
+                    try {
+                        Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
                 }
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                startActivity(intent);
-            }
 
-            @Override
-            public void onFailure(Call<Ress> call, Throwable t) {
-                pd.hide();
-                Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Ress> call, Throwable t) {
+                    pd.hide();
+                    Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            Call<Ress> Surat = api.PostSurat(
+                    RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                    RequestBody.create(MediaType.parse("text/plain"),ID),
+                    RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),sub.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Note.getText().toString()),
+                    partGallery1,
+                    partGallery2,
+                    partGallery3,
+                    RequestBody.create(MediaType.parse("text/plain"),""));
+            Surat.enqueue(new Callback<Ress>() {
+                @Override
+                public void onResponse(Call<Ress> call, Response<Ress> response) {
+                    pd.hide();
+                    try {
+                        Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onFailure(Call<Ress> call, Throwable t) {
+                    pd.hide();
+                    Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
     private void LogicSurat4(){
         final ProgressDialog pd = new ProgressDialog(getActivity());
@@ -684,40 +791,72 @@ public class LayananDesaFragment extends Fragment {
         MultipartBody.Part partGallery4 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery4.getName(), fileReqBodyGallery4);
 
 
-        String member = "";
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        if (!Level.equals("member")){
-            member = ber.getText().toString();
-        }
-        Call<Ress> Surat = api.PostSurat(
-                RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
-                RequestBody.create(MediaType.parse("text/plain"),ID),
-                RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
-                RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                partGallery1,
-                partGallery2,
-                partGallery3,
-                partGallery4,
-                RequestBody.create(MediaType.parse("text/plain"),member));
-        Surat.enqueue(new Callback<Ress>() {
-            @Override
-            public void onResponse(Call<Ress> call, Response<Ress> response) {
-                pd.hide();
-                try {
-                    Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
-                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+        if (Level.equals("member")){
+            Call<Ress> Surat = api.PostSurat(
+                    RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                    RequestBody.create(MediaType.parse("text/plain"),ID),
+                    RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),sub.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Note.getText().toString()),
+                    partGallery1,
+                    partGallery2,
+                    partGallery3,
+                    partGallery4,
+                    RequestBody.create(MediaType.parse("text/plain"),""));
+            Surat.enqueue(new Callback<Ress>() {
+                @Override
+                public void onResponse(Call<Ress> call, Response<Ress> response) {
+                    pd.hide();
+                    try {
+                        Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
                 }
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                startActivity(intent);
-            }
 
-            @Override
-            public void onFailure(Call<Ress> call, Throwable t) {
-                pd.hide();
-                Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Ress> call, Throwable t) {
+                    pd.hide();
+                    Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            Call<Ress> Surat = api.PostSurat(
+                    RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
+                    RequestBody.create(MediaType.parse("text/plain"),ID),
+                    RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),sub.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Note.getText().toString()),
+                    partGallery1,
+                    partGallery2,
+                    partGallery3,
+                    partGallery4,
+                    RequestBody.create(MediaType.parse("text/plain"),""));
+            Surat.enqueue(new Callback<Ress>() {
+                @Override
+                public void onResponse(Call<Ress> call, Response<Ress> response) {
+                    pd.hide();
+                    try {
+                        Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onFailure(Call<Ress> call, Throwable t) {
+                    pd.hide();
+                    Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
     private void SubmitLogic(){
         final ProgressDialog pd = new ProgressDialog(getActivity());

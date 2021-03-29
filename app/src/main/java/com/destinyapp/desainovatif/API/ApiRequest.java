@@ -45,6 +45,10 @@ public interface ApiRequest {
                               @Field("id_desa") String id_desa);
 
     @FormUrlEncoded
+    @POST("kat_surat/sub_kat")
+    Call<ResponseModel> SubKatSurat(@Field("id_surat_kategori") String id_surat_kategori);
+
+    @FormUrlEncoded
     @POST("toko/my_toko")
     Call<ResponseModel> MyToko(@Field("id_user") String id_user);
 
@@ -90,18 +94,10 @@ public interface ApiRequest {
                             @Part("id_user") RequestBody id_user,
                             @Part("id_surat_kategori") RequestBody id_surat_kategori,
                             @Part("nama_surat") RequestBody nama_surat,
+                            @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                            @Part("note_surat") RequestBody note_surat,
                             @Part MultipartBody.Part FileSyarat1,
                             @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
-
-    @Multipart
-    @POST("surat")
-    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
-                          @Part("id_user") RequestBody id_user,
-                          @Part("id_surat_kategori") RequestBody id_surat_kategori,
-                          @Part("nama_surat") RequestBody nama_surat,
-                          @Part MultipartBody.Part FileSyarat1,
-                          @Part MultipartBody.Part FileSyarat2,
-                          @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
 
     @Multipart
     @POST("surat")
@@ -109,6 +105,20 @@ public interface ApiRequest {
                          @Part("id_user") RequestBody id_user,
                          @Part("id_surat_kategori") RequestBody id_surat_kategori,
                          @Part("nama_surat") RequestBody nama_surat,
+                         @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                         @Part("note_surat") RequestBody note_surat,
+                         @Part MultipartBody.Part FileSyarat1,
+                         @Part MultipartBody.Part FileSyarat2,
+                         @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
+                         @Part("id_user") RequestBody id_user,
+                         @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                         @Part("nama_surat") RequestBody nama_surat,
+                         @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                         @Part("note_surat") RequestBody note_surat,
                          @Part MultipartBody.Part FileSyarat1,
                          @Part MultipartBody.Part FileSyarat2,
                          @Part MultipartBody.Part FileSyarat3,
@@ -120,6 +130,8 @@ public interface ApiRequest {
                          @Part("id_user") RequestBody id_user,
                          @Part("id_surat_kategori") RequestBody id_surat_kategori,
                          @Part("nama_surat") RequestBody nama_surat,
+                         @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                         @Part("note_surat") RequestBody note_surat,
                          @Part MultipartBody.Part FileSyarat1,
                          @Part MultipartBody.Part FileSyarat2,
                          @Part MultipartBody.Part FileSyarat3,
@@ -219,47 +231,44 @@ public interface ApiRequest {
     @Multipart
     @POST("toko/input_toko")
     Call<Ress> PostToko(@Part("id_user") RequestBody id_user,
-                                 @Part("nama_toko") RequestBody nama_toko,
-                                 @Part("no_hp_toko") RequestBody no_hp_toko,
-                                 @Part("deskripsi_toko") RequestBody deskripsi_toko,
-                                 @Part("id_desa") RequestBody id_desa,
-                                 @Part MultipartBody.Part foto1);
+                        @Part("nama_toko") RequestBody nama_toko,
+                        @Part("no_hp_toko") RequestBody no_hp_toko,
+                        @Part("deskripsi_toko") RequestBody deskripsi_toko,
+                        @Part("id_desa") RequestBody id_desa,
+                        @Part MultipartBody.Part foto1);
 
     @Multipart
     @POST("toko/input_toko")
-    Call<NewResponse> PostToko(@Part("id_user") RequestBody id_user,
-                                 @Part("namaToko") RequestBody namaToko,
-                                 @Part("noHpToko") RequestBody noHpToko,
-                                 @Part("deskripsiToko") RequestBody deskripsiToko,
-                                 @Part("id_desa") RequestBody id_desa,
-                                 @Part MultipartBody.Part fotoCover,
-                                 @Part MultipartBody.Part foto1,
-                                 @Part MultipartBody.Part foto2);
+    Call<Ress> PostToko(@Part("id_user") RequestBody id_user,
+                        @Part("nama_toko") RequestBody nama_toko,
+                        @Part("no_hp_toko") RequestBody no_hp_toko,
+                        @Part("deskripsi_toko") RequestBody deskripsi_toko,
+                        @Part("id_desa") RequestBody id_desa,
+                        @Part MultipartBody.Part foto1,
+                        @Part MultipartBody.Part foto2);
 
     @Multipart
     @POST("toko/input_toko")
-    Call<NewResponse> PostToko(@Part("id_user") RequestBody id_user,
-                                 @Part("namaToko") RequestBody namaToko,
-                                 @Part("noHpToko") RequestBody noHpToko,
-                                 @Part("deskripsiToko") RequestBody deskripsiToko,
-                                 @Part("id_desa") RequestBody id_desa,
-                                 @Part MultipartBody.Part fotoCover,
-                                 @Part MultipartBody.Part foto1,
-                                 @Part MultipartBody.Part foto2,
-                                 @Part MultipartBody.Part foto3);
+    Call<Ress> PostToko(@Part("id_user") RequestBody id_user,
+                        @Part("nama_toko") RequestBody nama_toko,
+                        @Part("no_hp_toko") RequestBody no_hp_toko,
+                        @Part("deskripsi_toko") RequestBody deskripsi_toko,
+                        @Part("id_desa") RequestBody id_desa,
+                        @Part MultipartBody.Part foto1,
+                        @Part MultipartBody.Part foto2,
+                        @Part MultipartBody.Part foto3);
 
     @Multipart
     @POST("toko/input_toko")
-    Call<NewResponse> PostToko(@Part("id_user") RequestBody id_user,
-                                 @Part("namaToko") RequestBody namaToko,
-                                 @Part("noHpToko") RequestBody noHpToko,
-                                 @Part("deskripsiToko") RequestBody deskripsiToko,
-                                 @Part("id_desa") RequestBody id_desa,
-                                 @Part MultipartBody.Part fotoCover,
-                                 @Part MultipartBody.Part foto1,
-                                 @Part MultipartBody.Part foto2,
-                                 @Part MultipartBody.Part foto3,
-                                 @Part MultipartBody.Part foto4);
+    Call<Ress> PostToko(@Part("id_user") RequestBody id_user,
+                        @Part("nama_toko") RequestBody nama_toko,
+                        @Part("no_hp_toko") RequestBody no_hp_toko,
+                        @Part("deskripsi_toko") RequestBody deskripsi_toko,
+                        @Part("id_desa") RequestBody id_desa,
+                        @Part MultipartBody.Part foto1,
+                        @Part MultipartBody.Part foto2,
+                        @Part MultipartBody.Part foto3,
+                        @Part MultipartBody.Part foto4);
 
     @FormUrlEncoded
     @POST("bank_sampah/saldo")
