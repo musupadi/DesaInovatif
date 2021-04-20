@@ -10,10 +10,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ import com.destinyapp.desainovatif.Activity.ui.Menu.Berita.BeritaActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.ECommerce.ECommerceActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Pariwisata.PariwisataActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.SuratActivity;
+import com.destinyapp.desainovatif.Adapter.AdapterBanner;
 import com.destinyapp.desainovatif.Adapter.AdapterBerita;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
@@ -64,6 +68,17 @@ public class HomeFragment extends Fragment {
     int kasus;
     int sembuh;
     int meninggal;
+
+    //Slider
+    private ViewPager mSlideViewPager;
+    private LinearLayout mDotLayout;
+    private AdapterBanner adapterBanner;
+    private Button btnBack, btnNext, btnPlay, btnPause, btnStop;
+    private TextView[] mDots;
+    private int CurrentPage;
+
+    int SizeBanner = 0;
+    boolean forward;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -98,6 +113,11 @@ public class HomeFragment extends Fragment {
         Meninggal = view.findViewById(R.id.tvMeninggal);
         Kasus = view.findViewById(R.id.tvKasus);
         dbHelper = new DB_Helper(getActivity());
+        //Slider
+        //Slider
+        mSlideViewPager = view.findViewById(R.id.SlideViewPager);
+        mDotLayout = view.findViewById(R.id.dotSlayout);
+
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
@@ -113,10 +133,135 @@ public class HomeFragment extends Fragment {
             nama.setText("Selamat Datang, Guest");
         }
         ONClick();
-        GetCovid();
+//        GetCovid();
         KabarBerita();
 
+        Header(0);
+        AutoSlide();
     }
+    //Pager Start
+    private void Header(final int position){
+        mManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+//        recycler.setLayoutManager(mManager);
+//        LAHeader.setVisibility(View.VISIBLE);
+//        TAHeader.setVisibility(View.GONE);
+//        AHeader.setAnimation("loading.json");
+//        AHeader.playAnimation();
+        ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+        Call<ResponseModel> KabarBerita = api.Banner();
+        KabarBerita.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, retrofit2.Response<ResponseModel> response) {
+                try {
+                    mItems=response.body().getData();
+                    if (mItems.size()<1){
+//                        TAHeader.setVisibility(View.VISIBLE);
+//                        TAHeader.setText("Banner Belum Ada");
+//                        AHeader.setAnimation("notfound.json");
+//                        AHeader.playAnimation();
+                    }else{
+//                        LAHeader.setVisibility(View.GONE);
+                        adapterBanner = new AdapterBanner(getActivity(),mItems);
+                        mSlideViewPager.setAdapter(adapterBanner);
+                        SizeBanner = mItems.size();
+                        addDotsIndicator(position);
+                        mSlideViewPager.addOnPageChangeListener(viewList);
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getActivity(), "Terjadi Kesalah User akan Terlogout", Toast.LENGTH_SHORT).show();
+                    dbHelper.Logout();
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void addDotsIndicator(int posistion) {
+        try {
+            mDots = new TextView[SizeBanner];
+            mDotLayout.removeAllViews();
+            for (int i = 0; i < mDots.length; i++) {
+                mDots[i] = new TextView(getActivity());
+                mDots[i].setText(Html.fromHtml("&#8226;"));
+                mDots[i].setTextSize(35);
+                mDots[i].setTextColor(getResources().getColor(R.color.Accent));
+
+                mDotLayout.addView(mDots[i]);
+            }
+            if (mDots.length > 0) {
+                mDots[posistion].setTextColor(getResources().getColor(R.color.Primary));
+            }
+        }catch (Exception e){
+
+        }
+    }
+    ViewPager.OnPageChangeListener viewList = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {
+
+        }
+
+        @Override
+        public void onPageSelected(int i) {
+            addDotsIndicator(i);
+            CurrentPage = i;
+
+            if (CurrentPage == 0) {
+
+            } else if (i == mDots.length - 1) {
+
+            } else {
+
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+//            final Handler handler = new Handler();
+//            handler.postDelayed(new Runnable() {
+//                public void run() {
+//                    if (CurrentPage == 0) {
+//                        forward=true;
+//                        mSlideViewPager.setCurrentItem(CurrentPage + 1);
+//                    } else if (CurrentPage == mDots.length - 1) {
+//                        forward=false;
+//                        mSlideViewPager.setCurrentItem(CurrentPage - 1);
+//                    } else {
+//                        if (forward){
+//                            mSlideViewPager.setCurrentItem(CurrentPage + 1);
+//                        }else{
+//                            mSlideViewPager.setCurrentItem(CurrentPage - 1);
+//                        }
+//                    }
+//                }
+//            }, 5000);
+        }
+    };
+    private void AutoSlide(){
+//        if(CurrentPage == 0) {
+//            forward=true;
+//            mSlideViewPager.setCurrentItem(CurrentPage + 1);
+//        }else if(CurrentPage == mDots.length - 1) {
+//            forward=false;
+//            mSlideViewPager.setCurrentItem(CurrentPage - 1);
+//        }else{
+//            if (forward){
+//                mSlideViewPager.setCurrentItem(CurrentPage + 1);
+//            }else{
+//                mSlideViewPager.setCurrentItem(CurrentPage - 1);
+//            }
+//        }
+    }
+    //PagerEnd
+
+
     private void GetCovid(){
         ApiRequest api = RetroServerCovid.getClient().create(ApiRequest.class);
         Call<ResponseCovid> Corona = api.Covid();

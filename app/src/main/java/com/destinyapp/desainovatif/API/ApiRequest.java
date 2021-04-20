@@ -330,6 +330,9 @@ public interface ApiRequest {
     @POST("pariwisata")
     Call<ResponseModel> Pariwisata(@Field("id_desa") String id_desa);
 
+    @GET("banner")
+    Call<ResponseModel> Banner();
+
 
     @GET("prov.json")
     Call<ResponseCovid> Covid();

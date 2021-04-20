@@ -40,6 +40,28 @@ public class DataModel {
     @Expose
     public String level;
 
+
+    //Banner
+    @SerializedName("id_banner")
+    @Expose
+    public String id_banner;
+
+    @SerializedName("nama_banner")
+    @Expose
+    public String nama_banner;
+
+    @SerializedName("file_foto_banner")
+    @Expose
+    public String file_foto_banner;
+
+    @SerializedName("sort_num")
+    @Expose
+    public String sort_num;
+
+    @SerializedName("created_at_banner")
+    @Expose
+    public String created_at_banner;
+
     //Surat
     @SerializedName("id_surat")
     @Expose
@@ -1039,6 +1061,46 @@ public class DataModel {
 
     public void setTgl_toko_request(String tgl_toko_request) {
         this.tgl_toko_request = tgl_toko_request;
+    }
+
+    public String getId_banner() {
+        return id_banner;
+    }
+
+    public void setId_banner(String id_banner) {
+        this.id_banner = id_banner;
+    }
+
+    public String getNama_banner() {
+        return nama_banner;
+    }
+
+    public void setNama_banner(String nama_banner) {
+        this.nama_banner = nama_banner;
+    }
+
+    public String getFile_foto_banner() {
+        return file_foto_banner;
+    }
+
+    public void setFile_foto_banner(String file_foto_banner) {
+        this.file_foto_banner = file_foto_banner;
+    }
+
+    public String getSort_num() {
+        return sort_num;
+    }
+
+    public void setSort_num(String sort_num) {
+        this.sort_num = sort_num;
+    }
+
+    public String getCreated_at_banner() {
+        return created_at_banner;
+    }
+
+    public void setCreated_at_banner(String created_at_banner) {
+        this.created_at_banner = created_at_banner;
     }
 
     public String getTgl_toko_disetujui() {
