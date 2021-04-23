@@ -44,7 +44,7 @@ public class AdapterKategoriSurat extends ArrayAdapter<DataModel> {
         DataModel currentItem = getItem(position);
 
         if (currentItem != null) {
-            textSpinner.setText(" "+currentItem.getNama_kategori_surat());
+            textSpinner.setText(currentItem.getNama_kategori_surat());
             textId.setText(String.valueOf(currentItem.getId_surat_kategori()));
         }
 

@@ -7,7 +7,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
         <LinearLayout
             android:layout_margin="5dp"
             android:background="@drawable/rounded"
@@ -17,16 +18,10 @@
             android:orientation="vertical"
             android:padding="10dp">
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -34,23 +29,26 @@
                     android:textColor="@color/Black"
                     android:textSize="@dimen/text_xtra_large"
                     android:fontFamily="@font/gotham"/>
-                <androidx.appcompat.widget.AppCompatSpinner
+                <LinearLayout
+                    android:layout_margin="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner"
-                    android:entries="@array/Surat"/>
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded"
+                    android:elevation="5dp">
+                    <Spinner
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/Surat"
+                        android:id="@+id/spinner"/>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
                 android:id="@+id/linearOrangBersangkutan">
                 <TextView
                     android:layout_width="match_parent"
@@ -59,23 +57,26 @@
                     android:textColor="@color/Black"
                     android:textSize="@dimen/text_xtra_large"
                     android:fontFamily="@font/gotham"/>
-                <androidx.appcompat.widget.AppCompatSpinner
+                <LinearLayout
+                    android:layout_margin="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinnerBersangkutan"
-                    android:entries="@array/Surat"/>
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded"
+                    android:elevation="5dp">
+                    <Spinner
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/Surat"
+                        android:id="@+id/spinnerBersangkutan"/>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,11 +84,20 @@
                     android:textColor="@color/Black"
                     android:textSize="@dimen/text_xtra_large"
                     android:fontFamily="@font/gotham"/>
-                <androidx.appcompat.widget.AppCompatSpinner
+                <LinearLayout
+                    android:layout_margin="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinnerSubKat"
-                    android:entries="@array/Surat"/>
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded"
+                    android:elevation="5dp">
+                    <Spinner
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/Surat"
+                        android:id="@+id/spinnerSubKat"/>
+                </LinearLayout>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -104,29 +114,38 @@
                 android:id="@+id/web"
                 tools:ignore="WebViewLayout" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:layout_marginTop="10dp"
+                android:text="Nama Surat"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Black"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="5dp">
+
                 <EditText
+                    android:hint="Nama Surat"
+                    android:inputType="text"
                     android:id="@+id/NamaSurat"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/text_xtra_large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nama Surat"
-                    android:ems="10"
-                    android:textColor="@color/Primary"
-                    android:inputType="text"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:fontFamily="@font/gotham"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,29 +154,38 @@
                 android:gravity="center"
                 android:textSize="@dimen/text_xtra_large"
                 android:textColor="@color/Primary"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:layout_marginTop="10dp"
+                android:text="Note (Optional)"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Black"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="5dp">
+
                 <EditText
+                    android:hint="Note"
+                    android:inputType="textMultiLine"
                     android:id="@+id/NoteSurat"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:fontFamily="@font/gotham"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Note (Optional)"
-                    android:ems="10"
-                    android:textColor="@color/Primary"
-                    android:inputType="text"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

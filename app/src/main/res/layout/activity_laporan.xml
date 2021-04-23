@@ -207,54 +207,70 @@
                     android:entries="@array/Surat"
                     android:id="@+id/spinner"/>
             </LinearLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:layout_marginTop="10dp"
+                android:text="Nama Laporan"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Primary"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="10dp">
+
                 <EditText
-                    android:background="@color/White"
-                    android:id="@+id/etNamaLaporan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nama Laporan"
-                    android:ems="10"
                     android:textColor="@color/Primary"
                     android:inputType="text"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
-                <EditText
-                    android:background="@color/White"
-                    android:id="@+id/etDeskripsiLaporan"
+                    android:hint="Laporan"
+                    android:id="@+id/etNamaLaporan"
+                    android:fontFamily="@font/gotham"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Deskripsi Laporan"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Primary"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="10dp">
+
+                <EditText
                     android:hint="Deskripsi Laporan"
-                    android:ems="10"
                     android:textColor="@color/Primary"
-                    android:inputType="text|textMultiLine"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:inputType="textMultiLine"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:id="@+id/etDeskripsiLaporan"
+                    android:fontFamily="@font/gotham"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
             <Button
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_menu"

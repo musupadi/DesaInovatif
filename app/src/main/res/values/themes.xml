@@ -32,4 +32,17 @@
         <item name="colorPrimaryDark">@color/PrimaryDark</item>
         <item name="colorAccent">@color/Secondary</item>
     </style>
+    <style name="AppThemeDeskripsi" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Transparent</item>
+        <item name="colorPrimaryDark">@color/Black</item>
+        <item name="colorAccent">@color/Transparent</item>
+
+        <item name="colorControlNormal">@color/White</item>
+        <item name="colorControlActivated">@color/Black</item>
+
+        <!--        <item name="colorControlActivated">@color/colorOrange</item>-->
+        <item name="colorSwitchThumbNormal">@color/Grey</item>
+        <item name="android:colorForeground">@color/Black</item>
+    </style>
 </resources>

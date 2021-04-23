@@ -27,75 +27,99 @@
                 android:fontFamily="@font/gotham"
                 android:textColor="@color/Primary"
                 android:textSize="@dimen/text_xtra_large"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:layout_marginTop="5dp"
+                android:text="Nama Toko"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Black"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="10dp">
+
                 <EditText
-                    android:id="@+id/etNamaToko"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:hint="Nama Toko"
-                    android:ems="10"
-                    android:textColor="@color/Primary"
                     android:inputType="text"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
-                <EditText
-                    android:id="@+id/etNoHPToko"
+                    android:id="@+id/etNamaToko"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/text_xtra_large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="No HP Toko"
-                    android:ems="10"
-                    android:textColor="@color/Primary"
+                    android:fontFamily="@font/gotham"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="No HP Toko"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Black"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:hint="Nomor HP Toko"
                     android:inputType="number"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
-                <EditText
-                    android:id="@+id/etDeskripsiToko"
+                    android:id="@+id/etNoHPToko"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/text_xtra_large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Deskripsi Toko"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Black"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="10dp">
+
+                <EditText
                     android:hint="Deskripsi Toko"
-                    android:ems="10"
-                    android:textColor="@color/Primary"
                     android:inputType="textMultiLine"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:id="@+id/etDeskripsiToko"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

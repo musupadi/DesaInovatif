@@ -173,7 +173,8 @@ public class LayananDesaFragment extends Fragment {
         spinn = dialog.findViewById(R.id.spinner);
         spinnerSub = dialog.findViewById(R.id.spinnerSubKat);
         web = dialog.findViewById(R.id.web);
-
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.btn_rounded);
 
         //Image
         spinnerBersangkutan = dialog.findViewById(R.id.spinnerBersangkutan);
@@ -279,7 +280,7 @@ public class LayananDesaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -300,7 +301,7 @@ public class LayananDesaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -322,7 +323,7 @@ public class LayananDesaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -45,7 +45,7 @@ public class AdapterListSubKatSurat extends ArrayAdapter<DataModel> {
         DataModel currentItem = getItem(position);
 
         if (currentItem != null) {
-            textSpinner.setText(" " + currentItem.getNama_surat_kategori_sub());
+            textSpinner.setText(currentItem.getNama_surat_kategori_sub());
             textId.setText(String.valueOf(currentItem.getId_surat_kategori_sub()));
             textWeb.setText(String.valueOf(currentItem.getSyarat_sub_kategori()));
         }

@@ -44,7 +44,7 @@ public class AdapterKategoriLaporan extends ArrayAdapter<DataModel> {
         DataModel currentItem = getItem(position);
 
         if (currentItem != null) {
-            textSpinner.setText(" "+currentItem.getNama_laporan_kategori());
+            textSpinner.setText(currentItem.getNama_laporan_kategori());
             textId.setText(String.valueOf(currentItem.getId_laporan_kategori()));
         }
 

@@ -27,60 +27,100 @@
                 android:fontFamily="@font/gotham"
                 android:textColor="@color/Primary"
                 android:textSize="@dimen/text_xtra_large"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_margin="10dp"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black">
+                android:layout_marginTop="5dp"
+                android:text="Nama Produk"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Black"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="10dp">
+
                 <EditText
-                    android:background="@color/White"
-                    android:id="@+id/etNamaProduk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:hint="Nama Produk"
-                    android:ems="10"
-                    android:textColor="@color/Primary"
                     android:inputType="text"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black">
-                <EditText
-                    android:background="@color/White"
-                    android:id="@+id/etHargaProduk"
+                    android:id="@+id/etNamaProduk"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/text_xtra_large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Harga Produk"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Black"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="10dp">
+
+                <EditText
                     android:hint="Harga Produk"
-                    android:ems="10"
-                    android:textColor="@color/Primary"
                     android:inputType="number"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textColorHint="@color/Black">
-                <EditText
-                    android:background="@color/White"
-                    android:id="@+id/etDeskripsiProduk"
+                    android:id="@+id/etHargaProduk"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/text_xtra_large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Deskripsi Produk"
+                android:fontFamily="@font/gotham"
+                android:textSize="@dimen/text_xtra_large"
+                android:textColor="@color/Black"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded_transparent"
+                android:padding="1dp"
+                android:layout_margin="10dp">
+
+                <EditText
                     android:hint="Deskripsi Produk"
-                    android:ems="10"
-                    android:textColor="@color/Primary"
                     android:inputType="textMultiLine"
-                    android:textSize="20sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:id="@+id/etDeskripsiProduk"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham"
+                    android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
+                    android:theme="@style/AppThemeDeskripsi" />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
