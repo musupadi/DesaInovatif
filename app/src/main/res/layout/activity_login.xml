@@ -41,7 +41,7 @@
                             <ImageView
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
-                                android:src="@drawable/bogor_maju"
+                                android:src="@drawable/logo_bnjr"
                                 android:elevation="10dp"/>
 
                         </LinearLayout>

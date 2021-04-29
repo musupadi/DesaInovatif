@@ -350,7 +350,7 @@
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_margin="10dp"
-                                                android:src="@drawable/pariwisata" />
+                                                android:src="@drawable/coronavirus" />
                                         </LinearLayout>
 
 
@@ -360,7 +360,7 @@
                                             android:layout_weight="2"
                                             android:fontFamily="@font/gotham"
                                             android:gravity="center|top"
-                                            android:text="Pariwisata"
+                                            android:text="COVID-19"
                                             android:textColor="@color/Black"
                                             android:textSize="@dimen/text_medium"
                                             android:textStyle="bold" />
@@ -419,7 +419,7 @@
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_margin="10dp"
-                                                android:src="@drawable/sampah" />
+                                                android:src="@drawable/bank_sampah" />
                                         </LinearLayout>
 
 

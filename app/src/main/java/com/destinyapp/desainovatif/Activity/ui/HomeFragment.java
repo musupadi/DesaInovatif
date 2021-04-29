@@ -314,8 +314,10 @@ public class HomeFragment extends Fragment {
         Pariwisata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PariwisataActivity.class);
-                startActivity(intent);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://geoportal.bogorkab.go.id/covid19/"));
+                startActivity(browserIntent);
+//                Intent intent = new Intent(getActivity(), PariwisataActivity.class);
+//                startActivity(intent);
             }
         });
         UMKM.setOnClickListener(new View.OnClickListener() {

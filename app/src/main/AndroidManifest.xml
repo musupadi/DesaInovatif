@@ -18,30 +18,35 @@
         android:allowBackup="true"
         android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/logos"
+        android:icon="@mipmap/logo_banjar"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:persistent="true"
-        android:roundIcon="@mipmap/logos_round"
+        android:roundIcon="@mipmap/logo_banjar_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoAction"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.ui.Menu.BankSampah.Hadiah.DaftarRewardActivity"
+        <activity android:name=".Activity.ui.Menu.Covid.CovidActivity"></activity>
+        <activity
+            android:name=".Activity.ui.Menu.BankSampah.Hadiah.DaftarRewardActivity"
             android:label="Daftar Reward Bank Sampah"
             android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".Activity.ui.Menu.BankSampah.Hadiah.HistoryTransaksi.TransaksiRewardActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.BankSampah.Hadiah.HistoryTransaksi.TransaksiRewardActivity"
             android:label="Transaksi Bank Sampah"
             android:parentActivityName=".Activity.ui.Menu.BankSampah.Hadiah.HadiahBankSampahActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".Activity.ui.Menu.BankSampah.Hadiah.AmbilReward.AmbilRewardActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.BankSampah.Hadiah.AmbilReward.AmbilRewardActivity"
             android:label="Ambil Reward Bank Sampah"
             android:parentActivityName=".Activity.ui.Menu.BankSampah.Hadiah.HadiahBankSampahActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".Activity.ui.Menu.BankSampah.Hadiah.HadiahBankSampahActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.ui.Menu.BankSampah.Hadiah.HadiahBankSampahActivity"
             android:label="Hadiah Bank Sampah"
             android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.Transaksi.TransaksiSampahActivity"
             android:label="Transaksi Bank Sampah"
