@@ -313,6 +313,23 @@ public interface ApiRequest {
     @GET("kat_surat")
     Call<ResponseModel> Kategori_Surat();
 
+    @GET("info/covid")
+    Call<NewResponse> InfoCovid();
+
+    @GET("info/anggaran")
+    Call<NewResponse> InfoAnggaran();
+
+    @GET("info/bansos")
+    Call<NewResponse> InfoBansos();
+
+    @GET("info/profil_desa")
+    Call<NewResponse> InfoProfilDesa();
+
+    @GET("info/umkm")
+    Call<NewResponse> InfoUMKM();
+
+    @GET("info/dpt")
+    Call<NewResponse> InfoDPT();
 
 //    @GET("surat/list")
 //    Call<ResponseModel> GetSurat(@Query("id_user") String id_user);

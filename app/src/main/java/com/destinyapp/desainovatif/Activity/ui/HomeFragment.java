@@ -39,6 +39,7 @@ import com.destinyapp.desainovatif.Model.DataModel;
 import com.destinyapp.desainovatif.Model.NewModel.Covid.CovidData;
 import com.destinyapp.desainovatif.Model.NewModel.Covid.ResponseCovid;
 import com.destinyapp.desainovatif.Model.NewModel.Data;
+import com.destinyapp.desainovatif.Model.NewModel.NewResponse;
 import com.destinyapp.desainovatif.Model.NewModel.Response;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.R;
@@ -55,7 +56,7 @@ public class HomeFragment extends Fragment {
     TextView nama;
     DB_Helper dbHelper;
     String Username,Password,Nama,Photo,ID,ID_Desa;
-    LinearLayout Pariwisata,UMKM,Bansos,DPT,Sampah;
+    LinearLayout Pariwisata,UMKM,Bansos,DPT,Sampah,Profil,Anggaran,KemajuanDesa;
     RecyclerView recycler;
     private List<DataModel> mItems = new ArrayList<>();
     private List<Data> Datas = new ArrayList<>();
@@ -106,6 +107,9 @@ public class HomeFragment extends Fragment {
         Bansos = view.findViewById(R.id.linearBansos);
         DPT = view.findViewById(R.id.linearDPT);
         Sampah = view.findViewById(R.id.linearSampah);
+        Profil = view.findViewById(R.id.linearProfil);
+        Anggaran = view.findViewById(R.id.linearAnggaran);
+        KemajuanDesa = view.findViewById(R.id.linearKemajuanDesa);
         recycler = view.findViewById(R.id.recyclerKabarBerita);
         //COVID
         Positif = view.findViewById(R.id.tvPositif);
@@ -314,8 +318,34 @@ public class HomeFragment extends Fragment {
         Pariwisata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://geoportal.bogorkab.go.id/covid19/"));
-                startActivity(browserIntent);
+                ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+                Call<NewResponse> Corona = api.InfoCovid();
+                Corona.enqueue(new Callback<NewResponse>() {
+                    @Override
+                    public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
+                        try {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getLink_setting()));
+                            startActivity(browserIntent);
+                        }catch (Exception e){
+                            try {
+                                Toast.makeText(getActivity(), "Link Tidak Valid", Toast.LENGTH_SHORT).show();
+                            }catch (Exception ex){
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<NewResponse> call, Throwable t) {
+                        try {
+                            Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                        }catch (Exception e){
+
+                        }
+
+                    }
+                });
+
 //                Intent intent = new Intent(getActivity(), PariwisataActivity.class);
 //                startActivity(intent);
             }
@@ -323,22 +353,167 @@ public class HomeFragment extends Fragment {
         UMKM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://eform.bri.co.id/bpum"));
-                startActivity(browserIntent);
+                ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+                Call<NewResponse> Corona = api.InfoUMKM();
+                Corona.enqueue(new Callback<NewResponse>() {
+                    @Override
+                    public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
+                        try {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getLink_setting()));
+                            startActivity(browserIntent);
+                        }catch (Exception e){
+                            try {
+                                Toast.makeText(getActivity(), "Link Tidak Valid", Toast.LENGTH_SHORT).show();
+                            }catch (Exception ex){
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<NewResponse> call, Throwable t) {
+                        try {
+                            Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                        }catch (Exception e){
+
+                        }
+
+                    }
+                });
             }
         });
         Bansos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://dtks.kemensos.go.id"));
-                startActivity(browserIntent);
+                ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+                Call<NewResponse> Corona = api.InfoBansos();
+                Corona.enqueue(new Callback<NewResponse>() {
+                    @Override
+                    public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
+                        try {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getLink_setting()));
+                            startActivity(browserIntent);
+                        }catch (Exception e){
+                            try {
+                                Toast.makeText(getActivity(), "Link Tidak Valid", Toast.LENGTH_SHORT).show();
+                            }catch (Exception ex){
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<NewResponse> call, Throwable t) {
+                        try {
+                            Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                        }catch (Exception e){
+
+                        }
+
+                    }
+                });
             }
         });
         DPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://lindungihakpilihmu.kpu.go.id"));
-                startActivity(browserIntent);
+                ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+                Call<NewResponse> Corona = api.InfoDPT();
+                Corona.enqueue(new Callback<NewResponse>() {
+                    @Override
+                    public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
+                        try {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getLink_setting()));
+                            startActivity(browserIntent);
+                        }catch (Exception e){
+                            try {
+                                Toast.makeText(getActivity(), "Link Tidak Valid", Toast.LENGTH_SHORT).show();
+                            }catch (Exception ex){
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<NewResponse> call, Throwable t) {
+                        try {
+                            Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                        }catch (Exception e){
+
+                        }
+
+                    }
+                });
+            }
+        });
+        KemajuanDesa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        Anggaran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+                Call<NewResponse> Corona = api.InfoAnggaran();
+                Corona.enqueue(new Callback<NewResponse>() {
+                    @Override
+                    public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
+                        try {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getLink_setting()));
+                            startActivity(browserIntent);
+                        }catch (Exception e){
+                            try {
+                                Toast.makeText(getActivity(), "Link Tidak Valid", Toast.LENGTH_SHORT).show();
+                            }catch (Exception ex){
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<NewResponse> call, Throwable t) {
+                        try {
+                            Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                        }catch (Exception e){
+
+                        }
+
+                    }
+                });
+            }
+        });
+        Profil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
+                Call<NewResponse> Corona = api.InfoProfilDesa();
+                Corona.enqueue(new Callback<NewResponse>() {
+                    @Override
+                    public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
+                        try {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getLink_setting()));
+                            startActivity(browserIntent);
+                        }catch (Exception e){
+                            try {
+                                Toast.makeText(getActivity(), "Link Tidak Valid", Toast.LENGTH_SHORT).show();
+                            }catch (Exception ex){
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<NewResponse> call, Throwable t) {
+                        try {
+                            Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                        }catch (Exception e){
+
+                        }
+
+                    }
+                });
             }
         });
     }

@@ -65,6 +65,18 @@ public class Data {
     @Nullable
     public Excerpt excerpt = new Excerpt();
 
+    @SerializedName("id_setting")
+    @Nullable
+    String id_setting;
+
+    @SerializedName("nama_setting")
+    @Nullable
+    String nama_setting;
+
+    @SerializedName("link_setting")
+    @Nullable
+    String link_setting;
+
     @Nullable
     public String getDate() {
         return date;
@@ -188,5 +200,32 @@ public class Data {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    @Nullable
+    public String getId_setting() {
+        return id_setting;
+    }
+
+    public void setId_setting(@Nullable String id_setting) {
+        this.id_setting = id_setting;
+    }
+
+    @Nullable
+    public String getNama_setting() {
+        return nama_setting;
+    }
+
+    public void setNama_setting(@Nullable String nama_setting) {
+        this.nama_setting = nama_setting;
+    }
+
+    @Nullable
+    public String getLink_setting() {
+        return link_setting;
+    }
+
+    public void setLink_setting(@Nullable String link_setting) {
+        this.link_setting = link_setting;
     }
 }
