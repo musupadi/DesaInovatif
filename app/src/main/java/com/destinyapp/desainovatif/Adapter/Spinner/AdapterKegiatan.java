@@ -1,4 +1,5 @@
-package com.destinyapp.desainovatif.Adapter;
+package com.destinyapp.desainovatif.Adapter.Spinner;
+
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,10 +17,9 @@ import com.destinyapp.desainovatif.R;
 
 import java.util.List;
 
-public class AdapterKategoriSurat extends ArrayAdapter<DataModel> {
-
-    public AdapterKategoriSurat(Context context, List<DataModel> list) {
-        super(context, 0, list);
+public class AdapterKegiatan extends ArrayAdapter<String> {
+    public AdapterKegiatan(Context context, String[] data) {
+        super(context, 0, data);
     }
 
     @NonNull
@@ -40,12 +41,9 @@ public class AdapterKategoriSurat extends ArrayAdapter<DataModel> {
         }
 
         TextView textSpinner = convertView.findViewById(R.id.tvSpinner);
-        TextView textId = convertView.findViewById(R.id.tvId);
-        DataModel currentItem = getItem(position);
-
+        String currentItem = getItem(position);
         if (currentItem != null) {
-            textSpinner.setText(currentItem.getNama_kategori_surat());
-            textId.setText(String.valueOf(currentItem.getId_surat_kategori()));
+            textSpinner.setText(currentItem);
         }
 
         return convertView;

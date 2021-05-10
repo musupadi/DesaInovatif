@@ -30,6 +30,7 @@ import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.BankSampah.BankSampah;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Berita.BeritaActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.ECommerce.ECommerceActivity;
+import com.destinyapp.desainovatif.Activity.ui.Menu.KemajuanDesaActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Pariwisata.PariwisataActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.SuratActivity;
 import com.destinyapp.desainovatif.Adapter.AdapterBanner;
@@ -449,7 +450,12 @@ public class HomeFragment extends Fragment {
         KemajuanDesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (ID_Desa == null || ID_Desa.isEmpty()){
+                    Toast.makeText(getActivity(), "Anda Harus Login untuk melihat menu ini", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(getActivity(), KemajuanDesaActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         Anggaran.setOnClickListener(new View.OnClickListener() {

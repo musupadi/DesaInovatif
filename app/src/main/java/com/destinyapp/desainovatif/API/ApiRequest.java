@@ -1,6 +1,7 @@
 package com.destinyapp.desainovatif.API;
 
 import com.destinyapp.desainovatif.Model.NewModel.Covid.ResponseCovid;
+import com.destinyapp.desainovatif.Model.NewModel.KontolFajar;
 import com.destinyapp.desainovatif.Model.NewModel.NewResponse;
 import com.destinyapp.desainovatif.Model.NewModel.Response;
 import com.destinyapp.desainovatif.Model.ResponseData;
@@ -309,7 +310,14 @@ public interface ApiRequest {
     @POST("laporan/list")
     Call<ResponseModel> ListLaporan(@Field("id_user") String id_user);
 
+    @FormUrlEncoded
+    @POST("kemajuan_desa/list_rw")
+    Call<ResponseModel> ListRW(@Field("id_desa") String id_desa);
+
     //GET
+    @GET("kemajuan_desa/get_kegiatan")
+    Call<KontolFajar> GetKegiatan();
+
     @GET("kat_surat")
     Call<ResponseModel> Kategori_Surat();
 

@@ -14,6 +14,7 @@
         android:textSize="0.1sp"
         android:id="@+id/tvWeb"/>
     <TextView
+        android:layout_margin="5dp"
         android:textSize="@dimen/text_xtra_large"
         android:fontFamily="@font/gotham"
         android:textColor="@color/Black"

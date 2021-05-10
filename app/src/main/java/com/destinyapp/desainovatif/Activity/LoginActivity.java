@@ -59,7 +59,13 @@ public class LoginActivity extends AppCompatActivity {
         login.enqueue(new Callback<NewResponse>() {
             @Override
             public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
-                dbHelper.SaveUser(user.getText().toString(),password.getText().toString(),response.body().getData().getNama_user(),response.body().getData().getFoto_user(),response.body().getData().getId_user(),response.body().getData().getId_desa(),response.body().getData().getLevel());
+                dbHelper.SaveUser(user.getText().toString(),
+                        password.getText().toString(),
+                        response.body().getData().getNama_user(),
+                        response.body().getData().getFoto_user(),
+                        response.body().getData().getId_user(),
+                        response.body().getData().getId_desa(),
+                        response.body().getData().getLevel());
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
                 finishAffinity();

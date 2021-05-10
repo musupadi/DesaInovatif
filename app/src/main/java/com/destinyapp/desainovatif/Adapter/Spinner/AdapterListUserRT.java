@@ -1,4 +1,4 @@
-package com.destinyapp.desainovatif.Adapter;
+package com.destinyapp.desainovatif.Adapter.Spinner;
 
 import android.content.Context;
 import android.view.LayoutInflater;

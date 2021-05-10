@@ -32,7 +32,6 @@ import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Adapter.AdapterKategoriLaporan;
-import com.destinyapp.desainovatif.Adapter.AdapterKategoriSurat;
 import com.destinyapp.desainovatif.BuildConfig;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;

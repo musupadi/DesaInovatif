@@ -374,6 +374,15 @@ public class DataModel {
     @Expose
     public String tgl_transaksi_bs;
 
+    //List RW
+    @SerializedName("id_rw")
+    @Expose
+    public String id_rw;
+
+    @SerializedName("nomor_rw")
+    @Expose
+    public String nomor_rw;
+
     //Reward Bank Sampah
     @SerializedName("id_reward_bs")
     @Expose
@@ -1261,5 +1270,21 @@ public class DataModel {
 
     public void setSyarat_sub_kategori(String syarat_sub_kategori) {
         this.syarat_sub_kategori = syarat_sub_kategori;
+    }
+
+    public String getId_rw() {
+        return id_rw;
+    }
+
+    public void setId_rw(String id_rw) {
+        this.id_rw = id_rw;
+    }
+
+    public String getNomor_rw() {
+        return nomor_rw;
+    }
+
+    public void setNomor_rw(String nomor_rw) {
+        this.nomor_rw = nomor_rw;
     }
 }
