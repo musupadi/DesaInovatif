@@ -6,5 +6,14 @@
         <item>Surat Pindah</item>
         <item>Surat RT</item>
     </string-array>
+    <string-array name="Kegiatan">
+        <item>rw</item>
+        <item>posyandu</item>
+        <item>karang taruna</item>
+        <item>lpm</item>
+        <item>pkk</item>
+        <item>bpd</item>
+        <item>ecovillage palayangan</item>
+    </string-array>
     <string name="title_activity_lokasi_bank_sampah">Map</string>
 </resources>

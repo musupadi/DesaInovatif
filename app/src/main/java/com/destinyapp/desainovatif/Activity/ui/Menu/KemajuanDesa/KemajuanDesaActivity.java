@@ -1,4 +1,4 @@
-package com.destinyapp.desainovatif.Activity.ui.Menu;
+package com.destinyapp.desainovatif.Activity.ui.Menu.KemajuanDesa;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,10 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
-import com.destinyapp.desainovatif.API.RetroServer;
 import com.destinyapp.desainovatif.API.RetroServer2;
-import com.destinyapp.desainovatif.Adapter.AdapterKegiatanDesa;
-import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKategoriSurat;
+import com.destinyapp.desainovatif.Adapter.AdapterKemajuanDesa;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKegiatan;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterListUserRW;
 import com.destinyapp.desainovatif.Method.Destiny;
@@ -44,6 +42,7 @@ public class KemajuanDesaActivity extends AppCompatActivity {
     private List<DataModel> mItems = new ArrayList<>();
     String Username,Password,Nama,Photo,ID,ID_Desa,Level;
     TextView ID_RW;
+    Boolean R_W=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,22 +67,28 @@ public class KemajuanDesaActivity extends AppCompatActivity {
         ID_RW = findViewById(R.id.tvIDRW);
         RW  = findViewById(R.id.spRW);
         RW.setVisibility(View.GONE);
-        getKegiatan();
+//        getKegiatan();
         Toast.makeText(KemajuanDesaActivity.this, Username, Toast.LENGTH_SHORT).show();
         Kegiatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0){
+                    R_W = false;
                     RW.setVisibility(View.GONE);
                 }else{
+                    R_W = true;
                     RW.setVisibility(View.VISIBLE);
                     getRW();
                     RW.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
-                            String clickedItems = clickedItem.getId_rw();
-                            ID_RW.setText(clickedItems);
+                           try {
+                               DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
+                               String clickedItems = clickedItem.getId_rw();
+                               ID_RW.setText(clickedItems);
+                           }catch (Exception e){
+
+                           }
                         }
 
                         @Override
@@ -138,22 +143,26 @@ public class KemajuanDesaActivity extends AppCompatActivity {
         });
     }
     private void DATA(){
-        mManager = new GridLayoutManager(KemajuanDesaActivity.this,3);
+        String available="";
+        if (R_W){
+            available=ID_RW.getText().toString();
+        }
+        mManager = new GridLayoutManager(KemajuanDesaActivity.this,1);
         recyclerView.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<KontolFajar> Data=api.GetKegiatan();
-        Data.enqueue(new Callback<KontolFajar>() {
+        Call<ResponseModel> Data=api.ListKemajuanDesa(ID_Desa,Kegiatan.getSelectedItem().toString(),available);
+        Data.enqueue(new Callback<ResponseModel>() {
             @Override
-            public void onResponse(Call<KontolFajar> call, Response<KontolFajar> response) {
-                data=response.body().getData();
-                mAdapter = new AdapterKegiatanDesa(KemajuanDesaActivity.this,data);
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                mItems=response.body().getData();
+                mAdapter = new AdapterKemajuanDesa(KemajuanDesaActivity.this,mItems);
                 recyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<KontolFajar> call, Throwable t) {
-                Toast.makeText(KemajuanDesaActivity.this, "Koneksi gagal", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(KemajuanDesaActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
             }
         });
     }

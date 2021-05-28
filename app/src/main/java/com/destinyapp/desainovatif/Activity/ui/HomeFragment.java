@@ -22,17 +22,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
-import com.destinyapp.desainovatif.API.RetroServer;
 import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.API.RetroServerCovid;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
-import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.BankSampah.BankSampah;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Berita.BeritaActivity;
-import com.destinyapp.desainovatif.Activity.ui.Menu.ECommerce.ECommerceActivity;
-import com.destinyapp.desainovatif.Activity.ui.Menu.KemajuanDesaActivity;
-import com.destinyapp.desainovatif.Activity.ui.Menu.Pariwisata.PariwisataActivity;
-import com.destinyapp.desainovatif.Activity.ui.Menu.SuratActivity;
+import com.destinyapp.desainovatif.Activity.ui.Menu.KemajuanDesa.KemajuanDesaActivity;
 import com.destinyapp.desainovatif.Adapter.AdapterBanner;
 import com.destinyapp.desainovatif.Adapter.AdapterBerita;
 import com.destinyapp.desainovatif.Method.Destiny;

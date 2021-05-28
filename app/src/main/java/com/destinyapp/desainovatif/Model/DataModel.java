@@ -41,6 +41,33 @@ public class DataModel {
     public String level;
 
 
+    //Kemajuan Desa
+    @SerializedName("id_kemajuan_desa")
+    @Expose
+    public String id_kemajuan_desa;
+
+    @SerializedName("kegiatan_kemajuan_desa")
+    @Expose
+    public String kegiatan_kemajuan_desa;
+
+    @SerializedName("nama_kemajuan_desa")
+    @Expose
+    public String nama_kemajuan_desa;
+
+    @SerializedName("deskripsi_kemajuan_desa")
+    @Expose
+    public String deskripsi_kemajuan_desa;
+
+    @SerializedName("cover_kemajuan_desa")
+    @Expose
+    public String cover_kemajuan_desa;
+
+    @SerializedName("tgl_kemajuan_desa")
+    @Expose
+    public String tgl_kemajuan_desa;
+
+
+
     //Banner
     @SerializedName("id_banner")
     @Expose
@@ -1286,5 +1313,53 @@ public class DataModel {
 
     public void setNomor_rw(String nomor_rw) {
         this.nomor_rw = nomor_rw;
+    }
+
+    public String getId_kemajuan_desa() {
+        return id_kemajuan_desa;
+    }
+
+    public void setId_kemajuan_desa(String id_kemajuan_desa) {
+        this.id_kemajuan_desa = id_kemajuan_desa;
+    }
+
+    public String getKegiatan_kemajuan_desa() {
+        return kegiatan_kemajuan_desa;
+    }
+
+    public void setKegiatan_kemajuan_desa(String kegiatan_kemajuan_desa) {
+        this.kegiatan_kemajuan_desa = kegiatan_kemajuan_desa;
+    }
+
+    public String getNama_kemajuan_desa() {
+        return nama_kemajuan_desa;
+    }
+
+    public void setNama_kemajuan_desa(String nama_kemajuan_desa) {
+        this.nama_kemajuan_desa = nama_kemajuan_desa;
+    }
+
+    public String getDeskripsi_kemajuan_desa() {
+        return deskripsi_kemajuan_desa;
+    }
+
+    public void setDeskripsi_kemajuan_desa(String deskripsi_kemajuan_desa) {
+        this.deskripsi_kemajuan_desa = deskripsi_kemajuan_desa;
+    }
+
+    public String getCover_kemajuan_desa() {
+        return cover_kemajuan_desa;
+    }
+
+    public void setCover_kemajuan_desa(String cover_kemajuan_desa) {
+        this.cover_kemajuan_desa = cover_kemajuan_desa;
+    }
+
+    public String getTgl_kemajuan_desa() {
+        return tgl_kemajuan_desa;
+    }
+
+    public void setTgl_kemajuan_desa(String tgl_kemajuan_desa) {
+        this.tgl_kemajuan_desa = tgl_kemajuan_desa;
     }
 }

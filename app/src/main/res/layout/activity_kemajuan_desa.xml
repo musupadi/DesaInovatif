@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ui.Menu.KemajuanDesaActivity">
+    tools:context=".Activity.ui.Menu.KemajuanDesa.KemajuanDesaActivity">
     <TextView
         android:layout_width="0.000001dp"
         android:layout_height="0.000001dp"
@@ -29,8 +29,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spKegiatan"
-                android:entries="@array/Surat"/>
+                android:entries="@array/Kegiatan"
+                android:layout_margin="10dp"/>
             <Spinner
+                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spRW"

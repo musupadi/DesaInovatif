@@ -314,6 +314,12 @@ public interface ApiRequest {
     @POST("kemajuan_desa/list_rw")
     Call<ResponseModel> ListRW(@Field("id_desa") String id_desa);
 
+    @FormUrlEncoded
+    @POST("kemajuan_desa/list")
+    Call<ResponseModel> ListKemajuanDesa(@Field("id_desa") String id_desa,
+                                         @Field("kegiatan") String kegiatan,
+                                         @Field("rw") String rw);
+
     //GET
     @GET("kemajuan_desa/get_kegiatan")
     Call<KontolFajar> GetKegiatan();

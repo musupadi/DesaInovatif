@@ -26,7 +26,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoAction"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.ui.Menu.KemajuanDesaActivity"></activity>
+        <activity
+            android:name=".Activity.ui.Menu.KemajuanDesa.DetailKemajuanDesa"
+            android:parentActivityName=".Activity.ui.Menu.KemajuanDesa.KemajuanDesaActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".Activity.ui.Menu.KemajuanDesa.KemajuanDesaActivity"
+            android:label="Kemajuan Desa"
+            android:parentActivityName=".Activity.MainActivity"
+            android:theme="@style/AppTheme" />
         <activity android:name=".Activity.ui.Menu.Covid.CovidActivity" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.Hadiah.DaftarRewardActivity"
