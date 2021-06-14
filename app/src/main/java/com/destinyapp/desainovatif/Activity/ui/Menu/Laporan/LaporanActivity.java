@@ -198,6 +198,8 @@ public class LaporanActivity extends AppCompatActivity {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostLaporan1(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                 RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -247,6 +249,8 @@ public class LaporanActivity extends AppCompatActivity {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostLaporan2(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                 RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -303,6 +307,8 @@ public class LaporanActivity extends AppCompatActivity {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostLaporan3(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                 RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -364,6 +370,8 @@ public class LaporanActivity extends AppCompatActivity {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostLaporan4(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                 RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -593,7 +601,7 @@ public class LaporanActivity extends AppCompatActivity {
     }
     private void GetKategori(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getProvinsi = api.Laporan_Kategori("2");
+        Call<ResponseModel> getProvinsi = api.Laporan_Kategori(destiny.AUTH(),destiny.Kunci(),"2");
         getProvinsi.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

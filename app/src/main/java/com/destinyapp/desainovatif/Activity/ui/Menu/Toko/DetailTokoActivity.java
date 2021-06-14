@@ -397,6 +397,8 @@ public class DetailTokoActivity extends AppCompatActivity {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostProduk(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaProduk.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Price),
@@ -439,6 +441,8 @@ public class DetailTokoActivity extends AppCompatActivity {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostProduk(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaProduk.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Price),
@@ -486,6 +490,8 @@ public class DetailTokoActivity extends AppCompatActivity {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostProduk(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaProduk.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Price),
@@ -538,6 +544,8 @@ public class DetailTokoActivity extends AppCompatActivity {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostProduk(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaProduk.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),Price),
@@ -613,7 +621,7 @@ public class DetailTokoActivity extends AppCompatActivity {
         mManager = new GridLayoutManager(DetailTokoActivity.this,1);
         recyclerProduct.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.Produk(id_toko);
+        Call<ResponseModel> KabarBerita = api.Produk(destiny.AUTH(),destiny.Kunci(),id_toko);
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -641,7 +649,7 @@ public class DetailTokoActivity extends AppCompatActivity {
         mManager = new LinearLayoutManager(DetailTokoActivity.this, LinearLayoutManager.HORIZONTAL,false);
         recyclerGallery.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.GalleryToko(id_toko);
+        Call<ResponseModel> KabarBerita = api.GalleryToko(destiny.AUTH(),destiny.Kunci(),id_toko);
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

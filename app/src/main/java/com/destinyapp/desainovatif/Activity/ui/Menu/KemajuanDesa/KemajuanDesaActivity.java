@@ -109,7 +109,7 @@ public class KemajuanDesaActivity extends AppCompatActivity {
     }
     private void getKegiatan(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<KontolFajar> Data=api.GetKegiatan();
+        Call<KontolFajar> Data=api.GetKegiatan(destiny.AUTH(),destiny.Kunci());
         Data.enqueue(new Callback<KontolFajar>() {
             @Override
             public void onResponse(Call<KontolFajar> call, Response<KontolFajar> response) {
@@ -127,7 +127,7 @@ public class KemajuanDesaActivity extends AppCompatActivity {
     }
     private void getRW(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data=api.ListRW(ID_Desa);
+        Call<ResponseModel> Data=api.ListRW(destiny.AUTH(),destiny.Kunci(),ID_Desa);
         Data.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -150,7 +150,7 @@ public class KemajuanDesaActivity extends AppCompatActivity {
         mManager = new GridLayoutManager(KemajuanDesaActivity.this,1);
         recyclerView.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data=api.ListKemajuanDesa(ID_Desa,Kegiatan.getSelectedItem().toString(),available);
+        Call<ResponseModel> Data=api.ListKemajuanDesa(destiny.AUTH(),destiny.Kunci(),ID_Desa,Kegiatan.getSelectedItem().toString(),available);
         Data.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

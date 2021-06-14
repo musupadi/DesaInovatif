@@ -460,7 +460,7 @@ public class EPasarFragment extends Fragment {
         mManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false);
         recyclerMyShop.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.MyToko(ID);
+        Call<ResponseModel> KabarBerita = api.MyToko(destiny.AUTH(),destiny.Kunci(),ID);
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -500,6 +500,8 @@ public class EPasarFragment extends Fragment {
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.
                 PostToko(
+                        destiny.AUTH(),
+                        RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                         RequestBody.create(MediaType.parse("text/plain"),ID),
                         RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                         RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
@@ -546,6 +548,8 @@ public class EPasarFragment extends Fragment {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostToko(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
@@ -597,6 +601,8 @@ public class EPasarFragment extends Fragment {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostToko(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
@@ -653,6 +659,8 @@ public class EPasarFragment extends Fragment {
 
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         Call<Ress> Data = api.PostToko(
+                destiny.AUTH(),
+                RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                 RequestBody.create(MediaType.parse("text/plain"),ID),
                 RequestBody.create(MediaType.parse("text/plain"),NamaToko.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"),NoToko.getText().toString()),
@@ -704,7 +712,7 @@ public class EPasarFragment extends Fragment {
         mManager = new GridLayoutManager(getActivity(),2);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.Toko("","");
+        Call<ResponseModel> KabarBerita = api.Toko(destiny.AUTH(),destiny.Kunci(),"","");
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

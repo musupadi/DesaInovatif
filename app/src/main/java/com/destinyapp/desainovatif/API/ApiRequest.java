@@ -23,58 +23,80 @@ import retrofit2.http.Query;
 public interface ApiRequest {
     @FormUrlEncoded
     @POST("auth/login")
-    Call<ResponseModel> login(@Field("username") String username,
+    Call<ResponseModel> login(@Header("Authorization") String authHeader,
+                              @Field("kunci_kamps") String kunci_kamps,
+                              @Field("username") String username,
                               @Field("password") String password);
 
     @FormUrlEncoded
     @POST("user/login")
-    Call<NewResponse> Login_user(@Field("no_hp") String no_hp,
+    Call<NewResponse> Login_user(@Header("Authorization") String authHeader,
+                                 @Field("kunci_kamps") String kunci_kamps,
+                                 @Field("no_hp") String no_hp,
                                  @Field("password") String password);
 
     @FormUrlEncoded
     @POST("surat")
     Call<ResponseModel> Surat(@Header("Authorization") String authHeader,
+                              @Field("kunci_kamps") String kunci_kamps,
                               @Field("namaSurat") String namaSurat);
 
     @FormUrlEncoded
     @POST("pecorine")
-    Call<ResponseData> Kyoko(@Field("no_hp") String no_hp);
+    Call<ResponseData> Kyoko(@Header("Authorization") String authHeader,
+                             @Field("kunci_kamps") String kunci_kamps,
+                             @Field("no_hp") String no_hp);
 
     @FormUrlEncoded
     @POST("toko")
-    Call<ResponseModel> Toko(@Field("id_toko") String id_toko,
-                              @Field("id_desa") String id_desa);
+    Call<ResponseModel> Toko(@Header("Authorization") String authHeader,
+                             @Field("kunci_kamps") String kunci_kamps,@Field("id_toko") String id_toko,
+                             @Field("id_desa") String id_desa);
 
     @FormUrlEncoded
     @POST("kat_surat/sub_kat")
-    Call<ResponseModel> SubKatSurat(@Field("id_surat_kategori") String id_surat_kategori);
+    Call<ResponseModel> SubKatSurat(@Header("Authorization") String authHeader,
+                                    @Field("kunci_kamps") String kunci_kamps,
+                                    @Field("id_surat_kategori") String id_surat_kategori);
 
     @FormUrlEncoded
     @POST("toko/my_toko")
-    Call<ResponseModel> MyToko(@Field("id_user") String id_user);
+    Call<ResponseModel> MyToko(@Header("Authorization") String authHeader,
+                               @Field("kunci_kamps") String kunci_kamps,
+                               @Field("id_user") String id_user);
 
     @FormUrlEncoded
     @POST("toko/gallery_produk")
-    Call<ResponseModel> GalleryProduk(@Field("id_produk") String id_produk);
+    Call<ResponseModel> GalleryProduk(@Header("Authorization") String authHeader,
+                                      @Field("kunci_kamps") String kunci_kamps,
+                                      @Field("id_produk") String id_produk);
 
     @FormUrlEncoded
     @POST("bank_sampah/reward")
-    Call<ResponseModel> ListRewardBankSampah(@Field("id_desa") String id_desa);
+    Call<ResponseModel> ListRewardBankSampah(@Header("Authorization") String authHeader,
+                                             @Field("kunci_kamps") String kunci_kamps,
+                                             @Field("id_desa") String id_desa);
 
 
     @FormUrlEncoded
     @POST("bank_sampah/daftar_jenis_sampah")
-    Call<ResponseModel> JenisSampah(@Field("id_desa") String id_desa);
+    Call<ResponseModel> JenisSampah(@Header("Authorization") String authHeader,
+                                    @Field("kunci_kamps") String kunci_kamps,
+                                    @Field("id_desa") String id_desa);
 
     @FormUrlEncoded
     @POST("bank_sampah/trans_reward")
-    Call<ResponseModel> TransaksiSampah(@Field("id_user") String id_user);
+    Call<ResponseModel> TransaksiSampah(@Header("Authorization") String authHeader,
+                                        @Field("kunci_kamps") String kunci_kamps,
+                                        @Field("id_user") String id_user);
 
 
 
     @FormUrlEncoded
     @POST("laporan/surat")
-    Call<ResponseModel> SuratLaporan(@Field("id_user") String id_user,
+    Call<ResponseModel> SuratLaporan(@Header("Authorization") String authHeader,
+                                     @Field("kunci_kamps") String kunci_kamps,
+                                     @Field("id_user") String id_user,
                                      @Field("id_surat_kategori") String id_surat_kategori,
                                      @Field("nama_surat") String nama_surat);
 
@@ -82,27 +104,35 @@ public interface ApiRequest {
 
     @FormUrlEncoded
     @POST("toko/gallery")
-    Call<ResponseModel> GalleryToko(@Field("id_toko") String id_toko);
+    Call<ResponseModel> GalleryToko(@Header("Authorization") String authHeader,
+                                    @Field("kunci_kamps") String kunci_kamps,
+                                    @Field("id_toko") String id_toko);
 
     @FormUrlEncoded
     @POST("user/list_user_rt")
-    Call<ResponseModel> ListUserRT(@Field("id_user") String id_user);
+    Call<ResponseModel> ListUserRT(@Header("Authorization") String authHeader,
+                                   @Field("kunci_kamps") String kunci_kamps,
+                                   @Field("id_user") String id_user);
 
     //Insert Surat 1
     @Multipart
     @POST("surat")
-    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
-                            @Part("id_user") RequestBody id_user,
-                            @Part("id_surat_kategori") RequestBody id_surat_kategori,
-                            @Part("nama_surat") RequestBody nama_surat,
-                            @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
-                            @Part("note_surat") RequestBody note_surat,
-                            @Part MultipartBody.Part FileSyarat1,
-                            @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+    Call<Ress> PostSurat(@Header("Authorization") String authHeader,
+                         @Part("kunci_kamps") RequestBody kunci_kamps,
+                         @Part("id_desa") RequestBody id_desa,
+                         @Part("id_user") RequestBody id_user,
+                         @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                         @Part("nama_surat") RequestBody nama_surat,
+                         @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                         @Part("note_surat") RequestBody note_surat,
+                         @Part MultipartBody.Part FileSyarat1,
+                         @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
 
     @Multipart
     @POST("surat")
-    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
+    Call<Ress> PostSurat(@Header("Authorization") String authHeader,
+                         @Part("kunci_kamps") RequestBody kunci_kamps,
+                         @Part("id_desa") RequestBody id_desa,
                          @Part("id_user") RequestBody id_user,
                          @Part("id_surat_kategori") RequestBody id_surat_kategori,
                          @Part("nama_surat") RequestBody nama_surat,
@@ -114,7 +144,9 @@ public interface ApiRequest {
 
     @Multipart
     @POST("surat")
-    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
+    Call<Ress> PostSurat(@Header("Authorization") String authHeader,
+                         @Part("kunci_kamps") RequestBody kunci_kamps,
+                         @Part("id_desa") RequestBody id_desa,
                          @Part("id_user") RequestBody id_user,
                          @Part("id_surat_kategori") RequestBody id_surat_kategori,
                          @Part("nama_surat") RequestBody nama_surat,
@@ -127,7 +159,9 @@ public interface ApiRequest {
 
     @Multipart
     @POST("surat")
-    Call<Ress> PostSurat(@Part("id_desa") RequestBody id_desa,
+    Call<Ress> PostSurat(@Header("Authorization") String authHeader,
+                         @Part("kunci_kamps") RequestBody kunci_kamps,
+                         @Part("id_desa") RequestBody id_desa,
                          @Part("id_user") RequestBody id_user,
                          @Part("id_surat_kategori") RequestBody id_surat_kategori,
                          @Part("nama_surat") RequestBody nama_surat,
@@ -143,17 +177,21 @@ public interface ApiRequest {
     //Insert Laporan 1
     @Multipart
     @POST("laporan/new")
-    Call<Ress> PostLaporan1(@Part("id_user") RequestBody id_user,
-                                     @Part("id_desa") RequestBody id_desa,
-                                     @Part("id_kategori") RequestBody id_kategori,
-                                     @Part("nama_laporan") RequestBody nama_laporan,
-                                     @Part("deskripsi_laporan") RequestBody deskripsi_laporan,
-                                     @Part MultipartBody.Part foto1);
+    Call<Ress> PostLaporan1(@Header("Authorization") String authHeader,
+                            @Part("kunci_kamps") RequestBody kunci_kamps,
+                            @Part("id_user") RequestBody id_user,
+                            @Part("id_desa") RequestBody id_desa,
+                            @Part("id_kategori") RequestBody id_kategori,
+                            @Part("nama_laporan") RequestBody nama_laporan,
+                            @Part("deskripsi_laporan") RequestBody deskripsi_laporan,
+                            @Part MultipartBody.Part foto1);
 
     //Insert Laporan 2
     @Multipart
     @POST("laporan/new")
-    Call<Ress> PostLaporan2(@Part("id_user") RequestBody id_user,
+    Call<Ress> PostLaporan2(@Header("Authorization") String authHeader,
+                            @Part("kunci_kamps") RequestBody kunci_kamps,
+                            @Part("id_user") RequestBody id_user,
                             @Part("id_desa") RequestBody id_desa,
                             @Part("id_kategori") RequestBody id_kategori,
                             @Part("nama_laporan") RequestBody nama_laporan,
@@ -164,7 +202,9 @@ public interface ApiRequest {
     //Insert Laporan 3
     @Multipart
     @POST("laporan/new")
-    Call<Ress> PostLaporan3(@Part("id_user") RequestBody id_user,
+    Call<Ress> PostLaporan3(@Header("Authorization") String authHeader,
+                            @Part("kunci_kamps") RequestBody kunci_kamps,
+                            @Part("id_user") RequestBody id_user,
                             @Part("id_desa") RequestBody id_desa,
                             @Part("id_kategori") RequestBody id_kategori,
                             @Part("nama_laporan") RequestBody nama_laporan,
@@ -176,7 +216,9 @@ public interface ApiRequest {
     //Insert Laporan 4
     @Multipart
     @POST("laporan/new")
-    Call<Ress> PostLaporan4(@Part("id_user") RequestBody id_user,
+    Call<Ress> PostLaporan4(@Header("Authorization") String authHeader,
+                            @Part("kunci_kamps") RequestBody kunci_kamps,
+                            @Part("id_user") RequestBody id_user,
                             @Part("id_desa") RequestBody id_desa,
                             @Part("id_kategori") RequestBody id_kategori,
                             @Part("nama_laporan") RequestBody nama_laporan,
@@ -189,16 +231,20 @@ public interface ApiRequest {
     //Insert Produk 1
     @Multipart
     @POST("toko/produk_ins")
-    Call<Ress> PostProduk(@Part("id_toko") RequestBody id_toko,
-                                 @Part("nama_produk") RequestBody nama_produk,
-                                 @Part("harga_produk") RequestBody harga_produk,
-                                 @Part("deskripsi_produk") RequestBody deskripsi_produk,
-                                 @Part MultipartBody.Part foto1);
+    Call<Ress> PostProduk(@Header("Authorization") String authHeader,
+                          @Part("kunci_kamps") RequestBody kunci_kamps,
+                          @Part("id_toko") RequestBody id_toko,
+                          @Part("nama_produk") RequestBody nama_produk,
+                          @Part("harga_produk") RequestBody harga_produk,
+                          @Part("deskripsi_produk") RequestBody deskripsi_produk,
+                          @Part MultipartBody.Part foto1);
 
     //Insert Produk 2
     @Multipart
     @POST("toko/produk_ins")
-    Call<Ress> PostProduk(@Part("id_toko") RequestBody id_toko,
+    Call<Ress> PostProduk(@Header("Authorization") String authHeader,
+                          @Part("kunci_kamps") RequestBody kunci_kamps,
+                          @Part("id_toko") RequestBody id_toko,
                           @Part("nama_produk") RequestBody nama_produk,
                           @Part("harga_produk") RequestBody harga_produk,
                           @Part("deskripsi_produk") RequestBody deskripsi_produk,
@@ -208,7 +254,9 @@ public interface ApiRequest {
     //Insert Produk 3
     @Multipart
     @POST("toko/produk_ins")
-    Call<Ress> PostProduk(@Part("id_toko") RequestBody id_toko,
+    Call<Ress> PostProduk(@Header("Authorization") String authHeader,
+                          @Part("kunci_kamps") RequestBody kunci_kamps,
+                          @Part("id_toko") RequestBody id_toko,
                           @Part("nama_produk") RequestBody nama_produk,
                           @Part("harga_produk") RequestBody harga_produk,
                           @Part("deskripsi_produk") RequestBody deskripsi_produk,
@@ -219,7 +267,9 @@ public interface ApiRequest {
     //Insert Produk 4
     @Multipart
     @POST("toko/produk_ins")
-    Call<Ress> PostProduk(@Part("id_toko") RequestBody id_toko,
+    Call<Ress> PostProduk(@Header("Authorization") String authHeader,
+                          @Part("kunci_kamps") RequestBody kunci_kamps,
+                          @Part("id_toko") RequestBody id_toko,
                           @Part("nama_produk") RequestBody nama_produk,
                           @Part("harga_produk") RequestBody harga_produk,
                           @Part("deskripsi_produk") RequestBody deskripsi_produk,
@@ -231,7 +281,9 @@ public interface ApiRequest {
     //Toko 1
     @Multipart
     @POST("toko/input_toko")
-    Call<Ress> PostToko(@Part("id_user") RequestBody id_user,
+    Call<Ress> PostToko(@Header("Authorization") String authHeader,
+                        @Part("kunci_kamps") RequestBody kunci_kamps,
+                        @Part("id_user") RequestBody id_user,
                         @Part("nama_toko") RequestBody nama_toko,
                         @Part("no_hp_toko") RequestBody no_hp_toko,
                         @Part("deskripsi_toko") RequestBody deskripsi_toko,
@@ -240,7 +292,9 @@ public interface ApiRequest {
 
     @Multipart
     @POST("toko/input_toko")
-    Call<Ress> PostToko(@Part("id_user") RequestBody id_user,
+    Call<Ress> PostToko(@Header("Authorization") String authHeader,
+                        @Part("kunci_kamps") RequestBody kunci_kamps,
+                        @Part("id_user") RequestBody id_user,
                         @Part("nama_toko") RequestBody nama_toko,
                         @Part("no_hp_toko") RequestBody no_hp_toko,
                         @Part("deskripsi_toko") RequestBody deskripsi_toko,
@@ -250,7 +304,9 @@ public interface ApiRequest {
 
     @Multipart
     @POST("toko/input_toko")
-    Call<Ress> PostToko(@Part("id_user") RequestBody id_user,
+    Call<Ress> PostToko(@Header("Authorization") String authHeader,
+                        @Part("kunci_kamps") RequestBody kunci_kamps,
+                        @Part("id_user") RequestBody id_user,
                         @Part("nama_toko") RequestBody nama_toko,
                         @Part("no_hp_toko") RequestBody no_hp_toko,
                         @Part("deskripsi_toko") RequestBody deskripsi_toko,
@@ -261,7 +317,9 @@ public interface ApiRequest {
 
     @Multipart
     @POST("toko/input_toko")
-    Call<Ress> PostToko(@Part("id_user") RequestBody id_user,
+    Call<Ress> PostToko(@Header("Authorization") String authHeader,
+                        @Part("kunci_kamps") RequestBody kunci_kamps,
+                        @Part("id_user") RequestBody id_user,
                         @Part("nama_toko") RequestBody nama_toko,
                         @Part("no_hp_toko") RequestBody no_hp_toko,
                         @Part("deskripsi_toko") RequestBody deskripsi_toko,
@@ -273,98 +331,135 @@ public interface ApiRequest {
 
     @FormUrlEncoded
     @POST("bank_sampah/saldo")
-    Call<NewResponse> SaldoBankSampah(@Field("id_user") String id_user);
+    Call<NewResponse> SaldoBankSampah(@Header("Authorization") String authHeader,
+                                      @Field("kunci_kamps") String kunci_kamps,
+                                      @Field("id_user") String id_user);
 
     @FormUrlEncoded
     @POST("bank_sampah/ambil_reward")
-    Call<Ress> AmbilReward(@Field("id_user") String id_user,
-                                  @Field("id_reward_bs") String id_reward_bs,
-                                  @Field("qty") String qty,
-                                  @Field("id_desa") String id_desa);
+    Call<Ress> AmbilReward(@Header("Authorization") String authHeader,
+                           @Field("kunci_kamps") String kunci_kamps,
+                           @Field("id_user") String id_user,
+                           @Field("id_reward_bs") String id_reward_bs,
+                           @Field("qty") String qty,
+                           @Field("id_desa") String id_desa);
 
     @FormUrlEncoded
     @POST("toko/produk")
-    Call<ResponseModel> Produk(@Field("id_toko") String id_toko);
+    Call<ResponseModel> Produk(@Header("Authorization") String authHeader,
+                               @Field("kunci_kamps") String kunci_kamps,
+                               @Field("id_toko") String id_toko);
 
     @FormUrlEncoded
     @POST("bank_sampah/lokasi")
-    Call<ResponseModel> LokasiBankSampah(@Field("id_desa") String id_desa);
+    Call<ResponseModel> LokasiBankSampah(@Header("Authorization") String authHeader,
+                                         @Field("kunci_kamps") String kunci_kamps,
+                                         @Field("id_desa") String id_desa);
 
     @FormUrlEncoded
     @POST("surat/list")
-    Call<ResponseModel> GetSurat(@Field("id_user") String id_user);
+    Call<ResponseModel> GetSurat(@Header("Authorization") String authHeader,
+                                 @Field("kunci_kamps") String kunci_kamps,
+                                 @Field("id_user") String id_user);
 
     @FormUrlEncoded
     @POST("user/detail")
-    Call<NewResponse> user_detail(@Field("id_user") String id_user);
+    Call<NewResponse> user_detail(@Header("Authorization") String authHeader,
+                                  @Field("kunci_kamps") String kunci_kamps,
+                                  @Field("id_user") String id_user);
 
     @FormUrlEncoded
     @POST("berita_bogor")
-    Call<Response> Berita_bogor(@Field("page") Integer page);
+    Call<Response> Berita_bogor(@Header("Authorization") String authHeader,
+                                @Field("kunci_kamps") String kunci_kamps,
+                                @Field("page") Integer page);
 
     @FormUrlEncoded
     @POST("laporan/kategori")
-    Call<ResponseModel> Laporan_Kategori(@Field("id_desa") String id_desa);
+    Call<ResponseModel> Laporan_Kategori(@Header("Authorization") String authHeader,
+                                         @Field("kunci_kamps") String kunci_kamps,
+                                         @Field("id_desa") String id_desa);
 
     @FormUrlEncoded
     @POST("laporan/list")
-    Call<ResponseModel> ListLaporan(@Field("id_user") String id_user);
+    Call<ResponseModel> ListLaporan(@Header("Authorization") String authHeader,
+                                    @Field("kunci_kamps") String kunci_kamps,
+                                    @Field("id_user") String id_user);
 
     @FormUrlEncoded
     @POST("kemajuan_desa/list_rw")
-    Call<ResponseModel> ListRW(@Field("id_desa") String id_desa);
+    Call<ResponseModel> ListRW(@Header("Authorization") String authHeader,
+                               @Field("kunci_kamps") String kunci_kamps,
+                               @Field("id_desa") String id_desa);
 
     @FormUrlEncoded
     @POST("kemajuan_desa/list")
-    Call<ResponseModel> ListKemajuanDesa(@Field("id_desa") String id_desa,
+    Call<ResponseModel> ListKemajuanDesa(@Header("Authorization") String authHeader,
+                                         @Field("kunci_kamps") String kunci_kamps,
+                                         @Field("id_desa") String id_desa,
                                          @Field("kegiatan") String kegiatan,
                                          @Field("rw") String rw);
 
     //GET
     @GET("kemajuan_desa/get_kegiatan")
-    Call<KontolFajar> GetKegiatan();
+    Call<KontolFajar> GetKegiatan(@Header("Authorization") String authHeader,
+                                  @Query("kunci_kamps") String kunci_kamps);
 
     @GET("kat_surat")
-    Call<ResponseModel> Kategori_Surat();
+    Call<ResponseModel> Kategori_Surat(@Header("Authorization") String authHeader,
+                                       @Query("kunci_kamps") String kunci_kamps);
 
     @GET("info/covid")
-    Call<NewResponse> InfoCovid();
+    Call<NewResponse> InfoCovid(@Header("Authorization") String authHeader,
+                                @Query("kunci_kamps") String kunci_kamps);
 
     @GET("info/anggaran")
-    Call<NewResponse> InfoAnggaran();
+    Call<NewResponse> InfoAnggaran(@Header("Authorization") String authHeader,
+                                   @Query("kunci_kamps") String kunci_kamps);
 
     @GET("info/bansos")
-    Call<NewResponse> InfoBansos();
+    Call<NewResponse> InfoBansos(@Header("Authorization") String authHeader,
+                                 @Query("kunci_kamps") String kunci_kamps);
 
     @GET("info/profil_desa")
-    Call<NewResponse> InfoProfilDesa();
+    Call<NewResponse> InfoProfilDesa(@Header("Authorization") String authHeader,
+                                     @Query("kunci_kamps") String kunci_kamps);
 
     @GET("info/umkm")
-    Call<NewResponse> InfoUMKM();
+    Call<NewResponse> InfoUMKM(@Header("Authorization") String authHeader,
+                               @Query("kunci_kamps") String kunci_kamps);
 
     @GET("info/dpt")
-    Call<NewResponse> InfoDPT();
+    Call<NewResponse> InfoDPT(@Header("Authorization") String authHeader,
+                              @Query("kunci_kamps") String kunci_kamps);
 
 //    @GET("surat/list")
 //    Call<ResponseModel> GetSurat(@Query("id_user") String id_user);
 
     @GET("laporan/kategori")
-    Call<ResponseModel> Kategori_Laporan();
+    Call<ResponseModel> Kategori_Laporan(@Header("Authorization") String authHeader,
+                                         @Query("kunci_kamps") String kunci_kamps);
 
     @GET("surat")
-    Call<ResponseModel> Surat(@Header("Authorization") String authHeader);
+    Call<ResponseModel> Surat(@Header("Authorization") String authHeader,
+                              @Query("kunci_kamps") String kunci_kamps);
 
     @GET("berita")
-    Call<ResponseModel> Berita(@Header("Authorization") String authHeader);
+    Call<ResponseModel> Berita(@Header("Authorization") String authHeader,
+                               @Query("kunci_kamps") String kunci_kamps);
 
     @FormUrlEncoded
     @POST("pariwisata")
-    Call<ResponseModel> Pariwisata(@Field("id_desa") String id_desa);
+    Call<ResponseModel> Pariwisata(@Header("Authorization") String authHeader,
+                                   @Field("kunci_kamps") String kunci_kamps,
+                                   @Field("id_desa") String id_desa);
 
     @GET("banner")
-    Call<ResponseModel> Banner();
+    Call<ResponseModel> Banner(@Header("Authorization") String authHeader,
+                               @Query("kunci_kamps") String kunci_kamps);
 
 
     @GET("prov.json")
-    Call<ResponseCovid> Covid();
+    Call<ResponseCovid> Covid(@Header("Authorization") String authHeader,
+                              @Query("kunci_kamps") String kunci_kamps);
 }

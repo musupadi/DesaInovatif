@@ -2,6 +2,7 @@ package com.destinyapp.desainovatif.Method;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -24,6 +25,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Destiny {
+    public String Kunci(){
+        String Key = "hazxclkadkSA0Ijsad20sl02335sjlso20";
+        return Key;
+    }
+    public String AUTH(){
+        String username = "admin_kampung_db_key";
+        String password = "hp-15db000wm5asus4320xmsigl4450sonyxz1premium";
+
+        String base = username+":"+password;
+
+        String authHeader = "Basic "+ Base64.encodeToString(base.getBytes(),Base64.NO_WRAP);
+        return authHeader;
+    }
     public String FilterTextToJava(String text){
         String replaces = text.replace("</p>\\r\\n<ol>\\r\\n<li>","");
         String replace1 = replaces.replace("<p>","");
@@ -75,7 +89,7 @@ public class Destiny {
     public void AutoLogin(String username, String password, Context ctx){
         DB_Helper dbHelper = new DB_Helper(ctx);
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        final Call<ResponseModel> login =api.login(username,password);
+        final Call<ResponseModel> login =api.login(AUTH(),Kunci(),username,password);
         login.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

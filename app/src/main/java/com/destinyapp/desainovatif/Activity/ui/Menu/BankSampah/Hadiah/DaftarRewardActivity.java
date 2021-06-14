@@ -60,7 +60,7 @@ public class DaftarRewardActivity extends AppCompatActivity {
         mManager = new LinearLayoutManager(DaftarRewardActivity.this,RecyclerView.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.ListRewardBankSampah(ID_Desa);
+        Call<ResponseModel> Data = api.ListRewardBankSampah(destiny.AUTH(),destiny.Kunci(),ID_Desa);
         Data.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -84,7 +84,7 @@ public class DaftarRewardActivity extends AppCompatActivity {
     }
     private void GetSaldo(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<NewResponse> saldoBankSampah = api.SaldoBankSampah(ID);
+        Call<NewResponse> saldoBankSampah = api.SaldoBankSampah(destiny.AUTH(),destiny.Kunci(),ID);
         saldoBankSampah.enqueue(new Callback<NewResponse>() {
             @Override
             public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {

@@ -18,6 +18,7 @@ import com.destinyapp.desainovatif.Activity.ui.Menu.BankSampah.Jenis.JenisSampah
 import com.destinyapp.desainovatif.Activity.ui.Menu.BankSampah.Lokasi.LokasiBankSampahActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.BankSampah.Lokasi.LokasiSampah;
 import com.destinyapp.desainovatif.Activity.ui.Menu.BankSampah.Transaksi.TransaksiSampahActivity;
+import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.NewModel.NewResponse;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.R;
@@ -32,10 +33,12 @@ public class BankSampah extends AppCompatActivity {
     TextView Saldo;
     String Username,Password,Nama,Photo,ID,ID_Desa;
     DB_Helper dbHelper;
+    Destiny destiny;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_sampah);
+        destiny = new Destiny();
         Saldo = findViewById(R.id.tvSaldo);
         Lokasi = findViewById(R.id.linearLokasi);
         Transaksi = findViewById(R.id.linearTransaksi);
@@ -85,7 +88,7 @@ public class BankSampah extends AppCompatActivity {
     }
     private void GetSaldo(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<NewResponse> saldoBankSampah = api.SaldoBankSampah(ID);
+        Call<NewResponse> saldoBankSampah = api.SaldoBankSampah(destiny.AUTH(),destiny.Kunci(),ID);
         saldoBankSampah.enqueue(new Callback<NewResponse>() {
             @Override
             public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {

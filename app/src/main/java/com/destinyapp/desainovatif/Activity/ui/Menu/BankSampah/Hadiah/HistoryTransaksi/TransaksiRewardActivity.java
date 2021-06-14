@@ -58,7 +58,7 @@ public class TransaksiRewardActivity extends AppCompatActivity {
         mManager = new LinearLayoutManager(TransaksiRewardActivity.this,RecyclerView.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.TransaksiSampah(ID);
+        Call<ResponseModel> Data = api.TransaksiSampah(destiny.AUTH(),destiny.Kunci(),ID);
         Data.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

@@ -63,7 +63,7 @@ public class BeritaActivity extends AppCompatActivity {
         mManager = new LinearLayoutManager(BeritaActivity.this,RecyclerView.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<com.destinyapp.desainovatif.Model.NewModel.Response> KabarBerita = api.Berita_bogor(1);
+        Call<com.destinyapp.desainovatif.Model.NewModel.Response> KabarBerita = api.Berita_bogor(destiny.AUTH(),destiny.Kunci(),1);
         KabarBerita.enqueue(new Callback<com.destinyapp.desainovatif.Model.NewModel.Response>() {
             @Override
             public void onResponse(Call<com.destinyapp.desainovatif.Model.NewModel.Response> call, retrofit2.Response<com.destinyapp.desainovatif.Model.NewModel.Response> response) {

@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Laporan.LaporanActivity;
+import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.R;
@@ -36,10 +37,12 @@ public class LokasiSampah extends AppCompatActivity implements OnMapReadyCallbac
     private List<DataModel> mItems = new ArrayList<>();
     String Username,Password,Nama,Photo,ID,ID_Desa;
     DB_Helper dbHelper;
+    Destiny destiny;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lokasi_sampah);
+        destiny=new Destiny();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -79,7 +82,7 @@ public class LokasiSampah extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
         mMap.clear();
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> ListBS = api.LokasiBankSampah(ID_Desa);
+        Call<ResponseModel> ListBS = api.LokasiBankSampah(destiny.AUTH(),destiny.Kunci(),ID_Desa);
         ListBS.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

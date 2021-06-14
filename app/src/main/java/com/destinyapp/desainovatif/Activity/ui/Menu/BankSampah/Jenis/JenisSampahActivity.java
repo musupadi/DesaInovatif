@@ -59,7 +59,7 @@ public class JenisSampahActivity extends AppCompatActivity {
         mManager = new LinearLayoutManager(JenisSampahActivity.this,RecyclerView.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.JenisSampah(ID_Desa);
+        Call<ResponseModel> Data = api.JenisSampah(destiny.AUTH(),destiny.Kunci(),ID_Desa);
         Data.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

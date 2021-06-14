@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
 import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.NewModel.NewResponse;
 import com.destinyapp.desainovatif.Model.ResponseData;
 import com.destinyapp.desainovatif.Model.ResponseModel;
@@ -28,10 +29,12 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout login;
     DB_Helper dbHelper;
     EditText user,password;
+    Destiny destiny;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        destiny = new Destiny();
         Declaration();
         OnClick();
     }
@@ -55,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         pd.show();
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        final Call<NewResponse> login =api.Login_user(user.getText().toString(),password.getText().toString());
+        final Call<NewResponse> login =api.Login_user(destiny.AUTH(),destiny.Kunci(),user.getText().toString(),password.getText().toString());
         login.enqueue(new Callback<NewResponse>() {
             @Override
             public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {
@@ -105,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void GetID(String number){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        final Call<ResponseData> Data =api.Kyoko(number);
+        final Call<ResponseData> Data =api.Kyoko(destiny.AUTH(),destiny.Kunci(),number);
         Data.enqueue(new Callback<ResponseData>() {
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {

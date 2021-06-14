@@ -262,7 +262,7 @@ public class LayananDesaFragment extends Fragment {
     }
     private void GetSubKategori(String id){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getProvinsi = api.SubKatSurat(id);
+        Call<ResponseModel> getProvinsi = api.SubKatSurat(destiny.AUTH(),destiny.Kunci(),id);
         getProvinsi.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -283,7 +283,7 @@ public class LayananDesaFragment extends Fragment {
     }
     private void GetOrangBersangkutan(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getProvinsi = api.ListUserRT(ID);
+        Call<ResponseModel> getProvinsi = api.ListUserRT(destiny.AUTH(),destiny.Kunci(),ID);
         getProvinsi.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -304,7 +304,7 @@ public class LayananDesaFragment extends Fragment {
     }
     private void GetKategori(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getProvinsi = api.Kategori_Surat();
+        Call<ResponseModel> getProvinsi = api.Kategori_Surat(destiny.AUTH(),destiny.Kunci());
         getProvinsi.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -545,6 +545,8 @@ public class LayananDesaFragment extends Fragment {
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         if (Level.equals("member")){
             Call<Ress> Surat = api.PostSurat(
+                    destiny.AUTH(),
+                    RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -574,6 +576,8 @@ public class LayananDesaFragment extends Fragment {
             });
         }else{
             Call<Ress> Surat = api.PostSurat(
+                    destiny.AUTH(),
+                    RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -622,6 +626,8 @@ public class LayananDesaFragment extends Fragment {
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         if (Level.equals("member")){
             Call<Ress> Surat = api.PostSurat(
+                    destiny.AUTH(),
+                    RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -652,6 +658,8 @@ public class LayananDesaFragment extends Fragment {
             });
         }else{
             Call<Ress> Surat = api.PostSurat(
+                    destiny.AUTH(),
+                    RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -704,6 +712,8 @@ public class LayananDesaFragment extends Fragment {
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         if (Level.equals("member")){
             Call<Ress> Surat = api.PostSurat(
+                    destiny.AUTH(),
+                    RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -735,6 +745,8 @@ public class LayananDesaFragment extends Fragment {
             });
         }else{
             Call<Ress> Surat = api.PostSurat(
+                    destiny.AUTH(),
+                    RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -792,6 +804,8 @@ public class LayananDesaFragment extends Fragment {
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         if (Level.equals("member")){
             Call<Ress> Surat = api.PostSurat(
+                    destiny.AUTH(),
+                    RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -824,6 +838,8 @@ public class LayananDesaFragment extends Fragment {
             });
         }else{
             Call<Ress> Surat = api.PostSurat(
+                    destiny.AUTH(),
+                    RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
                     RequestBody.create(MediaType.parse("text/plain"),kat.getText().toString()),
@@ -862,7 +878,7 @@ public class LayananDesaFragment extends Fragment {
         pd.show();
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Surat = api.SuratLaporan(ID,kat.getText().toString(),NamaSurat.getText().toString());
+        Call<ResponseModel> Surat = api.SuratLaporan(destiny.AUTH(),destiny.Kunci(),ID,kat.getText().toString(),NamaSurat.getText().toString());
         Surat.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -891,7 +907,7 @@ public class LayananDesaFragment extends Fragment {
         mManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Surat = api.GetSurat(ID);
+        Call<ResponseModel> Surat = api.GetSurat(destiny.AUTH(),destiny.Kunci(),ID);
         Surat.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

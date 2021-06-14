@@ -100,7 +100,7 @@ public class DetailProductActivity extends AppCompatActivity {
         mManager = new LinearLayoutManager(DetailProductActivity.this, LinearLayoutManager.HORIZONTAL,false);
         recyclerGallery.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.GalleryProduk(id);
+        Call<ResponseModel> KabarBerita = api.GalleryProduk(destiny.AUTH(),destiny.Kunci(),id);
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

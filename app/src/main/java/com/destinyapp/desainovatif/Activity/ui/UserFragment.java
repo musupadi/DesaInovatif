@@ -76,7 +76,7 @@ public class UserFragment extends Fragment {
             }
         }
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<NewResponse> User = api.user_detail(ID);
+        Call<NewResponse> User = api.user_detail(destiny.AUTH(),destiny.Kunci(),ID);
         User.enqueue(new Callback<NewResponse>() {
             @Override
             public void onResponse(Call<NewResponse> call, Response<NewResponse> response) {

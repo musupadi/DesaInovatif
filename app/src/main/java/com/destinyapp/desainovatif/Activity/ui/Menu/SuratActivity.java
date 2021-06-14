@@ -107,7 +107,7 @@ public class SuratActivity extends AppCompatActivity {
         mManager = new LinearLayoutManager(SuratActivity.this, LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.GetSurat(ID);
+        Call<ResponseModel> KabarBerita = api.GetSurat(destiny.AUTH(),destiny.Kunci(),ID);
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

@@ -65,7 +65,7 @@ public class PariwisataActivity extends AppCompatActivity {
         mManager = new LinearLayoutManager(PariwisataActivity.this,RecyclerView.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.Pariwisata(ID_Desa);
+        Call<ResponseModel> KabarBerita = api.Pariwisata(destiny.AUTH(),destiny.Kunci(),ID_Desa);
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

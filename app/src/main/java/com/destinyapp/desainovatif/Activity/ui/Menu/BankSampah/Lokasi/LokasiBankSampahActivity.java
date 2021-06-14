@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
 import com.destinyapp.desainovatif.Model.ResponseModel;
 import com.destinyapp.desainovatif.R;
@@ -32,6 +33,7 @@ public class LokasiBankSampahActivity extends FragmentActivity implements OnMapR
 
     private GoogleMap mMap;
     private List<DataModel> mItems = new ArrayList<>();
+    Destiny destiny;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class LokasiBankSampahActivity extends FragmentActivity implements OnMapR
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        destiny=new Destiny();
         // Add a marker in Sydney and move the camera
         LatLng latLng = new LatLng(-6.2468965, 106.85238361358644);
         BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.bogor_maju);
@@ -70,7 +72,7 @@ public class LokasiBankSampahActivity extends FragmentActivity implements OnMapR
     }
     private void SuperLogic(final GoogleMap googleMap){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> ListBS = api.LokasiBankSampah("2");
+        Call<ResponseModel> ListBS = api.LokasiBankSampah(destiny.AUTH(),destiny.Kunci(),"2");
         ListBS.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

@@ -148,7 +148,7 @@ public class HomeFragment extends Fragment {
 //        AHeader.setAnimation("loading.json");
 //        AHeader.playAnimation();
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> KabarBerita = api.Banner();
+        Call<ResponseModel> KabarBerita = api.Banner(destiny.AUTH(),destiny.Kunci());
         KabarBerita.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, retrofit2.Response<ResponseModel> response) {
@@ -264,7 +264,7 @@ public class HomeFragment extends Fragment {
 
     private void GetCovid(){
         ApiRequest api = RetroServerCovid.getClient().create(ApiRequest.class);
-        Call<ResponseCovid> Corona = api.Covid();
+        Call<ResponseCovid> Corona = api.Covid(destiny.AUTH(),destiny.Kunci());
         Corona.enqueue(new Callback<ResponseCovid>() {
             @Override
             public void onResponse(Call<ResponseCovid> call, retrofit2.Response<ResponseCovid> response) {
@@ -315,7 +315,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-                Call<NewResponse> Corona = api.InfoCovid();
+                Call<NewResponse> Corona = api.InfoCovid(destiny.AUTH(),destiny.Kunci());
                 Corona.enqueue(new Callback<NewResponse>() {
                     @Override
                     public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
@@ -350,7 +350,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-                Call<NewResponse> Corona = api.InfoUMKM();
+                Call<NewResponse> Corona = api.InfoUMKM(destiny.AUTH(),destiny.Kunci());
                 Corona.enqueue(new Callback<NewResponse>() {
                     @Override
                     public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
@@ -382,7 +382,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-                Call<NewResponse> Corona = api.InfoBansos();
+                Call<NewResponse> Corona = api.InfoBansos(destiny.AUTH(),destiny.Kunci());
                 Corona.enqueue(new Callback<NewResponse>() {
                     @Override
                     public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
@@ -414,7 +414,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-                Call<NewResponse> Corona = api.InfoDPT();
+                Call<NewResponse> Corona = api.InfoDPT(destiny.AUTH(),destiny.Kunci());
                 Corona.enqueue(new Callback<NewResponse>() {
                     @Override
                     public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
@@ -457,7 +457,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-                Call<NewResponse> Corona = api.InfoAnggaran();
+                Call<NewResponse> Corona = api.InfoAnggaran(destiny.AUTH(),destiny.Kunci());
                 Corona.enqueue(new Callback<NewResponse>() {
                     @Override
                     public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
@@ -489,7 +489,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-                Call<NewResponse> Corona = api.InfoProfilDesa();
+                Call<NewResponse> Corona = api.InfoProfilDesa(destiny.AUTH(),destiny.Kunci());
                 Corona.enqueue(new Callback<NewResponse>() {
                     @Override
                     public void onResponse(Call<NewResponse> call, retrofit2.Response<NewResponse> response) {
@@ -522,7 +522,7 @@ public class HomeFragment extends Fragment {
         mManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<Response> KabarBerita = api.Berita_bogor(1);
+        Call<Response> KabarBerita = api.Berita_bogor(destiny.AUTH(),destiny.Kunci(),1);
         KabarBerita.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {

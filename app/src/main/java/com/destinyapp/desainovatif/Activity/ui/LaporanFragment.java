@@ -92,7 +92,7 @@ public class LaporanFragment extends Fragment {
         mManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data = api.ListLaporan(ID);
+        Call<ResponseModel> Data = api.ListLaporan(destiny.AUTH(),destiny.Kunci(),ID);
         Data.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
