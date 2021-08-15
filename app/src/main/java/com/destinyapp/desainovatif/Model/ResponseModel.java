@@ -18,6 +18,11 @@ public class ResponseModel {
     @Nullable
     public String statusMessage;
 
+    @SerializedName("message")
+    @Expose
+    @Nullable
+    public String Message;
+
     @SerializedName("data")
     @Nullable
     List<DataModel> data;
@@ -47,5 +52,14 @@ public class ResponseModel {
 
     public void setData(@Nullable List<DataModel> data) {
         this.data = data;
+    }
+
+    @Nullable
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(@Nullable String message) {
+        Message = message;
     }
 }

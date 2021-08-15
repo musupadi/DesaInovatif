@@ -39,7 +39,7 @@
     <!-- Button Default -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/Secondary"/>
+            <solid android:color="@color/Orange"/>
             <corners android:radius="500dp"/>
         </shape>
     </item>

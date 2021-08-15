@@ -114,7 +114,7 @@ public class Destiny {
         });
     }
     public String BASE_URL(){
-        String BASE_URL = "https://kampungonline.fabakonsultan.com/";
+        String BASE_URL = "https://desabanjarwaru.id/";
         return BASE_URL;
     }
     public String AUTH(String auth){

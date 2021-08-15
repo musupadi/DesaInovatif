@@ -48,6 +48,22 @@ public interface ApiRequest {
                              @Field("no_hp") String no_hp);
 
     @FormUrlEncoded
+    @POST("user/change_pass")
+    Call<ResponseModel> ChangePassword(@Header("Authorization") String authHeader,
+                                       @Field("kunci_kamps") String kunci_kamps,
+                                       @Field("id_user") String id_user,
+                                       @Field("pass_lama") String pass_lama,
+                                       @Field("pass_conf") String pass_conf,
+                                       @Field("pass_baru") String pass_baru);
+
+    @FormUrlEncoded
+    @POST("user/edit_foto")
+    Call<ResponseModel> EditFoto(@Header("Authorization") String authHeader,
+                                 @Part("kunci_kamps") RequestBody kunci_kamps,
+                                 @Part("id_user") RequestBody id_user,
+                                 @Part MultipartBody.Part FotoUser);
+
+    @FormUrlEncoded
     @POST("toko")
     Call<ResponseModel> Toko(@Header("Authorization") String authHeader,
                              @Field("kunci_kamps") String kunci_kamps,@Field("id_toko") String id_toko,

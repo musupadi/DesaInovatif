@@ -50,18 +50,22 @@ public class AdapterLaporan extends RecyclerView.Adapter<AdapterLaporan.HolderDa
         holderData.Nama.setText(dm.getNama_laporan());
         holderData.Tanggal.setText(destiny.MagicDateChange(dm.getTgl_upload_laporan()));
         holderData.Deskripsi.setText(dm.getDeskripsi_laporan());
-        if (dm.getStatus_laporan().equals("requested")){
-            holderData.Status.setText(" Meminta");
-            holderData.Status.setTextColor(Color.rgb(255,227,179));
-            holderData.StatusImage.setImageResource(R.drawable.round_secondary);
-        }else if(dm.getStatus_laporan().equals("diterima")){
+        if(dm.getStatus_laporan().equals("diterima")){
             holderData.Status.setText(" Diterima");
             holderData.Status.setTextColor(Color.rgb(83,210,220));
             holderData.StatusImage.setImageResource(R.drawable.round_primary);
-        }else{
+        }else if(dm.getStatus_laporan().equals("ditunda")){
             holderData.Status.setText(" Ditolak");
             holderData.Status.setTextColor(Color.rgb(255,0,0));
             holderData.StatusImage.setImageResource(R.drawable.round_red);
+        }else if (dm.getStatus_laporan().equals("penyelesaian")){
+            holderData.Status.setText(" Penyelesaian");
+            holderData.Status.setTextColor(Color.rgb(255,165,0));
+            holderData.StatusImage.setImageResource(R.drawable.round_secondary);
+        }else{
+            holderData.Status.setText(" Selesai");
+            holderData.Status.setTextColor(Color.rgb(79,143,192));
+            holderData.StatusImage.setImageResource(R.drawable.round_blue);
         }
         holderData.card.setOnClickListener(new View.OnClickListener() {
             @Override

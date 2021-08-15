@@ -9,6 +9,10 @@ public class Ress {
     @Nullable
     String status;
 
+    @SerializedName("message")
+    @Nullable
+    String message;
+
     @SerializedName("data")
     @Nullable
     String data;
@@ -29,5 +33,14 @@ public class Ress {
 
     public void setData(@Nullable String data) {
         this.data = data;
+    }
+
+    @Nullable
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(@Nullable String message) {
+        this.message = message;
     }
 }

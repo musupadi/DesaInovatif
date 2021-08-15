@@ -153,6 +153,7 @@ public class LaporanActivity extends AppCompatActivity {
         tvGallery4 = findViewById(R.id.tvGambarGallery4);
         Gallery4 = findViewById(R.id.ivGambarGallery4);
 
+        destiny = new Destiny();
         dbHelper = new DB_Helper(LaporanActivity.this);
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){

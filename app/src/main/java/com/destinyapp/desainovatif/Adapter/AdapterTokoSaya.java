@@ -55,6 +55,9 @@ public class AdapterTokoSaya extends RecyclerView.Adapter<AdapterTokoSaya.Holder
             holderData.status.setBackgroundResource(R.drawable.round_primary);
         }else if(dm.getStatus_toko().equals("tutup")){
             holderData.status.setText("Tutup");
+            holderData.status.setBackgroundResource(R.drawable.round_blue);
+        }else if(dm.getStatus_toko().equals("ditolak")){
+            holderData.status.setText("Ditolak");
             holderData.status.setBackgroundResource(R.drawable.round_red);
         }else{
             holderData.status.setText("Pending");
