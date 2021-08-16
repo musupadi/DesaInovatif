@@ -58,7 +58,7 @@ public class DetailBeritaActivity extends AppCompatActivity {
         TANGGAL = intent.getExtras().getString("TANGGAL");
         GANBAR = intent.getExtras().getString("GAMBAR");
         getSupportActionBar().setTitle(JUDUL);
-        isi.loadData(ISI,"text/html","UTF-8");
+        isi.loadData(destiny.Changer(ISI),"text/html","UTF-8");
         tanggal.setText(destiny.MagicDateChange(TANGGAL));
         Glide.with(this)
                 .load(GANBAR)

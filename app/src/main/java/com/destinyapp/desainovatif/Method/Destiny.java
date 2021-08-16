@@ -38,6 +38,14 @@ public class Destiny {
         String authHeader = "Basic "+ Base64.encodeToString(base.getBytes(),Base64.NO_WRAP);
         return authHeader;
     }
+    public String Changer(String html){
+        String replace = html.replace("&#8211;","-");
+        String replace2 = replace.replace("&#8216;","'");
+        String replace3 = replace2.replace("&#8217;","'");
+        String replace4 = replace3.replace("&#8220;","\"");
+        String replace5 = replace4.replace("&#8221;","\"");
+        return replace5;
+    }
     public String FilterTextToJava(String text){
         String replaces = text.replace("</p>\\r\\n<ol>\\r\\n<li>","");
         String replace1 = replaces.replace("<p>","");
