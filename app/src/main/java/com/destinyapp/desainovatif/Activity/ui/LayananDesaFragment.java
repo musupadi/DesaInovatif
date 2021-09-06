@@ -38,6 +38,7 @@ import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.InputSuratActivity;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKategoriSurat;
 import com.destinyapp.desainovatif.Adapter.AdapterListSubKatSurat;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterListUserRT;
@@ -328,10 +329,12 @@ public class LayananDesaFragment extends Fragment {
         Permintaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Level.equals("member")){
-                    lOrangBersangkutan.setVisibility(View.GONE);
-                }
-                dialog.show();
+//                if (Level.equals("member")){
+//                    lOrangBersangkutan.setVisibility(View.GONE);
+//                }
+//                dialog.show();
+                Intent intent = new Intent(getActivity(), InputSuratActivity.class);
+                startActivity(intent);
             }
         });
         Tutup.setOnClickListener(new View.OnClickListener() {
