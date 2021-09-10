@@ -8,14 +8,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -32,6 +24,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.afollestad.materialdialogs.BuildConfig;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.destinyapp.desainovatif.API.ApiRequest;
@@ -39,11 +39,10 @@ import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.InputSuratActivity;
-import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKategoriSurat;
 import com.destinyapp.desainovatif.Adapter.AdapterListSubKatSurat;
-import com.destinyapp.desainovatif.Adapter.Spinner.AdapterListUserRT;
 import com.destinyapp.desainovatif.Adapter.AdapterSurat;
-import com.destinyapp.desainovatif.BuildConfig;
+import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKategoriSurat;
+import com.destinyapp.desainovatif.Adapter.Spinner.AdapterListUserRT;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
 import com.destinyapp.desainovatif.Model.ResponseModel;

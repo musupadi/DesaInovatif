@@ -130,7 +130,31 @@ public interface ApiRequest {
                                    @Field("kunci_kamps") String kunci_kamps,
                                    @Field("id_user") String id_user);
 
-    //Insert Surat
+    //Insert Surat Kelahiran
+    Call<Ress> PostKelahiran1(@Header("Authorization") String authHeader,
+                                 @Part("kunci_kamps") RequestBody kunci_kamps,
+                                 @Part("id_desa") RequestBody id_desa,
+                                 @Part("id_user") RequestBody id_user,
+                                 @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                                 @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                                 @Part("nama_surat") RequestBody nama_surat,
+                                 @Part("anak_ke") RequestBody anak_ke,
+                                 @Part("nama_ayah") RequestBody nama_ayah,
+                                 @Part("tempat_tgl_lahir_ayah") RequestBody tempat_tgl_lahir_ayah,
+                                 @Part("pekerjaan_ayah") RequestBody pekerjaan_ayah,
+                                 @Part("agama_ayah") RequestBody agama_ayah,
+                                 @Part("no_ktp_ayah") RequestBody no_ktp_ayah,
+                                 @Part("alamat_ayah") RequestBody alamat_ayah,
+                                 @Part("nama_ibu") RequestBody nama_ibu,
+                                 @Part("tempat_tgl_lahir_ibu") RequestBody tempat_tgl_lahir_ibu,
+                                 @Part("pekerjaan_ibu") RequestBody pekerjaan_ibu,
+                                 @Part("agama_ibu") RequestBody agama_ibu,
+                                 @Part("no_ktp_ibu") RequestBody no_ktp_ibu,
+                                 @Part("tgl_lahir_bayi") RequestBody tgl_lahir_bayi,
+                                 @Part("pukul") RequestBody pukul,
+                                 @Part("nama_bayi") RequestBody nama_bayi,
+                                 @Part MultipartBody.Part FileSyarat1,
+                                 @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
 
     //Insert Surat 1
     @Multipart
