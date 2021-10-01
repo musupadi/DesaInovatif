@@ -51,7 +51,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SuratKelahiranFragment extends Fragment {
+public class SuratKematianFragment extends Fragment {
     Button Submit;
     Destiny destiny;
 
@@ -108,18 +108,14 @@ public class SuratKelahiranFragment extends Fragment {
     String postGallery3 = "";
     String postGallery4 = "";
     int GalleryNum = 1;
-    LinearLayout lOrangBersangkutan;
 
-    //Main Surat
-    EditText NamaSurat,NoteSurat,AnakKe,TglLahrBayi,Pukul,NamaBayi;
-    //Ayah
-    EditText NamaAyah,TempatTglLahirAyah,PekerjaanAyah,AgamaAyah,NoKTPAyah,AlamatAyah;
-    //Ibu
-    EditText NamaIbu,TempatTanggalLahirIbu,PekerjaanIbu,AgamaIbu,NoKTPIbu,AlamatIbu;
+    //Main
+    EditText NamaSurat,NoteSurat;
+    //Data Diri
+    EditText NamaDiri,TglLahir,JenisKelamin,Agama,Pekerjaan,Alamat,MeninggalTgl,Jam,Di,DisebabkanOleh;
 
     String IDS;
-
-    public SuratKelahiranFragment() {
+    public SuratKematianFragment() {
         // Required empty public constructor
     }
 
@@ -133,37 +129,46 @@ public class SuratKelahiranFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_surat_kelahiran, container, false);
+        return inflater.inflate(R.layout.fragment_surat_kematian, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Submit = view.findViewById(R.id.btnSubmit);
-        NamaSurat = view.findViewById(R.id.etNamaSurat);
-        NoteSurat = view.findViewById(R.id.etNoteSurat);
-        AnakKe = view.findViewById(R.id.etAnakKe);
-        TglLahrBayi = view.findViewById(R.id.etTanggalLahir);
-        Pukul = view.findViewById(R.id.etPukul);
-        NamaBayi = view.findViewById(R.id.etNamaBayi);
-
-        NamaAyah = view.findViewById(R.id.etNamaAyah);
-        TempatTglLahirAyah = view.findViewById(R.id.etTTLAyah);
-        PekerjaanAyah = view.findViewById(R.id.etPekerjaanAyah);
-        AgamaAyah = view.findViewById(R.id.etAgamaAyah);
-        NoKTPAyah = view.findViewById(R.id.etNoKTPAyah);
-        AlamatAyah = view.findViewById(R.id.etAlamatAyah);
-
-        NamaIbu = view.findViewById(R.id.etNamaIbu);
-        TempatTanggalLahirIbu = view.findViewById(R.id.etTTLIbu);
-        PekerjaanIbu = view.findViewById(R.id.etPekerjaanIbu);
-        AgamaIbu = view.findViewById(R.id.etAgamaIbu);
-        NoKTPIbu = view.findViewById(R.id.etNoKTPIbu);
-        AlamatIbu = view.findViewById(R.id.etAlamatIbu);
-        Submit = view.findViewById(R.id.btnSubmit);
         destiny = new Destiny();
         Bundle bundle = getArguments();
         IDS = bundle.getString("ID");
+        Submit = view.findViewById(R.id.btnSubmit);
+        NamaSurat = view.findViewById(R.id.etNamaSurat);
+        NoteSurat = view.findViewById(R.id.etNoteSurat);
+        //Data Diri
+        NamaDiri = view.findViewById(R.id.etNama);
+        TglLahir = view.findViewById(R.id.etTglLahir);
+        JenisKelamin = view.findViewById(R.id.etJenisKelamin);
+        Agama = view.findViewById(R.id.etAgama);
+        Pekerjaan = view.findViewById(R.id.etPekerjaan);
+        NamaDiri = view.findViewById(R.id.etNama);
+        Alamat = view.findViewById(R.id.etAlamat);
+        MeninggalTgl = view.findViewById(R.id.etMeninggalTgl);
+        Jam = view.findViewById(R.id.etJam);
+        Di = view.findViewById(R.id.etDi);
+        DisebabkanOleh = view.findViewById(R.id.etDisebabkanKrena);
+
+        //DB Helper
+        dbHelper = new DB_Helper(getActivity());
+        Cursor cursor = dbHelper.checkUser();
+        if (cursor.getCount()>0){
+            while (cursor.moveToNext()){
+                Username = cursor.getString(0);
+                Password = cursor.getString(1);
+                Nama = cursor.getString(2);
+                Photo = cursor.getString(3);
+                ID = cursor.getString(4);
+                ID_Desa = cursor.getString(5);
+                Level = cursor.getString(6);
+            }
+        }
+
         //Gallery 1
         btnGallery1 = view.findViewById(R.id.btnUploadGallery1);
         Tambah1 = view.findViewById(R.id.btnTambah1);
@@ -187,35 +192,6 @@ public class SuratKelahiranFragment extends Fragment {
         tvGallery4 = view.findViewById(R.id.tvGambarGallery4);
         Gallery4 = view.findViewById(R.id.ivGambarGallery4);
 
-        //DB Helper
-        dbHelper = new DB_Helper(getActivity());
-        Cursor cursor = dbHelper.checkUser();
-        if (cursor.getCount()>0){
-            while (cursor.moveToNext()){
-                Username = cursor.getString(0);
-                Password = cursor.getString(1);
-                Nama = cursor.getString(2);
-                Photo = cursor.getString(3);
-                ID = cursor.getString(4);
-                ID_Desa = cursor.getString(5);
-                Level = cursor.getString(6);
-            }
-        }
-
-        Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GalleryNum==1){
-                    LogicSurat1();
-                }else if(GalleryNum==2){
-                    LogicSurat2();
-                }else if(GalleryNum==3){
-                    LogicSurat3();
-                }else if(GalleryNum==4){
-                    LogicSurat4();
-                }
-            }
-        });
         Tambah1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -392,6 +368,20 @@ public class SuratKelahiranFragment extends Fragment {
                         .show();
             }
         });
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (GalleryNum==1){
+                    LogicSurat1();
+                }else if(GalleryNum==2){
+                    LogicSurat2();
+                }else if(GalleryNum==3){
+                    LogicSurat3();
+                }else if(GalleryNum==4){
+                    LogicSurat4();
+                }
+            }
+        });
     }
     private void LogicSurat1(){
         final ProgressDialog pd = new ProgressDialog(getActivity());
@@ -403,34 +393,27 @@ public class SuratKelahiranFragment extends Fragment {
         RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
         MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery1.getName(), fileReqBodyGallery1);
 
-
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         if (IDS.equals("0")){
-            Call<Ress> Surat = api.PostKelahiran1(
+            Call<Ress> Surat = api.PostKematian1(
                     destiny.AUTH(),
                     RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
-                    RequestBody.create(MediaType.parse("text/plain"),"6"),
+                    RequestBody.create(MediaType.parse("text/plain"),"7"),
                     RequestBody.create(MediaType.parse("text/plain"),"0"),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoteSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AnakKe.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TglLahrBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),Pukul.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTglLahirAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTanggalLahirIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatIbu.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaDiri.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),TglLahir.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),JenisKelamin.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Agama.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Pekerjaan.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Alamat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),MeninggalTgl.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Jam.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),DisebabkanOleh.getText().toString()),
                     partGallery1,
                     RequestBody.create(MediaType.parse("text/plain"),IDS));
             Surat.enqueue(new Callback<Ress>() {
@@ -453,31 +436,25 @@ public class SuratKelahiranFragment extends Fragment {
                 }
             });
         }else{
-            Call<Ress> Surat = api.PostKelahiran1(
+            Call<Ress> Surat = api.PostKematian1(
                     destiny.AUTH(),
                     RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),IDS),
-                    RequestBody.create(MediaType.parse("text/plain"),"6"),
+                    RequestBody.create(MediaType.parse("text/plain"),"7"),
                     RequestBody.create(MediaType.parse("text/plain"),"0"),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoteSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AnakKe.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TglLahrBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),Pukul.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTglLahirAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTanggalLahirIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatIbu.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaDiri.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),TglLahir.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),JenisKelamin.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Agama.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Pekerjaan.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Alamat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),MeninggalTgl.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Jam.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),DisebabkanOleh.getText().toString()),
                     partGallery1,
                     RequestBody.create(MediaType.parse("text/plain"),ID));
             Surat.enqueue(new Callback<Ress>() {
@@ -501,6 +478,7 @@ public class SuratKelahiranFragment extends Fragment {
             });
         }
     }
+
     private void LogicSurat2(){
         final ProgressDialog pd = new ProgressDialog(getActivity());
         pd.setMessage("Sedang Memasukan Surat");
@@ -511,38 +489,31 @@ public class SuratKelahiranFragment extends Fragment {
         RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
         MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery1.getName(), fileReqBodyGallery1);
 
-        File fileGallery2 = new File(postGallery2);
+        File fileGallery2 = new File(postGallery1);
         RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
         MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery2.getName(), fileReqBodyGallery2);
 
-
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         if (IDS.equals("0")){
-            Call<Ress> Surat = api.PostKelahiran2(
+            Call<Ress> Surat = api.PostKematian2(
                     destiny.AUTH(),
                     RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),ID),
-                    RequestBody.create(MediaType.parse("text/plain"),"6"),
+                    RequestBody.create(MediaType.parse("text/plain"),"7"),
                     RequestBody.create(MediaType.parse("text/plain"),"0"),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoteSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AnakKe.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TglLahrBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),Pukul.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTglLahirAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTanggalLahirIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatIbu.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaDiri.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),TglLahir.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),JenisKelamin.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Agama.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Pekerjaan.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Alamat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),MeninggalTgl.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Jam.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),DisebabkanOleh.getText().toString()),
                     partGallery1,
                     partGallery2,
                     RequestBody.create(MediaType.parse("text/plain"),IDS));
@@ -566,31 +537,25 @@ public class SuratKelahiranFragment extends Fragment {
                 }
             });
         }else{
-            Call<Ress> Surat = api.PostKelahiran2(
+            Call<Ress> Surat = api.PostKematian2(
                     destiny.AUTH(),
                     RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
                     RequestBody.create(MediaType.parse("text/plain"),IDS),
-                    RequestBody.create(MediaType.parse("text/plain"),"6"),
+                    RequestBody.create(MediaType.parse("text/plain"),"7"),
                     RequestBody.create(MediaType.parse("text/plain"),"0"),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoteSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AnakKe.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TglLahrBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),Pukul.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTglLahirAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTanggalLahirIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatIbu.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaDiri.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),TglLahir.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),JenisKelamin.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Agama.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Pekerjaan.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Alamat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),MeninggalTgl.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Jam.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),DisebabkanOleh.getText().toString()),
                     partGallery1,
                     partGallery2,
                     RequestBody.create(MediaType.parse("text/plain"),ID));
@@ -615,6 +580,7 @@ public class SuratKelahiranFragment extends Fragment {
             });
         }
     }
+
     private void LogicSurat3(){
         final ProgressDialog pd = new ProgressDialog(getActivity());
         pd.setMessage("Sedang Memasukan Surat");
@@ -625,18 +591,17 @@ public class SuratKelahiranFragment extends Fragment {
         RequestBody fileReqBodyGallery1 = RequestBody.create(MediaType.parse("image/*"), fileGallery1);
         MultipartBody.Part partGallery1 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery1.getName(), fileReqBodyGallery1);
 
-        File fileGallery2 = new File(postGallery2);
+        File fileGallery2 = new File(postGallery1);
         RequestBody fileReqBodyGallery2 = RequestBody.create(MediaType.parse("image/*"), fileGallery2);
         MultipartBody.Part partGallery2 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery2.getName(), fileReqBodyGallery2);
 
-        File fileGallery3 = new File(postGallery3);
+        File fileGallery3 = new File(postGallery1);
         RequestBody fileReqBodyGallery3 = RequestBody.create(MediaType.parse("image/*"), fileGallery3);
         MultipartBody.Part partGallery3 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery3.getName(), fileReqBodyGallery3);
 
-
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         if (IDS.equals("0")){
-            Call<Ress> Surat = api.PostKelahiran3(
+            Call<Ress> Surat = api.PostKematian3(
                     destiny.AUTH(),
                     RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
@@ -644,23 +609,17 @@ public class SuratKelahiranFragment extends Fragment {
                     RequestBody.create(MediaType.parse("text/plain"),"6"),
                     RequestBody.create(MediaType.parse("text/plain"),"0"),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoteSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AnakKe.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TglLahrBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),Pukul.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTglLahirAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTanggalLahirIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatIbu.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaDiri.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),TglLahir.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),JenisKelamin.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Agama.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Pekerjaan.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Alamat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),MeninggalTgl.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Jam.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),DisebabkanOleh.getText().toString()),
                     partGallery1,
                     partGallery2,
                     partGallery3,
@@ -685,7 +644,7 @@ public class SuratKelahiranFragment extends Fragment {
                 }
             });
         }else{
-            Call<Ress> Surat = api.PostKelahiran3(
+            Call<Ress> Surat = api.PostKematian3(
                     destiny.AUTH(),
                     RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
@@ -693,23 +652,17 @@ public class SuratKelahiranFragment extends Fragment {
                     RequestBody.create(MediaType.parse("text/plain"),"6"),
                     RequestBody.create(MediaType.parse("text/plain"),"0"),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoteSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AnakKe.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TglLahrBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),Pukul.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTglLahirAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTanggalLahirIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatIbu.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaDiri.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),TglLahir.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),JenisKelamin.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Agama.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Pekerjaan.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Alamat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),MeninggalTgl.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Jam.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),DisebabkanOleh.getText().toString()),
                     partGallery1,
                     partGallery2,
                     partGallery3,
@@ -735,6 +688,7 @@ public class SuratKelahiranFragment extends Fragment {
             });
         }
     }
+
     private void LogicSurat4(){
         final ProgressDialog pd = new ProgressDialog(getActivity());
         pd.setMessage("Sedang Memasukan Surat");
@@ -757,10 +711,9 @@ public class SuratKelahiranFragment extends Fragment {
         RequestBody fileReqBodyGallery4 = RequestBody.create(MediaType.parse("image/*"), fileGallery4);
         MultipartBody.Part partGallery4 = MultipartBody.Part.createFormData("file_syarat[]", fileGallery4.getName(), fileReqBodyGallery4);
 
-
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         if (IDS.equals("0")){
-            Call<Ress> Surat = api.PostKelahiran4(
+            Call<Ress> Surat = api.PostKematian4(
                     destiny.AUTH(),
                     RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
@@ -768,23 +721,17 @@ public class SuratKelahiranFragment extends Fragment {
                     RequestBody.create(MediaType.parse("text/plain"),"6"),
                     RequestBody.create(MediaType.parse("text/plain"),"0"),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoteSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AnakKe.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TglLahrBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),Pukul.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTglLahirAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTanggalLahirIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatIbu.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaDiri.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),TglLahir.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),JenisKelamin.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Agama.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Pekerjaan.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Alamat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),MeninggalTgl.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Jam.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),DisebabkanOleh.getText().toString()),
                     partGallery1,
                     partGallery2,
                     partGallery3,
@@ -810,7 +757,7 @@ public class SuratKelahiranFragment extends Fragment {
                 }
             });
         }else{
-            Call<Ress> Surat = api.PostKelahiran4(
+            Call<Ress> Surat = api.PostKematian4(
                     destiny.AUTH(),
                     RequestBody.create(MediaType.parse("text/plain"),destiny.Kunci()),
                     RequestBody.create(MediaType.parse("text/plain"),ID_Desa),
@@ -818,23 +765,17 @@ public class SuratKelahiranFragment extends Fragment {
                     RequestBody.create(MediaType.parse("text/plain"),"6"),
                     RequestBody.create(MediaType.parse("text/plain"),"0"),
                     RequestBody.create(MediaType.parse("text/plain"),NamaSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoteSurat.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AnakKe.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TglLahrBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),Pukul.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaBayi.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTglLahirAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatAyah.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),TempatTanggalLahirIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),PekerjaanIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AgamaIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),NoKTPIbu.getText().toString()),
-                    RequestBody.create(MediaType.parse("text/plain"),AlamatIbu.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),NamaDiri.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),TglLahir.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),JenisKelamin.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Agama.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Pekerjaan.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Alamat.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),MeninggalTgl.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Jam.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),Di.getText().toString()),
+                    RequestBody.create(MediaType.parse("text/plain"),DisebabkanOleh.getText().toString()),
                     partGallery1,
                     partGallery2,
                     partGallery3,

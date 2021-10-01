@@ -20,6 +20,7 @@ import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.ui.LaporanFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratAdministrasiumumFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKelahiranFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKematianFragment;
 import com.destinyapp.desainovatif.Adapter.AdapterListSubKatSurat;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKategoriSurat;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterListUserRT;
@@ -39,8 +40,8 @@ import retrofit2.Response;
 public class InputSuratActivity extends AppCompatActivity {
     DB_Helper dbHelper;
     String Username,Password,Nama,Photo,ID,ID_Desa,Level;
-    Spinner spinner,spinnerBersangkutan,spinnerSub;
-    LinearLayout lOrangBersangkutan,lSubSurat;
+    Spinner spinner,spinnerBersangkutan,spinnerSub,spinnerUntuk;
+    LinearLayout lUntuk,lOrangBersangkutan,lSubSurat;
     TextView kat,ber,sub;
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
@@ -73,16 +74,35 @@ public class InputSuratActivity extends AppCompatActivity {
                 Level = cursor.getString(6);
             }
         }
-        if (Level.equals("member")){
-            lOrangBersangkutan.setVisibility(View.GONE);
-        }
         spinner = findViewById(R.id.spinner);
         spinnerSub = findViewById(R.id.spinnerSubKat);
         spinnerBersangkutan = findViewById(R.id.spinnerBersangkutan);
         lOrangBersangkutan = findViewById(R.id.linearOrangBersangkutan);
         lSubSurat = findViewById(R.id.linearSubSurat);
+        lUntuk = findViewById(R.id.linearUntuk);
+        spinnerUntuk = findViewById(R.id.spinnerUntuk);
+        if (Level.equals("member")){
+            lUntuk.setVisibility(View.GONE);
+            lOrangBersangkutan.setVisibility(View.GONE);
+        }
         GetKategori();
         GetOrangBersangkutan();
+        spinnerUntuk.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (!spinnerUntuk.getSelectedItem().toString().equals("Diri Sendiri")){
+                    lOrangBersangkutan.setVisibility(View.VISIBLE);
+                    ber.setText("0");
+                }else{
+                    lOrangBersangkutan.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -91,11 +111,18 @@ public class InputSuratActivity extends AppCompatActivity {
                     String clickedItems = clickedItem.getId_surat_kategori();
                     kat.setText(clickedItems);
                     if (clickedItems.equals("6")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratKelahiranFragment();
+                        fragment.setArguments(bundle);
                         ChangeFragment(fragment);
-                    }else if (clickedItem.equals("0")){
-                        fragment = new SuratAdministrasiumumFragment();
+                    }else if (clickedItems.equals("7")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratKematianFragment();
+                        fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else{
                         fragment = new SuratAdministrasiumumFragment();
@@ -131,9 +158,13 @@ public class InputSuratActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!Level.equals("member")){
-                    DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
-                    String clickedItems = clickedItem.getId_user();
-                    ber.setText(clickedItems);
+                    try {
+                        DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
+                        String clickedItems = clickedItem.getId_user();
+                        ber.setText(clickedItems);
+                    }catch (Exception e){
+
+                    }
                 }
             }
 

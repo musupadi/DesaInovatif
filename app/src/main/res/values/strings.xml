@@ -6,6 +6,10 @@
         <item>Surat Pindah</item>
         <item>Surat RT</item>
     </string-array>
+    <string-array name="Untuk">
+        <item>Diri Sendiri</item>
+        <item>Orang Lain</item>
+    </string-array>
     <string-array name="Kegiatan">
         <item>rw</item>
         <item>posyandu</item>

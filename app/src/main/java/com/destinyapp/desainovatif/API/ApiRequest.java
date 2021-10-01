@@ -131,30 +131,235 @@ public interface ApiRequest {
                                    @Field("id_user") String id_user);
 
     //Insert Surat Kelahiran
+    //1
+    @Multipart
+    @POST("surat")
     Call<Ress> PostKelahiran1(@Header("Authorization") String authHeader,
-                                 @Part("kunci_kamps") RequestBody kunci_kamps,
-                                 @Part("id_desa") RequestBody id_desa,
-                                 @Part("id_user") RequestBody id_user,
-                                 @Part("id_surat_kategori") RequestBody id_surat_kategori,
-                                 @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
-                                 @Part("nama_surat") RequestBody nama_surat,
-                                 @Part("anak_ke") RequestBody anak_ke,
-                                 @Part("nama_ayah") RequestBody nama_ayah,
-                                 @Part("tempat_tgl_lahir_ayah") RequestBody tempat_tgl_lahir_ayah,
-                                 @Part("pekerjaan_ayah") RequestBody pekerjaan_ayah,
-                                 @Part("agama_ayah") RequestBody agama_ayah,
-                                 @Part("no_ktp_ayah") RequestBody no_ktp_ayah,
-                                 @Part("alamat_ayah") RequestBody alamat_ayah,
-                                 @Part("nama_ibu") RequestBody nama_ibu,
-                                 @Part("tempat_tgl_lahir_ibu") RequestBody tempat_tgl_lahir_ibu,
-                                 @Part("pekerjaan_ibu") RequestBody pekerjaan_ibu,
-                                 @Part("agama_ibu") RequestBody agama_ibu,
-                                 @Part("no_ktp_ibu") RequestBody no_ktp_ibu,
-                                 @Part("tgl_lahir_bayi") RequestBody tgl_lahir_bayi,
-                                 @Part("pukul") RequestBody pukul,
-                                 @Part("nama_bayi") RequestBody nama_bayi,
-                                 @Part MultipartBody.Part FileSyarat1,
-                                 @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+                              @Part("kunci_kamps") RequestBody kunci_kamps,
+                              @Part("id_desa") RequestBody id_desa,
+                              @Part("id_user") RequestBody id_user,
+                              @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                              @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                              @Part("nama_surat") RequestBody nama_surat,
+                              @Part("note_surat") RequestBody note_surat,
+                              @Part("anak_ke") RequestBody anak_ke,
+                              @Part("tgl_lahir_bayi") RequestBody tgl_lahir_bayi,
+                              @Part("pukul") RequestBody pukul,
+                              @Part("nama_bayi") RequestBody nama_bayi,
+                              @Part("nama_ayah") RequestBody nama_ayah,
+                              @Part("tempat_tgl_lahir_ayah") RequestBody tempat_tgl_lahir_ayah,
+                              @Part("pekerjaan_ayah") RequestBody pekerjaan_ayah,
+                              @Part("agama_ayah") RequestBody agama_ayah,
+                              @Part("no_ktp_ayah") RequestBody no_ktp_ayah,
+                              @Part("alamat_ayah") RequestBody alamat_ayah,
+                              @Part("nama_ibu") RequestBody nama_ibu,
+                              @Part("tempat_tgl_lahir_ibu") RequestBody tempat_tgl_lahir_ibu,
+                              @Part("pekerjaan_ibu") RequestBody pekerjaan_ibu,
+                              @Part("agama_ibu") RequestBody agama_ibu,
+                              @Part("no_ktp_ibu") RequestBody no_ktp_ibu,
+                              @Part("alamat_ibu") RequestBody alamat_ibu,
+                              @Part MultipartBody.Part FileSyarat1,
+                              @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+    //2
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostKelahiran2(@Header("Authorization") String authHeader,
+                              @Part("kunci_kamps") RequestBody kunci_kamps,
+                              @Part("id_desa") RequestBody id_desa,
+                              @Part("id_user") RequestBody id_user,
+                              @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                              @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                              @Part("nama_surat") RequestBody nama_surat,
+                              @Part("note_surat") RequestBody note_surat,
+                              @Part("anak_ke") RequestBody anak_ke,
+                              @Part("tgl_lahir_bayi") RequestBody tgl_lahir_bayi,
+                              @Part("pukul") RequestBody pukul,
+                              @Part("nama_bayi") RequestBody nama_bayi,
+                              @Part("nama_ayah") RequestBody nama_ayah,
+                              @Part("tempat_tgl_lahir_ayah") RequestBody tempat_tgl_lahir_ayah,
+                              @Part("pekerjaan_ayah") RequestBody pekerjaan_ayah,
+                              @Part("agama_ayah") RequestBody agama_ayah,
+                              @Part("no_ktp_ayah") RequestBody no_ktp_ayah,
+                              @Part("alamat_ayah") RequestBody alamat_ayah,
+                              @Part("nama_ibu") RequestBody nama_ibu,
+                              @Part("tempat_tgl_lahir_ibu") RequestBody tempat_tgl_lahir_ibu,
+                              @Part("pekerjaan_ibu") RequestBody pekerjaan_ibu,
+                              @Part("agama_ibu") RequestBody agama_ibu,
+                              @Part("no_ktp_ibu") RequestBody no_ktp_ibu,
+                              @Part("alamat_ibu") RequestBody alamat_ibu,
+                              @Part MultipartBody.Part FileSyarat1,
+                              @Part MultipartBody.Part FileSyarat2,
+                              @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+    //3
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostKelahiran3(@Header("Authorization") String authHeader,
+                              @Part("kunci_kamps") RequestBody kunci_kamps,
+                              @Part("id_desa") RequestBody id_desa,
+                              @Part("id_user") RequestBody id_user,
+                              @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                              @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                              @Part("nama_surat") RequestBody nama_surat,
+                              @Part("note_surat") RequestBody note_surat,
+                              @Part("anak_ke") RequestBody anak_ke,
+                              @Part("tgl_lahir_bayi") RequestBody tgl_lahir_bayi,
+                              @Part("pukul") RequestBody pukul,
+                              @Part("nama_bayi") RequestBody nama_bayi,
+                              @Part("nama_ayah") RequestBody nama_ayah,
+                              @Part("tempat_tgl_lahir_ayah") RequestBody tempat_tgl_lahir_ayah,
+                              @Part("pekerjaan_ayah") RequestBody pekerjaan_ayah,
+                              @Part("agama_ayah") RequestBody agama_ayah,
+                              @Part("no_ktp_ayah") RequestBody no_ktp_ayah,
+                              @Part("alamat_ayah") RequestBody alamat_ayah,
+                              @Part("nama_ibu") RequestBody nama_ibu,
+                              @Part("tempat_tgl_lahir_ibu") RequestBody tempat_tgl_lahir_ibu,
+                              @Part("pekerjaan_ibu") RequestBody pekerjaan_ibu,
+                              @Part("agama_ibu") RequestBody agama_ibu,
+                              @Part("no_ktp_ibu") RequestBody no_ktp_ibu,
+                              @Part("alamat_ibu") RequestBody alamat_ibu,
+                              @Part MultipartBody.Part FileSyarat1,
+                              @Part MultipartBody.Part FileSyarat2,
+                              @Part MultipartBody.Part FileSyarat3,
+                              @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+    //4
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostKelahiran4(@Header("Authorization") String authHeader,
+                              @Part("kunci_kamps") RequestBody kunci_kamps,
+                              @Part("id_desa") RequestBody id_desa,
+                              @Part("id_user") RequestBody id_user,
+                              @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                              @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                              @Part("nama_surat") RequestBody nama_surat,
+                              @Part("note_surat") RequestBody note_surat,
+                              @Part("anak_ke") RequestBody anak_ke,
+                              @Part("tgl_lahir_bayi") RequestBody tgl_lahir_bayi,
+                              @Part("pukul") RequestBody pukul,
+                              @Part("nama_bayi") RequestBody nama_bayi,
+                              @Part("nama_ayah") RequestBody nama_ayah,
+                              @Part("tempat_tgl_lahir_ayah") RequestBody tempat_tgl_lahir_ayah,
+                              @Part("pekerjaan_ayah") RequestBody pekerjaan_ayah,
+                              @Part("agama_ayah") RequestBody agama_ayah,
+                              @Part("no_ktp_ayah") RequestBody no_ktp_ayah,
+                              @Part("alamat_ayah") RequestBody alamat_ayah,
+                              @Part("nama_ibu") RequestBody nama_ibu,
+                              @Part("tempat_tgl_lahir_ibu") RequestBody tempat_tgl_lahir_ibu,
+                              @Part("pekerjaan_ibu") RequestBody pekerjaan_ibu,
+                              @Part("agama_ibu") RequestBody agama_ibu,
+                              @Part("no_ktp_ibu") RequestBody no_ktp_ibu,
+                              @Part("alamat_ibu") RequestBody alamat_ibu,
+                              @Part MultipartBody.Part FileSyarat1,
+                              @Part MultipartBody.Part FileSyarat2,
+                              @Part MultipartBody.Part FileSyarat3,
+                              @Part MultipartBody.Part FileSyarat4,
+                              @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+
+    //Insert Surat Kelahiran
+    //1
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostKematian1(@Header("Authorization") String authHeader,
+                            @Part("kunci_kamps") RequestBody kunci_kamps,
+                            @Part("id_desa") RequestBody id_desa,
+                            @Part("id_user") RequestBody id_user,
+                            @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                            @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                            @Part("nama_surat") RequestBody nama_surat,
+                            @Part("note_surat") RequestBody note_surat,
+                            @Part("nama") RequestBody nama,
+                            @Part("tgl_lahir") RequestBody tgl_lahir,
+                            @Part("jenis_kelamin") RequestBody jenis_kelamin,
+                            @Part("agama") RequestBody agama,
+                            @Part("pekerjaan") RequestBody pekerjaan,
+                            @Part("alamat") RequestBody alamat,
+                            @Part("meninggal_tgl") RequestBody meninggal_tgl,
+                            @Part("jam") RequestBody jam,
+                            @Part("di") RequestBody di,
+                            @Part("disebabkan_karena") RequestBody disebabkan_karena,
+                            @Part MultipartBody.Part FileSyarat1,
+                            @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+    //2
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostKematian2(@Header("Authorization") String authHeader,
+                            @Part("kunci_kamps") RequestBody kunci_kamps,
+                            @Part("id_desa") RequestBody id_desa,
+                            @Part("id_user") RequestBody id_user,
+                            @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                            @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                            @Part("nama_surat") RequestBody nama_surat,
+                            @Part("note_surat") RequestBody note_surat,
+                            @Part("nama") RequestBody nama,
+                            @Part("tgl_lahir") RequestBody tgl_lahir,
+                            @Part("jenis_kelamin") RequestBody jenis_kelamin,
+                            @Part("agama") RequestBody agama,
+                            @Part("pekerjaan") RequestBody pekerjaan,
+                            @Part("alamat") RequestBody alamat,
+                            @Part("meninggal_tgl") RequestBody meninggal_tgl,
+                            @Part("jam") RequestBody jam,
+                            @Part("di") RequestBody di,
+                            @Part("disebabkan_karena") RequestBody disebabkan_karena,
+                            @Part MultipartBody.Part FileSyarat1,
+                            @Part MultipartBody.Part FileSyarat2,
+                            @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+    //2
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostKematian3(@Header("Authorization") String authHeader,
+                            @Part("kunci_kamps") RequestBody kunci_kamps,
+                            @Part("id_desa") RequestBody id_desa,
+                            @Part("id_user") RequestBody id_user,
+                            @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                            @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                            @Part("nama_surat") RequestBody nama_surat,
+                            @Part("note_surat") RequestBody note_surat,
+                            @Part("nama") RequestBody nama,
+                            @Part("tgl_lahir") RequestBody tgl_lahir,
+                            @Part("jenis_kelamin") RequestBody jenis_kelamin,
+                            @Part("agama") RequestBody agama,
+                            @Part("pekerjaan") RequestBody pekerjaan,
+                            @Part("alamat") RequestBody alamat,
+                            @Part("meninggal_tgl") RequestBody meninggal_tgl,
+                            @Part("jam") RequestBody jam,
+                            @Part("di") RequestBody di,
+                            @Part("disebabkan_karena") RequestBody disebabkan_karena,
+                            @Part MultipartBody.Part FileSyarat1,
+                            @Part MultipartBody.Part FileSyarat2,
+                            @Part MultipartBody.Part FileSyarat3,
+                            @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+    //4
+    @Multipart
+    @POST("surat")
+    Call<Ress> PostKematian4(@Header("Authorization") String authHeader,
+                            @Part("kunci_kamps") RequestBody kunci_kamps,
+                            @Part("id_desa") RequestBody id_desa,
+                            @Part("id_user") RequestBody id_user,
+                            @Part("id_surat_kategori") RequestBody id_surat_kategori,
+                            @Part("id_surat_kategori_sub") RequestBody id_surat_kategori_sub,
+                            @Part("nama_surat") RequestBody nama_surat,
+                            @Part("note_surat") RequestBody note_surat,
+                            @Part("nama") RequestBody nama,
+                            @Part("tgl_lahir") RequestBody tgl_lahir,
+                            @Part("jenis_kelamin") RequestBody jenis_kelamin,
+                            @Part("agama") RequestBody agama,
+                            @Part("pekerjaan") RequestBody pekerjaan,
+                            @Part("alamat") RequestBody alamat,
+                            @Part("meninggal_tgl") RequestBody meninggal_tgl,
+                            @Part("jam") RequestBody jam,
+                            @Part("di") RequestBody di,
+                            @Part("disebabkan_karena") RequestBody disebabkan_karena,
+                            @Part MultipartBody.Part FileSyarat1,
+                            @Part MultipartBody.Part FileSyarat2,
+                            @Part MultipartBody.Part FileSyarat3,
+                            @Part MultipartBody.Part FileSyarat4,
+                            @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
+
 
     //Insert Surat 1
     @Multipart
@@ -214,6 +419,7 @@ public interface ApiRequest {
                          @Part MultipartBody.Part FileSyarat3,
                          @Part MultipartBody.Part FileSyarat4,
                          @Part("id_user_bersangkutan") RequestBody id_user_bersangkutan);
+
 
 
     //Insert Laporan 1

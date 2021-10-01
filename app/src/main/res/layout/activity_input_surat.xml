@@ -73,6 +73,34 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:id="@+id/linearUntuk">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Untuk"
+                            android:textColor="@color/Black"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:fontFamily="@font/gotham"/>
+                        <LinearLayout
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/rounded"
+                            android:elevation="5dp">
+                            <Spinner
+                                android:layout_margin="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:entries="@array/Untuk"
+                                android:id="@+id/spinnerUntuk"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:id="@+id/linearOrangBersangkutan">
                         <TextView
                             android:layout_width="match_parent"

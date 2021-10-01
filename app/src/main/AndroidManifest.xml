@@ -26,7 +26,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoAction"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.ui.Menu.Surat.InputSuratActivity"></activity>
+        <activity
+            android:name=".Activity.ui.Menu.Surat.InputSuratActivity"
+            android:parentActivityName=".Activity.MainActivity"
+            android:theme="@style/AppTheme"
+            android:label="Input Surat"></activity>
         <activity
             android:name=".Activity.ui.Menu.KemajuanDesa.DetailKemajuanDesa"
             android:parentActivityName=".Activity.ui.Menu.KemajuanDesa.KemajuanDesaActivity"

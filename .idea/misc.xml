@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/activity_input_surat.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_administrasiumum.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_kelahiran.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_kematian.xml" value="0.24246395806028834" />
         <entry key="..\:/Users/user/AndroidProject/PROJECT/DesaInovatif/app/src/main/res/layout/activity_laporan.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidProject/PROJECT/DesaInovatif/app/src/main/res/layout/activity_list_laporan.xml" value="0.1213768115942029" />
         <entry key="..\:/Users/user/AndroidProject/PROJECT/DesaInovatif/app/src/main/res/layout/fragment_surat_kelahiran.xml" value="0.22" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
