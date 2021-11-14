@@ -5,7 +5,11 @@
       <map>
         <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/activity_input_surat.xml" value="0.25" />
         <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_administrasiumum.xml" value="0.25" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_kelahiran.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_n_i_k.xml" value="0.1" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_nama.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_nama_b_s_t.xml" value="0.1" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_nama_p_n_s.xml" value="0.1" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_kelahiran.xml" value="0.18" />
         <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_kematian.xml" value="0.24246395806028834" />
         <entry key="..\:/Users/user/AndroidProject/PROJECT/DesaInovatif/app/src/main/res/layout/activity_laporan.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidProject/PROJECT/DesaInovatif/app/src/main/res/layout/activity_list_laporan.xml" value="0.1213768115942029" />

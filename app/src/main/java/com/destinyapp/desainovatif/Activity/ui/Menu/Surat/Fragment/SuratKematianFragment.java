@@ -111,10 +111,11 @@ public class SuratKematianFragment extends Fragment {
 
     //Main
     EditText NamaSurat,NoteSurat;
+    String IDS;
     //Data Diri
     EditText NamaDiri,TglLahir,JenisKelamin,Agama,Pekerjaan,Alamat,MeninggalTgl,Jam,Di,DisebabkanOleh;
 
-    String IDS;
+
     public SuratKematianFragment() {
         // Required empty public constructor
     }

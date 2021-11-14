@@ -19,8 +19,13 @@ import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.ui.LaporanFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratAdministrasiumumFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNIKFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNamaBSTFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNamaFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNamaPNSFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKelahiranFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKematianFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKTM;
 import com.destinyapp.desainovatif.Adapter.AdapterListSubKatSurat;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKategoriSurat;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterListUserRT;
@@ -122,6 +127,41 @@ public class InputSuratActivity extends AppCompatActivity {
                         bundle.putString("ID", "ID");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratKematianFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("8")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratBedaNamaFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("20")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratSKTM();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("21")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratBedaNamaBSTFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("22")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratBedaNamaPNSFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("23")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratBedaNIKFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else{

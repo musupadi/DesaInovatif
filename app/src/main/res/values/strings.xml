@@ -19,5 +19,9 @@
         <item>bpd</item>
         <item>ecovillage palayangan</item>
     </string-array>
+    <string-array name="Kelamin">
+        <item>L</item>
+        <item>P</item>
+    </string-array>
     <string name="title_activity_lokasi_bank_sampah">Map</string>
 </resources>
