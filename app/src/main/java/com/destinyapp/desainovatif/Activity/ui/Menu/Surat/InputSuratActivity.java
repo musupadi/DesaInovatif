@@ -25,7 +25,14 @@ import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNama
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNamaPNSFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKelahiranFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKematianFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeteranganBedaDomisiliSementaraFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeteranganBelumMenikah1Fragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeteranganBelumMenikah2Fragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN1Fragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN2Fragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN4Fragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKTM;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKTMRSFragment;
 import com.destinyapp.desainovatif.Adapter.AdapterListSubKatSurat;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKategoriSurat;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterListUserRT;
@@ -162,6 +169,55 @@ public class InputSuratActivity extends AppCompatActivity {
                         bundle.putString("ID", "ID");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratBedaNIKFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("24")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratSKTMRSFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("9")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratNikahN1Fragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("25")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratNikahN2Fragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("26")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratNikahN4Fragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("27")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratKeteranganBelumMenikah1Fragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("28")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratKeteranganBelumMenikah2Fragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("29")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "ID");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratKeteranganBedaDomisiliSementaraFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else{
