@@ -12,77 +12,82 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
-                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:fontFamily="@font/gotham"
                     android:text="Nama Surat"
-                    android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
-                        android:hint="Nama Surat"
-                        android:inputType="text"
                         android:id="@+id/etNamaSurat"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
                         android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
+                        android:hint="Nama Surat"
+                        android:inputType="text"
                         android:padding="5dp"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Note Surat"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Note Surat"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
-                        android:hint="Nama Surat"
-                        android:inputType="text"
                         android:id="@+id/etNoteSurat"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
                         android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
+                        android:hint="Nama Surat"
+                        android:inputType="text"
                         android:padding="5dp"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Data Surat"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Data"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
@@ -90,254 +95,208 @@
                     android:background="@drawable/background">
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Nama"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Nama"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
+                        android:id="@+id/etNama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
                         android:hint="Nama"
                         android:inputType="text"
-                        android:id="@+id/etNama"
+                        android:padding="5dp"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Tempat Tanggal Lahir"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Tempat Tanggal Lahir"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
-                        android:hint="Tempat Tanggal Lahir"
-                        android:inputType="text"
                         android:id="@+id/etTTL"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
                         android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
+                        android:hint="Tempat Tanggal Lahir"
+                        android:inputType="text"
                         android:padding="5dp"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Jenis Kelamin"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Jenis Kelamin"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <Spinner
                         android:id="@+id/spJenisKelamin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:entries="@array/Kelamin"
-                        android:background="@color/White"/>
+                        android:background="@color/White"
+                        android:entries="@array/Kelamin" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Agama"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Agama"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
+                        android:id="@+id/etAgama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
                         android:hint="Agama"
                         android:inputType="text"
-                        android:id="@+id/etAgama"
+                        android:padding="5dp"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Pekerjaan"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Pekerjaan"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
+                        android:id="@+id/etPekerjaan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
                         android:hint="Pekerjaan"
                         android:inputType="text"
-                        android:id="@+id/etPekerjaan"
+                        android:padding="5dp"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Status Pernikahan"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Status Pernikahan"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
-                        android:hint="Status Pernikahan"
-                        android:inputType="text"
                         android:id="@+id/etTTLAyah"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
                         android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
-                        android:theme="@style/AppThemeDeskripsi" />
-                </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Pekerjaan"
-                    android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
-
-                    <EditText
-                        android:hint="Pekerjaan"
-                        android:inputType="text"
-                        android:id="@+id/etPekerjaan"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
-                        android:theme="@style/AppThemeDeskripsi" />
-                </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Status Pernikahan"
-                    android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
-
-                    <EditText
                         android:hint="Status Pernikahan"
                         android:inputType="text"
-                        android:id="@+id/etStatusPernikahan"
+                        android:padding="5dp"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Warga Negara"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="Warga Negara"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
+                        android:id="@+id/etWargaNegara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
                         android:hint="Warga Negara"
                         android:inputType="text"
-                        android:id="@+id/etWargaNegara"
+                        android:padding="5dp"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
 
@@ -345,215 +304,135 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Pekerjaan"
                     android:fontFamily="@font/gotham"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:textColor="@color/Black"/>
+                    android:text="No KTP"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
+                    android:padding="1dp">
 
                     <EditText
-                        android:hint="No KTP"
-                        android:inputType="text"
                         android:id="@+id/etNoKTP"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
                         android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
+                        android:hint="No KTP"
+                        android:inputType="text"
                         android:padding="5dp"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/gotham"
+                    android:text="Alamat"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="1dp">
+
+                    <EditText
+                        android:id="@+id/etAlamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
+                        android:hint="Alamat"
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/gotham"
+                    android:text="NIK Lama"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="1dp">
+
+                    <EditText
+                        android:id="@+id/etNIKLama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
+                        android:hint="NIK Lama"
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/gotham"
+                    android:text="NIK Baru"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_xtra_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="1dp">
+
+                    <EditText
+                        android:id="@+id/etNIKBaru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/gotham"
+                        android:hint="NIK Lama"
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
                     android:layout_margin="5dp"
-                    android:background="@drawable/background"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Upload File Syarat"
-                    android:gravity="center"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/Primary"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/linearGallery1"
-                    android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
-                    android:elevation="5dp">
-                    <Button
-                        android:id="@+id/btnUploadGallery1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih File"
-                        android:background="@drawable/rounded_menu"
-                        android:textColor="@color/White"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/gotham"/>
-                    <ImageView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ivGambarGallery1"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama File"
-                        android:id="@+id/tvGambarGallery1"
-                        android:gravity="center"
-                        android:fontFamily="@font/gotham"
-                        android:visibility="gone"/>
-                    <Button
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah File"
-                        android:id="@+id/btnTambah1"
-                        android:textColor="@color/White"
-                        android:fontFamily="@font/gotham"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/linearGallery2"
-                    android:visibility="gone"
-                    android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
-                    android:elevation="5dp">
-                    <Button
-                        android:id="@+id/btnUploadGallery2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih File"
-                        android:background="@drawable/rounded_menu"
-                        android:textColor="@color/White"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/gotham"/>
-                    <ImageView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ivGambarGallery2"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama File"
-                        android:id="@+id/tvGambarGallery2"
-                        android:gravity="center"
-                        android:fontFamily="@font/gotham"
-                        android:visibility="gone"/>
-                    <Button
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah File"
-                        android:id="@+id/btnTambah2"
-                        android:textColor="@color/White"
-                        android:fontFamily="@font/gotham"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/linearGallery3"
-                    android:visibility="gone"
-                    android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
-                    android:elevation="5dp">
-                    <Button
-                        android:id="@+id/btnUploadGallery3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih File"
-                        android:background="@drawable/rounded_menu"
-                        android:textColor="@color/White"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/gotham"/>
-                    <ImageView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ivGambarGallery3"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama File"
-                        android:id="@+id/tvGambarGallery3"
-                        android:gravity="center"
-                        android:fontFamily="@font/gotham"
-                        android:visibility="gone"/>
-                    <Button
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah File"
-                        android:id="@+id/btnTambah3"
-                        android:textColor="@color/White"
-                        android:fontFamily="@font/gotham"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/linearGallery4"
-                    android:visibility="gone"
-                    android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
-                    android:elevation="5dp">
-                    <Button
-                        android:id="@+id/btnUploadGallery4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih File"
-                        android:background="@drawable/rounded_menu"
-                        android:textColor="@color/White"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/gotham"/>
-                    <ImageView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ivGambarGallery4"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama File"
-                        android:id="@+id/tvGambarGallery4"
-                        android:gravity="center"
-                        android:fontFamily="@font/gotham"
-                        android:visibility="gone"/>
-                </LinearLayout>
+                    android:background="@drawable/background" />
+
                 <Button
                     android:id="@+id/btnSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/round_primary"
+                    android:fontFamily="@font/gotham"
                     android:text="Submit"
-                    android:textColor="@color/White"
-                    android:fontFamily="@font/gotham"/>
+                    android:textColor="@color/White" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Data Diri"
+                    android:text="Data"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
@@ -123,7 +123,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Tanggal Lahir"
+                    android:text="NIK"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="1dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="NIK"
+                        android:inputType="number"
+                        android:id="@+id/etNIK"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Tempat Tanggal Lahir"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
@@ -136,9 +164,9 @@
                     android:layout_margin="5dp">
 
                     <EditText
-                        android:hint="Tanggal Lahir"
+                        android:hint="Tempat Tanggal Lahir"
                         android:inputType="text"
-                        android:id="@+id/etTglLahir"
+                        android:id="@+id/etTTL"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
@@ -164,18 +192,12 @@
                     android:padding="1dp"
                     android:layout_margin="5dp">
 
-                    <EditText
-                        android:hint="Anak Ke"
-                        android:inputType="text"
-                        android:id="@+id/etJenisKelamin"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
+                    <Spinner
+                        android:id="@+id/spJenisKelamin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
-                        android:theme="@style/AppThemeDeskripsi" />
+                        android:entries="@array/Kelamin"
+                        android:background="@color/White"/>
                 </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
@@ -214,7 +236,6 @@
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -267,7 +288,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Meninggal Tanggal"
+                    android:text="Status Pernikahan"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
@@ -279,9 +300,9 @@
                     android:layout_margin="5dp">
 
                     <EditText
-                        android:hint="Meninggal Tanggal"
+                        android:hint="Status Pernikahan"
                         android:inputType="text"
-                        android:id="@+id/etMeninggalTgl"
+                        android:id="@+id/etStatusPernikahan"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
@@ -295,7 +316,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Jam"
+                    android:text="Nama Kampung"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
@@ -307,9 +328,9 @@
                     android:layout_margin="5dp">
 
                     <EditText
-                        android:hint="Alamat"
+                        android:hint="Nama Kampung"
                         android:inputType="text"
-                        android:id="@+id/etJam"
+                        android:id="@+id/etNamaKampung"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
@@ -323,7 +344,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Di"
+                    android:text="RT"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
@@ -335,9 +356,9 @@
                     android:layout_margin="5dp">
 
                     <EditText
-                        android:hint="Alamat"
+                        android:hint="RT"
                         android:inputType="text"
-                        android:id="@+id/etDi"
+                        android:id="@+id/etRT"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
@@ -351,7 +372,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Disebabkan Karena"
+                    android:text="RW"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
@@ -363,9 +384,37 @@
                     android:layout_margin="5dp">
 
                     <EditText
-                        android:hint="Disebabkan Karena"
+                        android:hint="RW"
                         android:inputType="text"
-                        android:id="@+id/etDisebabkanKrena"
+                        android:id="@+id/etRW"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Tinggal Sejak"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="1dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="Tinggal Sejak"
+                        android:inputType="text"
+                        android:id="@+id/etTinggalSejak"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
@@ -380,178 +429,6 @@
                     android:layout_height="5dp"
                     android:layout_margin="5dp"
                     android:background="@drawable/background"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Upload File Syarat"
-                    android:gravity="center"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/Primary"
-                    android:textSize="@dimen/text_xtra_large"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/linearGallery1"
-                    android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
-                    android:elevation="5dp">
-                    <Button
-                        android:id="@+id/btnUploadGallery1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih File"
-                        android:background="@drawable/rounded_menu"
-                        android:textColor="@color/White"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/gotham"/>
-                    <ImageView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ivGambarGallery1"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama File"
-                        android:id="@+id/tvGambarGallery1"
-                        android:gravity="center"
-                        android:fontFamily="@font/gotham"
-                        android:visibility="gone"/>
-                    <Button
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah File"
-                        android:id="@+id/btnTambah1"
-                        android:textColor="@color/White"
-                        android:fontFamily="@font/gotham"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/linearGallery2"
-                    android:visibility="gone"
-                    android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
-                    android:elevation="5dp">
-                    <Button
-                        android:id="@+id/btnUploadGallery2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih File"
-                        android:background="@drawable/rounded_menu"
-                        android:textColor="@color/White"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/gotham"/>
-                    <ImageView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ivGambarGallery2"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama File"
-                        android:id="@+id/tvGambarGallery2"
-                        android:gravity="center"
-                        android:fontFamily="@font/gotham"
-                        android:visibility="gone"/>
-                    <Button
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah File"
-                        android:id="@+id/btnTambah2"
-                        android:textColor="@color/White"
-                        android:fontFamily="@font/gotham"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/linearGallery3"
-                    android:visibility="gone"
-                    android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
-                    android:elevation="5dp">
-                    <Button
-                        android:id="@+id/btnUploadGallery3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih File"
-                        android:background="@drawable/rounded_menu"
-                        android:textColor="@color/White"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/gotham"/>
-                    <ImageView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ivGambarGallery3"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama File"
-                        android:id="@+id/tvGambarGallery3"
-                        android:gravity="center"
-                        android:fontFamily="@font/gotham"
-                        android:visibility="gone"/>
-                    <Button
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah File"
-                        android:id="@+id/btnTambah3"
-                        android:textColor="@color/White"
-                        android:fontFamily="@font/gotham"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/linearGallery4"
-                    android:visibility="gone"
-                    android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
-                    android:elevation="5dp">
-                    <Button
-                        android:id="@+id/btnUploadGallery4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih File"
-                        android:background="@drawable/rounded_menu"
-                        android:textColor="@color/White"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/gotham"/>
-                    <ImageView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ivGambarGallery4"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama File"
-                        android:id="@+id/tvGambarGallery4"
-                        android:gravity="center"
-                        android:fontFamily="@font/gotham"
-                        android:visibility="gone"/>
-                </LinearLayout>
                 <Button
                     android:id="@+id/btnSubmit"
                     android:layout_width="match_parent"

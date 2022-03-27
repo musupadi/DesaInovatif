@@ -27,10 +27,13 @@
         android:theme="@style/AppThemeNoAction"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.ui.Menu.Surat.InputSuratActivity"
+            android:label="Input Surat"
             android:parentActivityName=".Activity.MainActivity"
-            android:theme="@style/AppTheme"
-            android:label="Input Surat"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.ui.Menu.KemajuanDesa.DetailKemajuanDesa"
             android:parentActivityName=".Activity.ui.Menu.KemajuanDesa.KemajuanDesaActivity"

@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DB_Helper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "desa.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     //Account
     public static final String TABLE_NAME_ACCOUNT = "account";
     public static final String COLUMN_USERNAME = "username";
@@ -18,6 +18,7 @@ public class DB_Helper extends SQLiteOpenHelper {
     public static final String COLUMN_IDS = "ID";
     public static final String COLUMN_ID_DESA = "id_desa";
     public static final String COLUMN_LEVEL = "level";
+    public static final String COLUMN_FOTO = "foto";
 
     //ID User
     public static final String TABLE_ID_USER = "user";
@@ -36,7 +37,8 @@ public class DB_Helper extends SQLiteOpenHelper {
                 COLUMN_PROFILE+" TEXT NOT NULL, "+
                 COLUMN_IDS+" TEXT NOT NULL, "+
                 COLUMN_ID_DESA+" TEXT NOT NULL, "+
-                COLUMN_LEVEL+" TEXT NOT NULL);"
+                COLUMN_LEVEL+" TEXT NOT NULL, "+
+                COLUMN_FOTO+" TEXT NOT NULL);"
         );
     }
 
@@ -46,7 +48,7 @@ public class DB_Helper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
     //Save
-    public void SaveUser(String username, String password,String name,String profile,String id,String id_desa,String level){
+    public void SaveUser(String username, String password,String name,String profile,String id,String id_desa,String level,String foto){
         SQLiteDatabase db =this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME, username);
@@ -56,6 +58,7 @@ public class DB_Helper extends SQLiteOpenHelper {
         values.put(COLUMN_IDS,id);
         values.put(COLUMN_ID_DESA,id_desa);
         values.put(COLUMN_LEVEL,level);
+        values.put(COLUMN_FOTO,foto);
         db.insert(TABLE_NAME_ACCOUNT,null,values);
         db.close();
     }

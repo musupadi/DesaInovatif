@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ public class KemajuanDesaActivity extends AppCompatActivity {
     private List<DataModel> mItems = new ArrayList<>();
     String Username,Password,Nama,Photo,ID,ID_Desa,Level;
     TextView ID_RW;
+    LinearLayout LRW;
     Boolean R_W=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +64,11 @@ public class KemajuanDesaActivity extends AppCompatActivity {
                 Level = cursor.getString(6);
             }
         }
+        LRW = findViewById(R.id.linearRW);
         recyclerView = findViewById(R.id.recycler);
         Kegiatan = findViewById(R.id.spKegiatan);
         ID_RW = findViewById(R.id.tvIDRW);
         RW  = findViewById(R.id.spRW);
-        RW.setVisibility(View.GONE);
 //        getKegiatan();
         Toast.makeText(KemajuanDesaActivity.this, Username, Toast.LENGTH_SHORT).show();
         Kegiatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -74,10 +76,10 @@ public class KemajuanDesaActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0){
                     R_W = false;
-                    RW.setVisibility(View.GONE);
+                    LRW.setVisibility(View.GONE);
                 }else{
                     R_W = true;
-                    RW.setVisibility(View.VISIBLE);
+                    LRW.setVisibility(View.VISIBLE);
                     getRW();
                     RW.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -127,7 +129,7 @@ public class KemajuanDesaActivity extends AppCompatActivity {
     }
     private void getRW(){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Data=api.ListRW(destiny.AUTH(),destiny.Kunci(),ID_Desa);
+        Call<ResponseModel> Data=api.PostDaftarRW(destiny.AUTH(),destiny.Kunci());
         Data.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

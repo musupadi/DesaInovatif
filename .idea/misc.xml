@@ -4,21 +4,30 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/activity_input_surat.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/activity_kemajuan_desa.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/activity_login.xml" value="0.20199275362318841" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/activity_surat.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/dialog_product.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_blank.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_e_pasar.xml" value="0.25" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_administrasiumum.xml" value="0.25" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_n_i_k.xml" value="0.1" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_n_i_k.xml" value="0.264" />
         <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_nama.xml" value="0.25" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_nama_b_s_t.xml" value="0.1" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_nama_p_n_s.xml" value="0.1" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_kelahiran.xml" value="0.18" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_nama_b_s_t.xml" value="0.2" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_beda_nama_p_n_s.xml" value="0.264" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_kelahiran.xml" value="0.264" />
         <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_kematian.xml" value="0.24246395806028834" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_keterangan_beda_domisili_sementara.xml" value="0.1" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_keterangan_belum_menikah1.xml" value="0.1" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_keterangan_beda_domisili_sementara.xml" value="0.264" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_keterangan_belum_menikah1.xml" value="0.264" />
         <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_keterangan_belum_menikah2.xml" value="0.1" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_nikah_n1.xml" value="0.1" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_nikah_n2.xml" value="0.1" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_nikah_n4.xml" value="0.1" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_s_k_t_m.xml" value="0.1" />
-        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_s_k_t_m_r_s.xml" value="0.1" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_nikah_n1.xml" value="0.264" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_nikah_n2.xml" value="0.2" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_nikah_n4.xml" value="0.2" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_s_k_k_m_b_p_j_s.xml" value="0.20752269779507135" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_s_k_t_m.xml" value="0.2" />
+        <entry key="..\:/Users/Zyarga/AndroidStudioProjects/DesaInovatif/app/src/main/res/layout/fragment_surat_s_k_t_m_r_s.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidProject/PROJECT/DesaInovatif/app/src/main/res/layout/activity_laporan.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidProject/PROJECT/DesaInovatif/app/src/main/res/layout/activity_list_laporan.xml" value="0.1213768115942029" />
         <entry key="..\:/Users/user/AndroidProject/PROJECT/DesaInovatif/app/src/main/res/layout/fragment_surat_kelahiran.xml" value="0.22" />

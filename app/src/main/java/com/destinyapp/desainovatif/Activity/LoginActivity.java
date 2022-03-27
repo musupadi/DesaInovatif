@@ -26,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    LinearLayout login;
+    LinearLayout login,register;
     DB_Helper dbHelper;
     EditText user,password;
     Destiny destiny;
@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.linearLogin);
         user = findViewById(R.id.etEmail);
         password = findViewById(R.id.etPassword);
+        register = findViewById(R.id.linearRegister);
         dbHelper = new DB_Helper(LoginActivity.this);
     }
     private void OnClick(){
@@ -51,6 +52,16 @@ public class LoginActivity extends AppCompatActivity {
                 Login();
             }
         });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Register();
+            }
+        });
+    }
+    private void Register(){
+        Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+        startActivity(intent);
     }
     private void Login(){
         final ProgressDialog pd = new ProgressDialog(LoginActivity.this);
@@ -68,7 +79,8 @@ public class LoginActivity extends AppCompatActivity {
                         response.body().getData().getFoto_user(),
                         response.body().getData().getId_user(),
                         response.body().getData().getId_desa(),
-                        response.body().getData().getLevel());
+                        response.body().getData().getLevel(),
+                        response.body().getData().getFoto_user());
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
                 finishAffinity();

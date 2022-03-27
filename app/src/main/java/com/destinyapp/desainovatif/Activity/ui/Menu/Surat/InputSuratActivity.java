@@ -13,11 +13,10 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
-import com.destinyapp.desainovatif.Activity.ui.LaporanFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.BlankFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratAdministrasiumumFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNIKFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNamaBSTFragment;
@@ -31,7 +30,8 @@ import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeterang
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN1Fragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN2Fragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN4Fragment;
-import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKTM;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKKMBPJSFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKTMFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKTMRSFragment;
 import com.destinyapp.desainovatif.Adapter.AdapterListSubKatSurat;
 import com.destinyapp.desainovatif.Adapter.Spinner.AdapterKategoriSurat;
@@ -124,120 +124,119 @@ public class InputSuratActivity extends AppCompatActivity {
                     kat.setText(clickedItems);
                     if (clickedItems.equals("6")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "6");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratKelahiranFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("7")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "7");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratKematianFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("8")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "8");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratBedaNamaFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
+                    }else if (clickedItems.equals("9")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "9");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratNikahN1Fragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("19")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "19");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratKeteranganBedaDomisiliSementaraFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
                     }else if (clickedItems.equals("20")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "20");
                         lSubSurat.setVisibility(View.GONE);
-                        fragment = new SuratSKTM();
+                        fragment = new SuratSKTMFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("21")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "21");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratBedaNamaBSTFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("22")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "22");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratBedaNamaPNSFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("23")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "23");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratBedaNIKFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("24")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "24");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratSKTMRSFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
-                    }else if (clickedItems.equals("9")){
-                        Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
-                        lSubSurat.setVisibility(View.GONE);
-                        fragment = new SuratNikahN1Fragment();
-                        fragment.setArguments(bundle);
-                        ChangeFragment(fragment);
                     }else if (clickedItems.equals("25")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "25");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratNikahN2Fragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("26")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "26");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratNikahN4Fragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("27")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "27");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratKeteranganBelumMenikah1Fragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("28")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "28");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratKeteranganBelumMenikah2Fragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("29")){
                         Bundle bundle = new Bundle();
-                        bundle.putString("ID", "ID");
+                        bundle.putString("ID", "29");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratKeteranganBedaDomisiliSementaraFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
-                    }else{
-                        fragment = new SuratAdministrasiumumFragment();
+                    }else if (clickedItems.equals("41")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "41");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratSKKMBPJSFragment();
+                        fragment.setArguments(bundle);
                         ChangeFragment(fragment);
-                        lSubSurat.setVisibility(View.VISIBLE);
-                        GetSubKategori(kat.getText().toString());
-                        spinnerSub.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
-                                String clickedItems = clickedItem.getId_surat_kategori_sub();
-                                sub.setText(clickedItems);
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parent) {
-
-                            }
-                        });
+                    }else{
+                        fragment = new BlankFragment();
+                        ChangeFragment(fragment);
                     }
 
                 }catch (Exception e){

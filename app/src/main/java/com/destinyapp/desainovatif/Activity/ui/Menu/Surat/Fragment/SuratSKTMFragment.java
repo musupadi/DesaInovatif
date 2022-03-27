@@ -49,8 +49,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class SuratSKTMRSFragment extends Fragment {
+public class SuratSKTMFragment extends Fragment {
     //Cut Here
     Button Submit;
     Destiny destiny;
@@ -60,9 +59,9 @@ public class SuratSKTMRSFragment extends Fragment {
     DB_Helper dbHelper;
     String Username,Password,Namas,Photo,ID,ID_Desa,Level;
     //Cut Here
-    EditText Nama,TTL,Agama,Pekerjaan,Alamat,NIK;
+    EditText Nama,TTL,Agama,Pekerjaan,Alamat,NIK,NamaOrtu,NIKOrtu,TTLOrtu,AgamaOrtu,PekerjaanOrtu,AlamatOrtu,NamaSekolah;
     Spinner JenisKelamin;
-    public SuratSKTMRSFragment() {
+    public SuratSKTMFragment() {
         // Required empty public constructor
     }
 
@@ -75,7 +74,7 @@ public class SuratSKTMRSFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_surat_s_k_t_m_r_s, container, false);
+        return inflater.inflate(R.layout.fragment_surat_s_k_t_m, container, false);
     }
 
     @Override
@@ -110,10 +109,16 @@ public class SuratSKTMRSFragment extends Fragment {
         Pekerjaan = view.findViewById(R.id.etPekerjaan);
         Alamat = view.findViewById(R.id.etAlamat);
         NIK = view.findViewById(R.id.etNIK);
-
+        NamaOrtu = view.findViewById(R.id.etNamaOrtu);
+        NIKOrtu = view.findViewById(R.id.etNIKOrtu);
+        TTLOrtu = view.findViewById(R.id.etTTLOrtu);
+        AgamaOrtu = view.findViewById(R.id.etAgamaOrtu);
+        PekerjaanOrtu = view.findViewById(R.id.etPekerjaanOrtu);
+        AlamatOrtu = view.findViewById(R.id.etAlamatOrtu);
+        NamaSekolah = view.findViewById(R.id.etNamaSekolah);
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Logic();
             }
         });
@@ -124,9 +129,10 @@ public class SuratSKTMRSFragment extends Fragment {
         pd.show();
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        final Call<Ress> data =api.PostSuratSKTMRS(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
+        final Call<Ress> data =api.PostSuratSKTM(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
                 Nama.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),
-                Pekerjaan.getText().toString(),Alamat.getText().toString());
+                Pekerjaan.getText().toString(),Alamat.getText().toString(),NamaOrtu.getText().toString(),NIKOrtu.getText().toString(),TTLOrtu.getText().toString(),
+                AgamaOrtu.getText().toString(),PekerjaanOrtu.getText().toString(),AlamatOrtu.getText().toString(),NamaSekolah.getText().toString());
         data.enqueue(new Callback<Ress>() {
             @Override
             public void onResponse(Call<Ress> call, Response<Ress> response) {

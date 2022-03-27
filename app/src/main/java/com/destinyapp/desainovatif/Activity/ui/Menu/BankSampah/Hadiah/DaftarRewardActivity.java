@@ -29,7 +29,7 @@ import retrofit2.Response;
 public class DaftarRewardActivity extends AppCompatActivity {
     DB_Helper dbHelper;
     String Username,Password,Nama,Photo,ID,ID_Desa;
-    Destiny destiny;
+    Destiny destiny = new Destiny();
     RecyclerView recycler;
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;

@@ -24,19 +24,40 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kegiatan"
+                android:fontFamily="@font/gotham"
+                android:layout_margin="10dp"
+                android:textColor="@color/Accent"
+                android:textSize="@dimen/text_xtra_large"/>
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spKegiatan"
                 android:entries="@array/Kegiatan"
                 android:layout_margin="10dp"/>
-            <Spinner
-                android:layout_margin="10dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spRW"
-                android:entries="@array/Surat"/>
+                android:orientation="vertical"
+                android:id="@+id/linearRW">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih RW"
+                    android:fontFamily="@font/gotham"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/Accent"
+                    android:textSize="@dimen/text_xtra_large"/>
+                <Spinner
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spRW"
+                    android:entries="@array/Surat"/>
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

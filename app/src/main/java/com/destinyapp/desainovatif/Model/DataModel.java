@@ -406,9 +406,17 @@ public class DataModel {
     @Expose
     public String id_rw;
 
+    @SerializedName("id_rt")
+    @Expose
+    public String id_rt;
+
     @SerializedName("nomor_rw")
     @Expose
     public String nomor_rw;
+
+    @SerializedName("nomor_rt")
+    @Expose
+    public String nomor_rt;
 
     //Reward Bank Sampah
     @SerializedName("id_reward_bs")
@@ -1361,5 +1369,21 @@ public class DataModel {
 
     public void setTgl_kemajuan_desa(String tgl_kemajuan_desa) {
         this.tgl_kemajuan_desa = tgl_kemajuan_desa;
+    }
+
+    public String getId_rt() {
+        return id_rt;
+    }
+
+    public void setId_rt(String id_rt) {
+        this.id_rt = id_rt;
+    }
+
+    public String getNomor_rt() {
+        return nomor_rt;
+    }
+
+    public void setNomor_rt(String nomor_rt) {
+        this.nomor_rt = nomor_rt;
     }
 }
