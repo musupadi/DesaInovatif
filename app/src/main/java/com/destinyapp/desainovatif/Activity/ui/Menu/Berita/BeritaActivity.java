@@ -15,6 +15,7 @@ import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer;
 import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.LoginActivity;
+import com.destinyapp.desainovatif.Adapter.AdapterAllBerita;
 import com.destinyapp.desainovatif.Adapter.AdapterBerita;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.DataModel;
@@ -68,7 +69,7 @@ public class BeritaActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<com.destinyapp.desainovatif.Model.NewModel.Response> call, retrofit2.Response<com.destinyapp.desainovatif.Model.NewModel.Response> response) {
                 Datas=response.body().getData();
-                mAdapter = new AdapterBerita(BeritaActivity.this,Datas);
+                mAdapter = new AdapterAllBerita(BeritaActivity.this,Datas);
                 recycler.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }

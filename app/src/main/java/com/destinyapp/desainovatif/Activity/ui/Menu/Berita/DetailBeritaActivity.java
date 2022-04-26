@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class DetailBeritaActivity extends AppCompatActivity {
     TextView judul,tanggal;
     WebView isi;
     ImageView gambar;
+    LinearLayout Back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,14 @@ public class DetailBeritaActivity extends AppCompatActivity {
         isi = findViewById(R.id.webIsi);
         tanggal = findViewById(R.id.tvTanggal);
         gambar = findViewById(R.id.ivGambar);
+        judul = findViewById(R.id.tvJudul);
+        Back  = findViewById(R.id.linearBack);
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
     private void GETDATA(){
         Intent intent = getIntent();
@@ -57,7 +67,7 @@ public class DetailBeritaActivity extends AppCompatActivity {
         ISI = intent.getExtras().getString("ISI");
         TANGGAL = intent.getExtras().getString("TANGGAL");
         GANBAR = intent.getExtras().getString("GAMBAR");
-        getSupportActionBar().setTitle(JUDUL);
+        judul.setText(JUDUL);
         isi.loadData(destiny.Changer(ISI),"text/html","UTF-8");
         tanggal.setText(destiny.MagicDateChange(TANGGAL));
         Glide.with(this)

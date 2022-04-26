@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_rounded_transparent"
-                android:padding="1dp"
+                android:padding="5dp"
                 android:layout_margin="10dp">
 
                 <EditText
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_rounded_transparent"
-                android:padding="1dp"
+                android:padding="5dp"
                 android:layout_margin="10dp">
 
                 <EditText
@@ -104,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_rounded_transparent"
-                android:padding="1dp"
+                android:padding="5dp"
                 android:layout_margin="10dp">
 
                 <EditText

@@ -61,7 +61,8 @@ public class SuratNikahN2Fragment extends Fragment {
     DB_Helper dbHelper;
     String Username, Password, Namas, Photo, ID, ID_Desa, Level;
     //Cut Here
-    EditText Nama,Suami,Istri,HariTanggalJam,Akad;
+    EditText Nama,Suami,Istri,Akad;
+    Spinner Tahun,Bulan,Hari;
 
 
     public SuratNikahN2Fragment() {
@@ -109,9 +110,10 @@ public class SuratNikahN2Fragment extends Fragment {
         Nama = view.findViewById(R.id.etNamaIbu);
         Suami = view.findViewById(R.id.etNamaSuami);
         Istri = view.findViewById(R.id.etNamaIstri);
-        HariTanggalJam = view.findViewById(R.id.etTanggal);
         Akad = view.findViewById(R.id.etTempatAkadNikah);
-
+        Tahun = view.findViewById(R.id.spTahun);
+        Bulan = view.findViewById(R.id.spBulan);
+        Hari = view.findViewById(R.id.spHari);
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +129,7 @@ public class SuratNikahN2Fragment extends Fragment {
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         final Call<Ress> data = api.PostSuratNikahN2(destiny.AUTH(), destiny.Kunci(), ID, ID_Desa, IDS, "0", NamaSurat.getText().toString(), NoteSurat.getText().toString(),
-                Nama.getText().toString(),Suami.getText().toString(),Istri.getText().toString(),HariTanggalJam.getText().toString(),
+                Nama.getText().toString(),Suami.getText().toString(),Istri.getText().toString(),destiny.Tanggal(Tahun,Bulan,Hari),
                 Akad.getText().toString());
         data.enqueue(new Callback<Ress>() {
             @Override

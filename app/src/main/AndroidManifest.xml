@@ -27,13 +27,27 @@
         android:theme="@style/AppThemeNoAction"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.ui.Menu.BeritaDesa.AgendaDesaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ui.Menu.BeritaDesa.BeritaDesaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ui.Menu.Surat.Fragment.SuratPembuatanKK"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ui.Menu.Surat.Fragment.SuratEKTP"
+            android:exported="false" />
+        <activity
             android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.ui.Menu.Surat.InputSuratActivity"
             android:label="Input Surat"
-            android:parentActivityName=".Activity.MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeNoAction" />
         <activity
             android:name=".Activity.ui.Menu.KemajuanDesa.DetailKemajuanDesa"
             android:parentActivityName=".Activity.ui.Menu.KemajuanDesa.KemajuanDesaActivity"
@@ -46,14 +60,10 @@
         <activity android:name=".Activity.ui.Menu.Covid.CovidActivity" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.Hadiah.DaftarRewardActivity"
-            android:label="Daftar Reward Bank Sampah"
-            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeNoAction" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.Hadiah.HistoryTransaksi.TransaksiRewardActivity"
-            android:label="Transaksi Bank Sampah"
-            android:parentActivityName=".Activity.ui.Menu.BankSampah.Hadiah.HadiahBankSampahActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeNoAction" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.Hadiah.AmbilReward.AmbilRewardActivity"
             android:label="Ambil Reward Bank Sampah"
@@ -66,20 +76,14 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.Transaksi.TransaksiSampahActivity"
-            android:label="Transaksi Bank Sampah"
-            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeNoAction" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.Jenis.JenisSampahActivity"
-            android:label="Jenis Bank Sampah"
-            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeNoAction" />
         <activity android:name=".Activity.ui.Menu.Laporan.ListLaporanActivity" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.Lokasi.LokasiSampah"
-            android:label="Lokasi Bank Sampah"
-            android:parentActivityName=".Activity.ui.Menu.BankSampah.BankSampah"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeNoAction" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -97,9 +101,7 @@
             android:label="@string/title_activity_lokasi_bank_sampah" />
         <activity
             android:name=".Activity.ui.Menu.BankSampah.BankSampah"
-            android:label="Bank Sampah"
-            android:parentActivityName=".Activity.MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeNoAction" />
         <activity
             android:name=".Activity.ui.Menu.Laporan.LaporanActivity"
             android:label="Laporan"
@@ -134,8 +136,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.ui.Menu.Berita.DetailBeritaActivity"
-            android:parentActivityName=".Activity.ui.Menu.Berita.BeritaActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeNoAction" />
         <activity
             android:name=".Activity.ui.Menu.SuratActivity"
             android:label="Surat"

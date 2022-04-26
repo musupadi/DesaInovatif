@@ -90,7 +90,7 @@ public class AdapterListHadiahBankSampah extends RecyclerView.Adapter<AdapterLis
             holderData.Qty.setTextColor(Color.rgb(83,210,220));
             holderData.QtyTittle.setTextColor(Color.rgb(83,210,220));
         }
-        holderData.card.setOnClickListener(new View.OnClickListener() {
+        holderData.Tukar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 KlaimHadiah(Integer.parseInt(dm.getNilai_dibutuhkan()),dm.getId_reward_bs(),dm.getNama_reward());
@@ -106,12 +106,14 @@ public class AdapterListHadiahBankSampah extends RecyclerView.Adapter<AdapterLis
     class HolderData extends RecyclerView.ViewHolder{
         TextView Nama,Deskripsi,QtyTittle,Qty;
         LinearLayout card;
+        Button Tukar;
         public HolderData(View v){
             super(v);
             Nama = v.findViewById(R.id.tvNama);
             Deskripsi = v.findViewById(R.id.tvDeskripsi);
             QtyTittle = v.findViewById(R.id.tvQtyTittle);
             Qty = v.findViewById(R.id.tvQty);
+            Tukar = v.findViewById(R.id.btnTukar);
             card = v.findViewById(R.id.LayoutCardView);
         }
     }

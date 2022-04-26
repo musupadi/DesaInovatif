@@ -15,180 +15,73 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="4dp"
-        android:padding="5dp">
+        android:layout_marginBottom="4dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:padding="10dp">
             <LinearLayout
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nama Reward"
                     android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=":"
-                    android:gravity="center"
-                    android:layout_weight="1.8"
-                    android:textSize="@dimen/text_large"
+                    android:text="Nama"
                     android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
+                    android:fontFamily="@font/gotham"
+                    android:id="@+id/tvNama"/>
                 <TextView
-                    android:id="@+id/tvNama"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kompor Gas"
+                    android:gravity="right"
+                    android:layout_gravity="right"
                     android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nilai"
                     android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
+                    android:fontFamily="@font/gotham"
+                    android:id="@+id/tvNilai"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Total Nilai"
                     android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=":"
-                    android:gravity="center"
-                    android:layout_weight="1.8"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-                <TextView
-                    android:id="@+id/tvNilai"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rp 50.000"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tanggal Klaim Reward"
+                    android:textColor="@color/Black"
+                    android:fontFamily="@font/gotham"
+                    android:id="@+id/tvTglKlaimReward"/>
+                <TextView
+                    android:gravity="right"
+                    android:layout_gravity="right"
                     android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=":"
-                    android:gravity="center"
-                    android:layout_weight="1.8"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-                <TextView
-                    android:id="@+id/tvTglKlaimReward"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="2021-03-24 17:41:26"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tanggal Ambil Reward"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=":"
-                    android:gravity="center"
-                    android:layout_weight="1.8"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-                <TextView
-                    android:id="@+id/tvTglAmbilReward"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Belum Diambil"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Status"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
                     android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
+                    android:fontFamily="@font/gotham"
+                    android:id="@+id/tvStatus"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
+                    android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=":"
-                    android:gravity="center"
-                    android:layout_weight="1.8"
-                    android:textSize="@dimen/text_large"
+                    android:text="Tanggal Ambil Klaim Reward"
                     android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
-                <TextView
-                    android:id="@+id/tvStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Diklaim"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_large"
-                    android:textColor="@color/Black"
-                    android:fontFamily="@font/gotham"/>
+                    android:fontFamily="@font/gotham"
+                    android:id="@+id/tvTglAmbilReward"/>
+
             </LinearLayout>
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

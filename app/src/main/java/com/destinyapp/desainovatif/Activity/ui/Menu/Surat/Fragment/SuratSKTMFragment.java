@@ -59,8 +59,8 @@ public class SuratSKTMFragment extends Fragment {
     DB_Helper dbHelper;
     String Username,Password,Namas,Photo,ID,ID_Desa,Level;
     //Cut Here
-    EditText Nama,TTL,Agama,Pekerjaan,Alamat,NIK,NamaOrtu,NIKOrtu,TTLOrtu,AgamaOrtu,PekerjaanOrtu,AlamatOrtu,NamaSekolah;
-    Spinner JenisKelamin;
+    EditText Nama,TTL,Pekerjaan,Alamat,NIK,NamaOrtu,NIKOrtu,TTLOrtu,PekerjaanOrtu,AlamatOrtu,NamaSekolah;
+    Spinner JenisKelamin,Agama,AgamaOrtu,Tahun,Bulan,Hari,TahunOrtu,BulanOrtu,HariOrtu;
     public SuratSKTMFragment() {
         // Required empty public constructor
     }
@@ -104,18 +104,24 @@ public class SuratSKTMFragment extends Fragment {
         //Cut Here
         Nama = view.findViewById(R.id.etNama);
         TTL = view.findViewById(R.id.etTTL);
-        JenisKelamin = view.findViewById(R.id.etJenisKelamin);
-        Agama = view.findViewById(R.id.etAgama);
+        JenisKelamin = view.findViewById(R.id.spJenisKelamin);
+        Agama = view.findViewById(R.id.spAgama);
         Pekerjaan = view.findViewById(R.id.etPekerjaan);
         Alamat = view.findViewById(R.id.etAlamat);
         NIK = view.findViewById(R.id.etNIK);
         NamaOrtu = view.findViewById(R.id.etNamaOrtu);
         NIKOrtu = view.findViewById(R.id.etNIKOrtu);
         TTLOrtu = view.findViewById(R.id.etTTLOrtu);
-        AgamaOrtu = view.findViewById(R.id.etAgamaOrtu);
+        AgamaOrtu = view.findViewById(R.id.spAgamaOrangtua);
         PekerjaanOrtu = view.findViewById(R.id.etPekerjaanOrtu);
         AlamatOrtu = view.findViewById(R.id.etAlamatOrtu);
         NamaSekolah = view.findViewById(R.id.etNamaSekolah);
+        Tahun = view.findViewById(R.id.spTahun);
+        Bulan = view.findViewById(R.id.spBulan);
+        Hari = view.findViewById(R.id.spHari);
+        TahunOrtu = view.findViewById(R.id.spTahunOrtu);
+        BulanOrtu = view.findViewById(R.id.spBulanOrtu);
+        HariOrtu = view.findViewById(R.id.spHariOrtu);
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,9 +136,11 @@ public class SuratSKTMFragment extends Fragment {
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         final Call<Ress> data =api.PostSuratSKTM(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
-                Nama.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),
-                Pekerjaan.getText().toString(),Alamat.getText().toString(),NamaOrtu.getText().toString(),NIKOrtu.getText().toString(),TTLOrtu.getText().toString(),
-                AgamaOrtu.getText().toString(),PekerjaanOrtu.getText().toString(),AlamatOrtu.getText().toString(),NamaSekolah.getText().toString());
+                Nama.getText().toString(),destiny.TTL(TTL,Tahun,Bulan,Hari),JenisKelamin.getSelectedItem().toString(),
+                Agama.getSelectedItem().toString(), Pekerjaan.getText().toString(),Alamat.getText().toString(),
+                NamaOrtu.getText().toString(),NIKOrtu.getText().toString(),
+                destiny.TTL(TTL,TahunOrtu,BulanOrtu,HariOrtu),AgamaOrtu.getSelectedItem().toString(),
+                PekerjaanOrtu.getText().toString(),AlamatOrtu.getText().toString(),NamaSekolah.getText().toString());
         data.enqueue(new Callback<Ress>() {
             @Override
             public void onResponse(Call<Ress> call, Response<Ress> response) {

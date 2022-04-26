@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="90dp"
     android:layout_gravity="center">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -47,6 +47,26 @@
                     android:fontFamily="@font/gotham"
                     android:id="@+id/tvDeskripsi"
                     android:textSize="@dimen/text_large"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <TextView
+                        android:fontFamily="@font/gotham"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Quantity "
+                        android:id="@+id/tvQtyTittle"
+                        android:textColor="@color/Red"/>
+                    <TextView
+                        android:fontFamily="@font/gotham"
+                        android:id="@+id/tvQty"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="0"
+                        android:textColor="@color/Red"/>
+                </LinearLayout>
 <!--                <TextView-->
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="match_parent"-->
@@ -62,33 +82,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:orientation="vertical">
-                <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btnTukar"
+                    android:layout_margin="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_primary"
+                    android:text="Tukar"
                     android:gravity="center"
-                    android:layout_margin="5dp">
-                    <TextView
-                        android:layout_weight="1"
-                        android:fontFamily="@font/gotham"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Quantity"
-                        android:id="@+id/tvQtyTittle"
-                        android:gravity="center"
-                        android:textColor="@color/Red"/>
-                    <TextView
-                        android:layout_weight="1"
-                        android:fontFamily="@font/gotham"
-                        android:id="@+id/tvQty"
-                        android:gravity="center|top"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="0"
-                        android:textColor="@color/Red"/>
-                </LinearLayout>
+                    android:textColor="@color/White"
+                    android:fontFamily="@font/gotham"/>
             </LinearLayout>
 
         </LinearLayout>

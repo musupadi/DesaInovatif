@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
@@ -35,6 +37,7 @@ public class TransaksiSampahActivity extends AppCompatActivity {
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mManager;
+    LinearLayout Back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,13 @@ public class TransaksiSampahActivity extends AppCompatActivity {
             }
         }
         GetData();
+        Back  = findViewById(R.id.linearBack);
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
     private void GetData(){
         mManager = new LinearLayoutManager(TransaksiSampahActivity.this,RecyclerView.VERTICAL,false);

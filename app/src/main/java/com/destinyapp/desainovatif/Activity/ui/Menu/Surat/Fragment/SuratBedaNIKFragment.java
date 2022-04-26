@@ -32,6 +32,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Activity.HomeActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.Ress;
@@ -61,8 +62,8 @@ public class SuratBedaNIKFragment extends Fragment {
     DB_Helper dbHelper;
     String Username,Password,Namas,Photo,ID,ID_Desa,Level;
     //Cut Here
-    EditText Nama,TTL,Agama,Pekerjaan,StatusPernikahan,WargaNegara,NoKTP,Alamat,NIKLama,NIKBaru;
-    Spinner JenisKelamin;
+    EditText Nama,TTL,Pekerjaan,WargaNegara,NoKTP,Alamat,NIKLama,NIKBaru;
+    Spinner JenisKelamin,StatusPernikahan,Tahun,Bulan,Hari,Agama;
     public SuratBedaNIKFragment() {
         // Required empty public constructor
     }
@@ -92,15 +93,19 @@ public class SuratBedaNIKFragment extends Fragment {
         NoteSurat = view.findViewById(R.id.etNoteSurat);
         Nama = view.findViewById(R.id.etNama);
         TTL = view.findViewById(R.id.etTTL);
-        JenisKelamin = view.findViewById(R.id.etJenisKelamin);
-        Agama = view.findViewById(R.id.etAgama);
+        JenisKelamin = view.findViewById(R.id.spJenisKelamin);
+        Agama = view.findViewById(R.id.spAgama);
         Pekerjaan = view.findViewById(R.id.etPekerjaan);
-        StatusPernikahan = view.findViewById(R.id.etStatusPernikahan);
+        StatusPernikahan = view.findViewById(R.id.spStatusPernikahan);
         WargaNegara = view.findViewById(R.id.etWargaNegara);
         NoKTP = view.findViewById(R.id.etNoKTP);
         Alamat = view.findViewById(R.id.etAlamat);
         NIKLama = view.findViewById(R.id.etNIKLama);
         NIKBaru = view.findViewById(R.id.etNIKBaru);
+        Tahun = view.findViewById(R.id.spTahun);
+        Bulan = view.findViewById(R.id.spBulan);
+        Hari = view.findViewById(R.id.spHari);
+
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,9 +119,10 @@ public class SuratBedaNIKFragment extends Fragment {
         pd.show();
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        final Call<Ress> data =api.PostSuratBedaNIK(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
-                Nama.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),
-                Pekerjaan.getText().toString(),StatusPernikahan.getText().toString(),WargaNegara.getText().toString(),NoKTP.getText().toString(),
+        final Call<Ress> data =api.PostSuratBedaNIK(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(), Nama.getText().toString(),
+                destiny.TTL(TTL,Tahun,Bulan,Hari),
+                JenisKelamin.getSelectedItem().toString(),Agama.getSelectedItem().toString(),
+                Pekerjaan.getText().toString(),StatusPernikahan.getSelectedItem().toString(),WargaNegara.getText().toString(),NoKTP.getText().toString(),
                 Alamat.getText().toString(),NIKLama.getText().toString(),NIKBaru.getText().toString());
         data.enqueue(new Callback<Ress>() {
             @Override
@@ -124,7 +130,7 @@ public class SuratBedaNIKFragment extends Fragment {
                 pd.hide();
                 try {
                     Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
                     startActivity(intent);
                 }catch (Exception e){
                     Log.d("Zyarga Error",e.toString());

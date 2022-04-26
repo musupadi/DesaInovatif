@@ -1,14 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ui.Menu.Surat.Fragment.SuratKeteranganBedaIdentitasFragment">
+    tools:context=".Activity.ui.Menu.Surat.Fragment.SuratKelahiranFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Nama Surat"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
 
-</FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="Nama Surat"
+                        android:inputType="text"
+                        android:id="@+id/etNamaSurat"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Note Surat"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="Nama Surat"
+                        android:inputType="text"
+                        android:id="@+id/etNoteSurat"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Data"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/background">
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Nama"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="Nama"
+                        android:inputType="text"
+                        android:id="@+id/etNama"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="NIK"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="NIK"
+                        android:inputType="number"
+                        android:id="@+id/etNIK"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Alamat"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="Alamat"
+                        android:inputType="text"
+                        android:id="@+id/etAlamat"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Nomor Danom"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="Nomor Danom"
+                        android:inputType="number"
+                        android:id="@+id/etNomorDanom"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/background"/>
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_primary"
+                    android:text="Submit"
+                    android:textColor="@color/White"
+                    android:fontFamily="@font/gotham"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

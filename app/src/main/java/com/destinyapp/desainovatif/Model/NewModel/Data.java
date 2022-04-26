@@ -8,7 +8,10 @@ import com.destinyapp.desainovatif.Model.NewModel.Model.Title;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data {
+public class
+
+
+Data {
     @SerializedName("date")
     @Nullable
     String date;

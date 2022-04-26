@@ -133,6 +133,7 @@ public class LayananDesaFragment extends Fragment {
     String postGallery4 = "";
     int GalleryNum = 1;
     LinearLayout lOrangBersangkutan;
+    LinearLayout Pengajuan,Terproses,Selesai,Ditolak;
     public LayananDesaFragment() {
         // Required empty public constructor
     }
@@ -160,6 +161,10 @@ public class LayananDesaFragment extends Fragment {
         ber = view.findViewById(R.id.tvBersangkutan);
         sub = view.findViewById(R.id.tvSub);
         destiny = new Destiny();
+        Pengajuan = view.findViewById(R.id.linearPengajuan);
+        Terproses = view.findViewById(R.id.linearTerproses);
+        Selesai = view.findViewById(R.id.linearSelesai);
+        Ditolak = view.findViewById(R.id.linearDitolak);
         //Dialog
         dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_permintaan_surat);
@@ -258,7 +263,58 @@ public class LayananDesaFragment extends Fragment {
             }
         });
         OnClick();
-        Logic();
+        Pengajuan();
+        Pengajuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pengajuan();
+            }
+        });
+        Terproses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Terproses();
+            }
+        });
+        Selesai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Selesai();
+            }
+        });
+        Ditolak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ditolak();
+            }
+        });
+//        Logic();
+    }
+    private void Default(){
+        Pengajuan.setBackgroundResource(R.drawable.btn_rounded_primary);
+        Terproses.setBackgroundResource(R.drawable.btn_rounded_primary);
+        Selesai.setBackgroundResource(R.drawable.btn_rounded_primary);
+        Ditolak.setBackgroundResource(R.drawable.btn_rounded_primary);
+    }
+    private void Pengajuan(){
+        Default();
+        Pengajuan.setBackgroundResource(R.drawable.btn_rounded_secondary);
+        Logic("requested");
+    }
+    private void Terproses(){
+        Default();
+        Terproses.setBackgroundResource(R.drawable.btn_rounded_secondary);
+        Logic("terproses");
+    }
+    private void Selesai(){
+        Default();
+        Selesai.setBackgroundResource(R.drawable.btn_rounded_secondary);
+        Logic("selesai");
+    }
+    private void Ditolak(){
+        Default();
+        Ditolak.setBackgroundResource(R.drawable.btn_rounded_secondary);
+        Logic("ditolak");
     }
     private void GetSubKategori(String id){
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
@@ -888,7 +944,7 @@ public class LayananDesaFragment extends Fragment {
                 try {
                     Toast.makeText(getActivity(), "Surat berhasil Terkirim", Toast.LENGTH_SHORT).show();
                     dialog.hide();
-                    Logic();
+                    Logic("");
                 }catch (Exception e){
                     Toast.makeText(getActivity(), "Terjadi Kesalahan User akan Terlogout", Toast.LENGTH_SHORT).show();
                     dbHelper.Logout();
@@ -905,11 +961,11 @@ public class LayananDesaFragment extends Fragment {
             }
         });
     }
-    private void Logic(){
+    private void Logic(String params){
         mManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        Call<ResponseModel> Surat = api.GetSurat(destiny.AUTH(),destiny.Kunci(),ID);
+        Call<ResponseModel> Surat = api.GetSurat(destiny.AUTH(),destiny.Kunci(),ID,params);
         Surat.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -925,7 +981,11 @@ public class LayananDesaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                try {
+                    Toast.makeText(getActivity(), "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+
+                }
             }
         });
     }

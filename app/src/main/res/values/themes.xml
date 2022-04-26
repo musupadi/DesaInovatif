@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.DestinyELearning" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/Primary</item>
+        <item name="colorPrimaryVariant">@color/Primary</item>
         <item name="colorOnPrimary">@color/White</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -16,7 +16,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/Primary</item>
-        <item name="colorPrimaryVariant">@color/PrimaryDark</item>
+        <item name="colorPrimaryVariant">@color/Primary</item>
         <item name="colorOnPrimary">@color/White</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/Secondary</item>
@@ -29,7 +29,7 @@
     <style name="AppThemeNoAction" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/Primary</item>
-        <item name="colorPrimaryDark">@color/PrimaryDark</item>
+        <item name="colorPrimaryDark">@color/Primary</item>
         <item name="colorAccent">@color/Secondary</item>
     </style>
     <style name="AppThemeDeskripsi" parent="Theme.AppCompat.Light.NoActionBar">

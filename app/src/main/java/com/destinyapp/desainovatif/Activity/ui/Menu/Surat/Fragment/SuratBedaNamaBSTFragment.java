@@ -32,6 +32,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Activity.HomeActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.Ress;
@@ -41,6 +42,7 @@ import com.destinyapp.desainovatif.SharedPreferance.DB_Helper;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Logger;
@@ -62,8 +64,12 @@ import retrofit2.Response;
         //Cut Here
 
 
-        EditText Nama,TTL,Agama,Pekerjaan,StatusPernikahan,WargaNegara,NoKTP,Alamat,NamaBSTBaru;
-        Spinner JenisKelamin;
+        EditText Nama,TTL,Pekerjaan,NoKTP,Alamat,NamaBSTBaru;
+        Spinner JenisKelamin,Hari,Bulan,Tahun,Agama,StatusPernikahan,WargaNegara;
+
+        ArrayList<String> SPHari = new ArrayList<String>();
+        ArrayList<String> SPBulan = new ArrayList<String>();
+        ArrayList<String> SPTahun = new ArrayList<String>();
         public SuratBedaNamaBSTFragment() {
             // Required empty public constructor
         }
@@ -106,18 +112,19 @@ import retrofit2.Response;
                 }
             }
             //Cut Here
-
+            Hari = view.findViewById(R.id.spHari);
+            Bulan = view.findViewById(R.id.spBulan);
+            Tahun = view.findViewById(R.id.spTahun);
             Nama = view.findViewById(R.id.etNama);
             TTL = view.findViewById(R.id.etTTL);
-            JenisKelamin = view.findViewById(R.id.etJenisKelamin);
-            Agama = view.findViewById(R.id.etAgama);
+            JenisKelamin = view.findViewById(R.id.spJenisKelamin);
+            Agama = view.findViewById(R.id.spAgama);
             Pekerjaan = view.findViewById(R.id.etPekerjaan);
-            StatusPernikahan = view.findViewById(R.id.etStatusPernikahan);
-            WargaNegara = view.findViewById(R.id.etWargaNegara);
+            StatusPernikahan = view.findViewById(R.id.spStatusPernikahan);
+            WargaNegara = view.findViewById(R.id.spWargaNegara);
             NoKTP = view.findViewById(R.id.etNoKTP);
             Alamat = view.findViewById(R.id.etAlamat);
             NamaBSTBaru = view.findViewById(R.id.etNamaBSTBaru);
-
             Submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -133,17 +140,17 @@ import retrofit2.Response;
             pd.show();
             pd.setCancelable(false);
             ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-            final Call<Ress> data =api.PostSuratBedaNamaBST(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,"21","0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
-                    Nama.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),
-                    Pekerjaan.getText().toString(),StatusPernikahan.getText().toString(),WargaNegara.getText().toString(),NoKTP.getText().toString(),
-                    Alamat.getText().toString(),NamaBSTBaru.getText().toString());
+            final Call<Ress> data =api.PostSuratBedaNamaBST(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
+                    Nama.getText().toString(),destiny.TTL(TTL,Tahun,Bulan,Hari),JenisKelamin.getSelectedItem().toString(),
+                    Agama.getSelectedItem().toString(),Pekerjaan.getText().toString(),StatusPernikahan.getSelectedItem().toString(),
+                    WargaNegara.getSelectedItem().toString(),NoKTP.getText().toString(),Alamat.getText().toString(),NamaBSTBaru.getText().toString());
             data.enqueue(new Callback<Ress>() {
                 @Override
                 public void onResponse(Call<Ress> call, Response<Ress> response) {
                     pd.hide();
                     try {
                         Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getActivity(),MainActivity.class);
+                        Intent intent = new Intent(getActivity(), HomeActivity.class);
                         startActivity(intent);
                     }catch (Exception e){
                         Log.d("Zyarga Error",e.toString());

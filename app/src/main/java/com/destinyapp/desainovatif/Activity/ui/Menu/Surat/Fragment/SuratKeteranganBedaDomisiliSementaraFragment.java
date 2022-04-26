@@ -59,8 +59,8 @@ public class SuratKeteranganBedaDomisiliSementaraFragment extends Fragment {
     DB_Helper dbHelper;
     String Username, Password, Namas, Photo, ID, ID_Desa, Level;
     //Cut Here
-    EditText Nama,TTL,Agama,Pekerjaan,Alamat,NIK,NamaKampung,StatusPerkawinan,RT,RW,TinggalSejak;
-    Spinner JenisKelamin;
+    EditText Nama,TTL,Pekerjaan,Alamat,NIK,NamaKampung,RT,RW,TinggalSejak;
+    Spinner JenisKelamin,Tahun,Bulan,Hari,StatusPerkawinan,Agama;
 
     public SuratKeteranganBedaDomisiliSementaraFragment() {
         // Required empty public constructor
@@ -106,8 +106,8 @@ public class SuratKeteranganBedaDomisiliSementaraFragment extends Fragment {
         //Cut Here
         Nama = view.findViewById(R.id.etNama);
         TTL = view.findViewById(R.id.etTTL);
-        JenisKelamin = view.findViewById(R.id.etJenisKelamin);
-        Agama = view.findViewById(R.id.etAgama);
+        JenisKelamin = view.findViewById(R.id.spJenisKelamin);
+        Agama = view.findViewById(R.id.spAgama);
         Pekerjaan = view.findViewById(R.id.etPekerjaan);
         Alamat = view.findViewById(R.id.etAlamat);
         NIK = view.findViewById(R.id.etNIK);
@@ -130,8 +130,8 @@ public class SuratKeteranganBedaDomisiliSementaraFragment extends Fragment {
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         final Call<Ress> data =api.PostSuratBedaDomisili(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
-                Nama.getText().toString(),NIK.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),Pekerjaan.getText().toString(),
-                StatusPerkawinan.getText().toString(),NamaKampung.getText().toString(),RT.getText().toString(),RW.getText().toString(),TinggalSejak.getText().toString());
+                Nama.getText().toString(),NIK.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getSelectedItem().toString(),Pekerjaan.getText().toString(),
+                StatusPerkawinan.getSelectedItem().toString(),NamaKampung.getText().toString(),RT.getText().toString(),RW.getText().toString(),TinggalSejak.getText().toString());
         data.enqueue(new Callback<Ress>() {
             @Override
             public void onResponse(Call<Ress> call, Response<Ress> response) {

@@ -11,182 +11,294 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:background="@color/Primary">
-            <TextView
-                android:id="@+id/tvNama"
-                android:layout_width="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:background="@color/Primary"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Saldo Anda : "
-                android:gravity="center|left"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/White"
-                android:fontFamily="@font/gotham"
-                android:textSize="@dimen/text_xtra_large"/>
-            <TextView
-                android:id="@+id/tvSaldo"
-                android:layout_margin="5dp"
-                android:layout_width="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rounded"
+                    android:id="@+id/linearBack">
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/back_primary"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_notifications_24"
-                android:text="Rp.1.000.000"
-                android:gravity="center"
-                android:textColor="@color/White"
-                android:textSize="@dimen/text_xtra_large"
-                android:fontFamily="@font/gotham"/>
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Bank Sampah"
+                    android:gravity="center|left"
+                    android:textColor="@color/White"
+                    android:fontFamily="@font/gotham"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/header_text"/>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:lottie_fileName="green_wave.json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                android:scaleType="fitXY"
+                android:rotation="180">
+
+            </com.airbnb.lottie.LottieAnimationView>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="5dp">
-                <androidx.cardview.widget.CardView
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="vertical"
-                        android:id="@+id/linearLokasi">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:src="@drawable/location"
-                            android:layout_margin="5dp">
-
-                        </ImageView>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:layout_weight="3"
-                            android:text="Lokasi Bank Sampah"
-                            android:textSize="@dimen/text_xtra_large"
-                            android:fontFamily="@font/gotham"
-                            android:textColor="@color/Black"/>
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="vertical"
-                        android:id="@+id/linearReward">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:src="@drawable/reward"
-                            android:layout_margin="5dp">
-
-                        </ImageView>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:layout_weight="3"
-                            android:text="Hadiah Bank Sampah"
-                            android:textSize="@dimen/text_xtra_large"
-                            android:fontFamily="@font/gotham"
-                            android:textColor="@color/Black"/>
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tvNama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Saldo Anda : "
+                    android:gravity="center|left"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/White"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"/>
+                <TextView
+                    android:id="@+id/tvSaldo"
                     android:layout_margin="5dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="vertical"
-                        android:id="@+id/linearJenis">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:src="@drawable/jenis"
-                            android:layout_margin="5dp">
-
-                        </ImageView>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:layout_weight="3"
-                            android:text="Daftar Jenis Sampah"
-                            android:textSize="@dimen/text_xtra_large"
-                            android:fontFamily="@font/gotham"
-                            android:textColor="@color/Black"/>
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="vertical"
-                        android:id="@+id/linearTransaksi">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:src="@drawable/transaction"
-                            android:layout_margin="5dp">
-
-                        </ImageView>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:layout_weight="3"
-                            android:text="History Transaksi"
-                            android:textSize="@dimen/text_xtra_large"
-                            android:fontFamily="@font/gotham"
-                            android:textColor="@color/Black"/>
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_notifications_24"
+                    android:text="Rp.1.000.000"
+                    android:gravity="center"
+                    android:textColor="@color/White"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:fontFamily="@font/gotham"/>
             </LinearLayout>
-        </LinearLayout>
+            <ScrollView
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:orientation="vertical"
+                                android:id="@+id/linearLokasi">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/location"
+                                    android:layout_margin="5dp">
+
+                                </ImageView>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:layout_weight="2"
+                                    android:text="Lokasi Bank Sampah"
+                                    android:textSize="@dimen/text_xtra_large"
+                                    android:fontFamily="@font/gotham"
+                                    android:textColor="@color/Black"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:orientation="vertical"
+                                android:id="@+id/linearReward">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/reward"
+                                    android:layout_margin="5dp">
+
+                                </ImageView>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:layout_weight="2"
+                                    android:text="Hadiah Bank Sampah"
+                                    android:textSize="@dimen/text_xtra_large"
+                                    android:fontFamily="@font/gotham"
+                                    android:textColor="@color/Black"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:orientation="vertical"
+                                android:id="@+id/linearJenis">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/jenis"
+                                    android:layout_margin="5dp">
+
+                                </ImageView>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:layout_weight="2"
+                                    android:text="Daftar Jenis Sampah"
+                                    android:textSize="@dimen/text_xtra_large"
+                                    android:fontFamily="@font/gotham"
+                                    android:textColor="@color/Black"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:orientation="vertical"
+                                android:id="@+id/linearTransaksi">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/transaction"
+                                    android:layout_margin="5dp">
+
+                                </ImageView>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:layout_weight="2"
+                                    android:text="Riwayat Transaksi"
+                                    android:textSize="@dimen/text_xtra_large"
+                                    android:fontFamily="@font/gotham"
+                                    android:textColor="@color/Black"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn_rounded_primary">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+                            <TextView
+                                android:textColor="@color/White"
+                                android:fontFamily="@font/gotham"
+                                android:layout_margin="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Satuan"
+                                android:gravity="center"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+                            <TextView
+                                android:textColor="@color/White"
+                                android:fontFamily="@font/gotham"
+                                android:layout_margin="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Jenis"
+                                android:gravity="center"/>
+                        </LinearLayout><LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <TextView
+                            android:textColor="@color/White"
+                            android:fontFamily="@font/gotham"
+                            android:layout_margin="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Harga (Rp)"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/recycler">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+
     </LinearLayout>
 </RelativeLayout>

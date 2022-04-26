@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         final DB_Helper dbHelper = new DB_Helper(SplashActivity.this);
         Cursor cursor = dbHelper.checkUser();
         if (cursor.getCount()>0){
-            Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this,HomeActivity.class);
             startActivity(intent);
             finish();
         }else{
@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
     private void changeActivity(){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,HomeActivity.class);
         startActivity(intent);
         finish();
     }

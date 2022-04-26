@@ -60,7 +60,7 @@ public interface ApiRequest {
 
     @FormUrlEncoded
     @POST("user/edit_foto")
-    Call<ResponseModel> EditFoto(@Header("Authorization") String authHeader,
+    Call<Ress> EditFoto(@Header("Authorization") String authHeader,
                                  @Part("kunci_kamps") RequestBody kunci_kamps,
                                  @Part("id_user") RequestBody id_user,
                                  @Part MultipartBody.Part FotoUser);
@@ -191,6 +191,17 @@ public interface ApiRequest {
 
     @FormUrlEncoded
     @POST("surat")
+    Call<Ress> PostSuratData(@Header("Authorization") String authHeader,
+                             @Field("kunci_kamps") String kunci_kamps,
+                             @Field("id_user") String id_user,
+                             @Field("id_desa") String id_desa,
+                             @Field("id_surat_kategori") String id_surat_kategori,
+                             @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                             @Field("nama_surat") String nama_surat,
+                             @Field("note_surat") String note_surat);
+
+    @FormUrlEncoded
+    @POST("surat")
     Call<Ress> PostSuratBedaNamaBST(@Header("Authorization") String authHeader,
                                     @Field("kunci_kamps") String kunci_kamps,
                                     @Field("id_user") String id_user,
@@ -209,6 +220,129 @@ public interface ApiRequest {
                                     @Field("no_ktp") String no_ktp,
                                     @Field("alamat") String alamat,
                                     @Field("nama_bst_baru") String nama_bst_baru);
+
+    @FormUrlEncoded
+    @POST("surat")
+    Call<Ress> PostSuratKeteranganUsaha(@Header("Authorization") String authHeader,
+                                        @Field("kunci_kamps") String kunci_kamps,
+                                        @Field("id_user") String id_user,
+                                        @Field("id_desa") String id_desa,
+                                        @Field("id_surat_kategori") String id_surat_kategori,
+                                        @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                                        @Field("nama_surat") String nama_surat,
+                                        @Field("note_surat") String note_surat,
+                                        @Field("nama") String nama,
+                                        @Field("tempat_tgl_lahir") String tempat_tgl_lahir,
+                                        @Field("jenis_kelamin") String jenis_kelamin,
+                                        @Field("nik") String nik,
+                                        @Field("alamat") String alamat,
+                                        @Field("alamat_usaha") String alamat_usaha,
+                                        @Field("jenis_usaha") String jenis_usaha);
+
+
+    @FormUrlEncoded
+    @POST("surat")
+    Call<Ress> PostSuratKeteranganTidakBekerja(@Header("Authorization") String authHeader,
+                                    @Field("kunci_kamps") String kunci_kamps,
+                                    @Field("id_user") String id_user,
+                                    @Field("id_desa") String id_desa,
+                                    @Field("id_surat_kategori") String id_surat_kategori,
+                                    @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                                    @Field("nama_surat") String nama_surat,
+                                    @Field("note_surat") String note_surat,
+                                    @Field("nama") String nama,
+                                    @Field("tempat_tgl_lahir") String tempat_tgl_lahir,
+                                    @Field("jenis_kelamin") String jenis_kelamin,
+                                    @Field("agama") String agama,
+                                    @Field("pekerjaan") String pekerjaan,
+                                    @Field("no_ktp") String no_ktp,
+                                    @Field("alamat") String alamat,
+                                    @Field("tidak_bekerja_sejak") String tidak_bekerja_sejak);
+
+    @FormUrlEncoded
+    @POST("surat")
+    Call<Ress> PostSuratPernyataanDomisiliUsaha(@Header("Authorization") String authHeader,
+                                                @Field("kunci_kamps") String kunci_kamps,
+                                                @Field("id_user") String id_user,
+                                                @Field("id_desa") String id_desa,
+                                                @Field("id_surat_kategori") String id_surat_kategori,
+                                                @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                                                @Field("nama_surat") String nama_surat,
+                                                @Field("note_surat") String note_surat,
+                                                @Field("nama") String nama,
+                                                @Field("tempat_tgl_lahir") String tempat_tgl_lahir,
+                                                @Field("jenis_kelamin") String jenis_kelamin,
+                                                @Field("agama") String agama,
+                                                @Field("pekerjaan") String pekerjaan,
+                                                @Field("nik") String nik,
+                                                @Field("alamat") String alamat,
+                                                @Field("nama_perusahaan") String nama_perusahaan,
+                                                @Field("bidang_usaha") String bidang_usaha,
+                                                @Field("penganggung_jawab") String penganggung_jawab,
+                                                @Field("alamat_perusahaan") String alamat_perusahaan,
+                                                @Field("jumlah_karyawan") String jumlah_karyawan,
+                                                @Field("izin_sampai") String izin_sampai);
+
+    @FormUrlEncoded
+    @POST("surat")
+    Call<Ress> PostSuratPernyataanDampakOrtuTerdampakCOVID(@Header("Authorization") String authHeader,
+                                                           @Field("kunci_kamps") String kunci_kamps,
+                                                           @Field("id_user") String id_user,
+                                                           @Field("id_desa") String id_desa,
+                                                           @Field("id_surat_kategori") String id_surat_kategori,
+                                                           @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                                                           @Field("nama_surat") String nama_surat,
+                                                           @Field("note_surat") String note_surat,
+                                                           @Field("nama_orang_tua_wali") String nama,
+                                                           @Field("nik") String nik,
+                                                           @Field("no_hp") String no_hp,
+                                                           @Field("no_kk") String no_kk,
+                                                           @Field("pekerjaan") String pekerjaan,
+                                                           @Field("alamat") String alamat,
+                                                           @Field("orang_tua_dari_nama") String orang_tua_dari_nama,
+                                                           @Field("orang_tua_dari_nik") String orang_tua_dari_nik);
+
+    @FormUrlEncoded
+    @POST("surat")
+    Call<Ress> PostSuratEKTP(@Header("Authorization") String authHeader,
+                             @Field("kunci_kamps") String kunci_kamps,
+                             @Field("id_user") String id_user,
+                             @Field("id_desa") String id_desa,
+                             @Field("id_surat_kategori") String id_surat_kategori,
+                             @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                             @Field("nama_surat") String nama_surat,
+                             @Field("note_surat") String note_surat,
+                             @Field("nama") String nama,
+                             @Field("tempat_tgl_lahir") String tempat_tgl_lahir,
+                             @Field("jenis_kelamin") String jenis_kelamin,
+                             @Field("agama") String agama,
+                             @Field("pekerjaan") String pekerjaan,
+                             @Field("status_pernikahan") String status_pernikahan,
+                             @Field("nik") String nik,
+                             @Field("alamat") String alamat,
+                             @Field("gol_darah") String gol_darah,
+                             @Field("pendidikan_terakhir") String pendidikan_terakhir);
+
+
+    @FormUrlEncoded
+    @POST("surat")
+    Call<Ress> PostSuratKematian(@Header("Authorization") String authHeader,
+                                    @Field("kunci_kamps") String kunci_kamps,
+                                    @Field("id_user") String id_user,
+                                    @Field("id_desa") String id_desa,
+                                    @Field("id_surat_kategori") String id_surat_kategori,
+                                    @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                                    @Field("nama_surat") String nama_surat,
+                                    @Field("note_surat") String note_surat,
+                                    @Field("nama") String nama,
+                                    @Field("tempat_tgl_lahir") String tempat_tgl_lahir,
+                                    @Field("jenis_kelamin") String jenis_kelamin,
+                                    @Field("agama") String agama,
+                                    @Field("pekerjaan") String pekerjaan,
+                                    @Field("meninggal_tgl") String meninggal_tgl,
+                                    @Field("jam") String jam,
+                                    @Field("di") String di,
+                                    @Field("disebabkan_karena") String disebabkan_karena);
 
     @FormUrlEncoded
     @POST("surat")
@@ -341,6 +475,37 @@ public interface ApiRequest {
                              @Field("pekerjaan") String pekerjaan,
                              @Field("alamat") String alamat);
 
+    @FormUrlEncoded
+    @POST("surat")
+    Call<Ress> PostSuratKuasa (@Header("Authorization") String authHeader,
+                               @Field("kunci_kamps") String kunci_kamps,
+                               @Field("id_user") String id_user,
+                               @Field("id_desa") String id_desa,
+                               @Field("id_surat_kategori") String id_surat_kategori,
+                               @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                               @Field("nama_surat") String nama_surat,
+                               @Field("note_surat") String note_surat,
+                               @Field("nama") String nama,
+                               @Field("tempat_tgl_lahir") String tempat_tgl_lahir,
+                               @Field("jenis_kelamin") String jenis_kelamin,
+                               @Field("pekerjaan") String pekerjaan,
+                               @Field("alamat") String alamat);
+
+    @FormUrlEncoded
+    @POST("surat")
+    Call<Ress> PostSuratKeteranganBedaIdentitas(@Header("Authorization") String authHeader,
+                                                @Field("kunci_kamps") String kunci_kamps,
+                                                @Field("id_user") String id_user,
+                                                @Field("id_desa") String id_desa,
+                                                @Field("id_surat_kategori") String id_surat_kategori,
+                                                @Field("id_surat_kategori_sub") String id_surat_kategori_sub,
+                                                @Field("nama_surat") String nama_surat,
+                                                @Field("note_surat") String note_surat,
+                                                @Field("nama") String nama,
+                                                @Field("nik") String nik,
+                                                @Field("alamat") String alamat,
+                                                @Field("nomor_danom") String nomor_danom);
+
 
 
     @FormUrlEncoded
@@ -395,7 +560,7 @@ public interface ApiRequest {
 
     @FormUrlEncoded
     @POST("surat")
-    Call<Ress> PostSuratNikahN3(@Header("Authorization") String authHeader,
+    Call<Ress> PostSuratNikahN4(@Header("Authorization") String authHeader,
                                 @Field("kunci_kamps") String kunci_kamps,
                                 @Field("id_user") String id_user,
                                 @Field("id_desa") String id_desa,
@@ -947,7 +1112,8 @@ public interface ApiRequest {
     @POST("surat/list")
     Call<ResponseModel> GetSurat(@Header("Authorization") String authHeader,
                                  @Field("kunci_kamps") String kunci_kamps,
-                                 @Field("id_user") String id_user);
+                                 @Field("id_user") String id_user,
+                                 @Field("status") String status);
 
     @FormUrlEncoded
     @POST("user/detail")
@@ -1040,6 +1206,16 @@ public interface ApiRequest {
     Call<ResponseModel> Pariwisata(@Header("Authorization") String authHeader,
                                    @Field("kunci_kamps") String kunci_kamps,
                                    @Field("id_desa") String id_desa);
+
+    @FormUrlEncoded
+    @POST("info/berita")
+    Call<ResponseModel> Berita_Desa(@Header("Authorization") String authHeader,
+                                   @Field("kunci_kamps") String kunci_kamps);
+
+    @FormUrlEncoded
+    @POST("info/agenda")
+    Call<ResponseModel> Agenda_Desa(@Header("Authorization") String authHeader,
+                                    @Field("kunci_kamps") String kunci_kamps);
 
     @GET("banner")
     Call<ResponseModel> Banner(@Header("Authorization") String authHeader,

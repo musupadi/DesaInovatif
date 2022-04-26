@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                         response.body().getData().getId_desa(),
                         response.body().getData().getLevel(),
                         response.body().getData().getFoto_user());
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(intent);
                 finishAffinity();
             }

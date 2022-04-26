@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -103,11 +103,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
-                        android:hint="Anak Ke"
+                        android:hint="Nama"
                         android:inputType="text"
                         android:id="@+id/etNamaBayi"
                         android:textColor="@color/Primary"
@@ -132,13 +132,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
                         android:hint="Anak Ke"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:id="@+id/etAnakKe"
+                        android:textColor="@color/Primary"
+                        android:textSize="@dimen/text_xtra_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:background="@drawable/btn_rounded"
+                        android:padding="5dp"
+                        android:theme="@style/AppThemeDeskripsi" />
+                </LinearLayout>
+                <!-- Cut Here-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Tempat Lahir"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_transparent"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:hint="Tempat Lahir"
+                        android:inputType="text"
+                        android:id="@+id/etTTL"
                         android:textColor="@color/Primary"
                         android:textSize="@dimen/text_xtra_large"
                         android:layout_width="match_parent"
@@ -156,27 +186,99 @@
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
-
-                    <EditText
-                        android:hint="Anak Ke"
-                        android:inputType="text"
-                        android:id="@+id/etTanggalLahir"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
-                        android:theme="@style/AppThemeDeskripsi" />
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Tanggal"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spHari"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/hari"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Bulan"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spBulan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/bulan"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Tahun"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spTahun"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/tahun"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
+                <!-- Cut Here-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -189,22 +291,77 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
-                    android:layout_margin="5dp">
-
-                    <EditText
-                        android:hint="Anak Ke"
-                        android:inputType="text"
-                        android:id="@+id/etPukul"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
-                        android:theme="@style/AppThemeDeskripsi" />
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Jam"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_margin="5dp">
+
+                            <EditText
+                                android:hint="Jam"
+                                android:inputType="number"
+                                android:id="@+id/etJam"
+                                android:textColor="@color/Primary"
+                                android:textSize="@dimen/text_xtra_large"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/gotham"
+                                android:background="@drawable/btn_rounded"
+                                android:padding="5dp"
+                                android:theme="@style/AppThemeDeskripsi" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Menit"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_margin="5dp">
+
+                            <EditText
+                                android:hint="Menit"
+                                android:inputType="number"
+                                android:id="@+id/etMenit"
+                                android:textColor="@color/Primary"
+                                android:textSize="@dimen/text_xtra_large"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/gotham"
+                                android:background="@drawable/btn_rounded"
+                                android:padding="5dp"
+                                android:theme="@style/AppThemeDeskripsi" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
@@ -233,7 +390,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -249,23 +406,25 @@
                         android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+                <!-- Cut Here-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Tempat Tanggal Lahir"
+                    android:text="Tempat Lahir"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
-                        android:hint="Tempat Tanggal lahir"
+                        android:hint="Tempat Lahir"
                         android:inputType="text"
                         android:id="@+id/etTTLAyah"
                         android:textColor="@color/Primary"
@@ -281,6 +440,107 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:text="Tanggal Lahir"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Tanggal"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spHariAyah"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/hari"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Bulan"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spBulanAyah"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/bulan"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Tahun"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spTahunAyah"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/tahun"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- Cut Here-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:text="Pekerjaan"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
@@ -289,7 +549,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -305,6 +565,7 @@
                         android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+                <!-- Cut Here-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -317,22 +578,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
-                    <EditText
-                        android:hint="Agama"
-                        android:inputType="text"
-                        android:id="@+id/etAgamaAyah"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
+                    <Spinner
+                        android:id="@+id/spAgamaAyah"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
-                        android:theme="@style/AppThemeDeskripsi" />
+                        android:entries="@array/agama"
+                        android:background="@color/White"/>
                 </LinearLayout>
+                <!-- Cut Here-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -345,7 +601,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -373,7 +629,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -417,7 +673,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -433,23 +689,25 @@
                         android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+                <!-- Cut Here-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Tempat Tanggal Lahir"
+                    android:text="Tempat Lahir"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
                     android:textColor="@color/Black"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
-                        android:hint="Tempat Tanggal lahir"
+                        android:hint="Tempat Lahir"
                         android:inputType="text"
                         android:id="@+id/etTTLIbu"
                         android:textColor="@color/Primary"
@@ -465,6 +723,107 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:text="Tanggal Lahir"
+                    android:fontFamily="@font/gotham"
+                    android:textSize="@dimen/text_xtra_large"
+                    android:textColor="@color/Black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Tanggal"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spHariIbu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/hari"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Bulan"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spBulanIbu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/bulan"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Tahun"
+                            android:fontFamily="@font/gotham"
+                            android:textSize="@dimen/text_xtra_large"
+                            android:textColor="@color/Black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_transparent"
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_margin="5dp">
+
+                            <Spinner
+                                android:id="@+id/spTahunIbu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/tahun"
+                                android:background="@color/White"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- Cut Here-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:text="Pekerjaan"
                     android:fontFamily="@font/gotham"
                     android:textSize="@dimen/text_xtra_large"
@@ -473,7 +832,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -489,6 +848,7 @@
                         android:padding="5dp"
                         android:theme="@style/AppThemeDeskripsi" />
                 </LinearLayout>
+                <!-- Cut Here-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -501,22 +861,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
-                    <EditText
-                        android:hint="Agama"
-                        android:inputType="text"
-                        android:id="@+id/etAgamaIbu"
-                        android:textColor="@color/Primary"
-                        android:textSize="@dimen/text_xtra_large"
+                    <Spinner
+                        android:id="@+id/spAgamaIbu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham"
-                        android:background="@drawable/btn_rounded"
-                        android:padding="5dp"
-                        android:theme="@style/AppThemeDeskripsi" />
+                        android:entries="@array/agama"
+                        android:background="@color/White"/>
                 </LinearLayout>
+                <!-- Cut Here-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -529,7 +884,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText
@@ -557,7 +912,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_rounded_transparent"
-                    android:padding="1dp"
+                    android:padding="5dp"
                     android:layout_margin="5dp">
 
                     <EditText

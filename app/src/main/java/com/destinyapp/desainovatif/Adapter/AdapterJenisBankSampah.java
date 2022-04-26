@@ -45,7 +45,7 @@ public class AdapterJenisBankSampah extends RecyclerView.Adapter<AdapterJenisBan
         destiny = new Destiny();
         final DataModel dm = mList.get(position);
         holderData.Nama.setText(dm.getNama_jenis_sampah());
-        holderData.Kode.setText(dm.getKode_jenis_sampah());
+//        holderData.Kode.setText(dm.getKode_jenis_sampah());
         holderData.Satuan.setText(dm.getSatuan_jenis_sampah());
         holderData.Harga.setText(dm.getHarga_jenis_sampah());
     }
@@ -63,7 +63,7 @@ public class AdapterJenisBankSampah extends RecyclerView.Adapter<AdapterJenisBan
         public HolderData(View v){
             super(v);
             Nama = v.findViewById(R.id.tvNamaJenis);
-            Kode = v.findViewById(R.id.tvKodeJenis);
+//            Kode = v.findViewById(R.id.tvKodeJenis);
             Satuan = v.findViewById(R.id.tvSatuanJenis);
             Harga = v.findViewById(R.id.tvHargaJenis);
             card = v.findViewById(R.id.LayoutCardView);

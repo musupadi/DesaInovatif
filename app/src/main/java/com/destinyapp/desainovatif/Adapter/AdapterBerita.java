@@ -48,8 +48,8 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.HolderData
         destiny = new Destiny();
         final Data dm = mList.get(posistion);
         holderData.Judul.setText(dm.getTitle().getRendered());
-        holderData.Deskripsi.setText(destiny.SmallDescription(destiny.FilterTextToJava(dm.getContent().getRendered())));
-        holderData.web.loadData(dm.getContent().getRendered(),"text/html","UTF-8");
+//        holderData.Deskripsi.setText(destiny.SmallDescription(destiny.FilterTextToJava(dm.getContent().getRendered())));
+//        holderData.web.loadData(dm.getContent().getRendered(),"text/html","UTF-8");
         holderData.Tanggal.setText(destiny.MagicDateChange(dm.getDate()));
         Glide.with(ctx)
                 .load(dm.getImg_cover())

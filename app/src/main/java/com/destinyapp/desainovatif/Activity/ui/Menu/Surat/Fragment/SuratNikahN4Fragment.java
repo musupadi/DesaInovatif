@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,9 +60,9 @@ public class SuratNikahN4Fragment extends Fragment {
     DB_Helper dbHelper;
     String Username, Password, Namas, Photo, ID, ID_Desa, Level;
     //Cut Here
-    //Suami
-    EditText NamaSuami,BinSuami,NIKSuami,TTLSuami,KewarganegaraanSuami,AgamaSuami,PekerjaanSuami,AlamatSuami;
-    EditText NamaIstri,BinIstri,NIKIstri,TTLIstri,KewarganegaraanIstri,AgamaIstri,PekerjaanIstri,AlamatIstri;
+    EditText NamaSuami,BinSuami,NIKSuami,TTLSuami,PekerjaanSuami,AlamatSuami;
+    EditText NamaIstri,BinIstri,NIKIstri,TTLIstri,PekerjaanIstri,AlamatIstri;
+    Spinner AgamaSuami,AgamaIstri,KewarganegaraanSuami,KewarganegaraanIstri,TahunSuami,TahunIstri,BulanSuami,BulanIStri,HariSuami,HariIstri;
     public SuratNikahN4Fragment() {
         // Required empty public constructor
     }
@@ -109,20 +110,25 @@ public class SuratNikahN4Fragment extends Fragment {
         BinSuami = view.findViewById(R.id.etBinSuami);
         NIKSuami = view.findViewById(R.id.etNIKSuami);
         TTLSuami = view.findViewById(R.id.etTTLSuami);
-        KewarganegaraanSuami = view.findViewById(R.id.etKewarganegaraanSuami);
-        AgamaSuami = view.findViewById(R.id.etAgamaSuami);
+        KewarganegaraanSuami = view.findViewById(R.id.spWargaNegaraSuami);
+        AgamaSuami = view.findViewById(R.id.spAgamaSuami);
         PekerjaanSuami = view.findViewById(R.id.etPekerjaanSuami);
         AlamatSuami = view.findViewById(R.id.etAlamatSuami);
+        TahunSuami = view.findViewById(R.id.spTahunSuami);
+        BulanSuami = view.findViewById(R.id.spBulanSuami);
+        HariSuami = view.findViewById(R.id.spHariSuami);
         //Istri
         NamaIstri = view.findViewById(R.id.etNamaIstri);
         BinIstri = view.findViewById(R.id.etBinIstri);
         NIKIstri = view.findViewById(R.id.etNIKIstri);
         TTLIstri = view.findViewById(R.id.etTTLIstri);
-        KewarganegaraanIstri = view.findViewById(R.id.etKewarganegaraanIstri);
-        AgamaIstri = view.findViewById(R.id.etAgamaIstri);
+        KewarganegaraanIstri = view.findViewById(R.id.spWargaNegaraIstri);
+        AgamaIstri = view.findViewById(R.id.spAgamaIstri);
         PekerjaanIstri = view.findViewById(R.id.etPekerjaanIstri);
         AlamatIstri = view.findViewById(R.id.etAlamatIstri);
-
+        TahunIstri = view.findViewById(R.id.spTahunIstri);
+        BulanIStri = view.findViewById(R.id.spBulanIstri);
+        HariIstri = view.findViewById(R.id.spHariIstri);
 
 
         Submit.setOnClickListener(new View.OnClickListener() {
@@ -139,11 +145,11 @@ public class SuratNikahN4Fragment extends Fragment {
         pd.show();
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
-        final Call<Ress> data = api.PostSuratNikahN3(destiny.AUTH(), destiny.Kunci(), ID, ID_Desa, IDS, "0", NamaSurat.getText().toString(), NoteSurat.getText().toString(),
-                NamaSuami.getText().toString(),BinSuami.getText().toString(),NIKSuami.getText().toString(),TTLSuami.getText().toString(),KewarganegaraanSuami.getText().toString(),
-                AgamaSuami.getText().toString(),PekerjaanSuami.getText().toString(),AlamatSuami.getText().toString(),NamaIstri.getText().toString(),BinIstri.getText().toString(),
-                NIKIstri.getText().toString(),TTLIstri.getText().toString(),KewarganegaraanIstri.getText().toString(),AgamaIstri.getText().toString(),PekerjaanIstri.getText().toString(),
-                AlamatIstri.getText().toString());
+        final Call<Ress> data = api.PostSuratNikahN4(destiny.AUTH(), destiny.Kunci(), ID, ID_Desa, IDS, "0", NamaSurat.getText().toString(), NoteSurat.getText().toString(),
+                NamaSuami.getText().toString(),BinSuami.getText().toString(),NIKSuami.getText().toString(),destiny.TTL(TTLSuami,TahunSuami,BulanSuami,HariSuami),
+                KewarganegaraanSuami.getSelectedItem().toString(), AgamaSuami.getSelectedItem().toString(),PekerjaanSuami.getText().toString(),AlamatSuami.getText().toString(),
+                NamaIstri.getText().toString(),BinIstri.getText().toString(), NIKIstri.getText().toString(),destiny.TTL(TTLIstri,TahunIstri,BulanIStri,HariIstri),
+                KewarganegaraanIstri.getSelectedItem().toString(),AgamaIstri.getSelectedItem().toString(),PekerjaanIstri.getText().toString(), AlamatIstri.getText().toString());
         data.enqueue(new Callback<Ress>() {
             @Override
             public void onResponse(Call<Ress> call, Response<Ress> response) {

@@ -59,7 +59,7 @@ public class DetailKemajuanDesa extends AppCompatActivity {
         isi.loadData(ISI,"text/html","UTF-8");
         tanggal.setText(destiny.MagicDateChange(TANGGAL));
         Glide.with(this)
-                .load(GANBAR)
+                .load(destiny.BASE_URL()+GANBAR)
                 .into(gambar);
     }
 }

@@ -32,6 +32,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Activity.HomeActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.Ress;
@@ -58,6 +59,7 @@ public class SuratBedaNamaFragment extends Fragment {
     String IDS;
     DB_Helper dbHelper;
     String Username,Password,Namas,Photo,ID,ID_Desa,Level;
+    Spinner Hari,Bulan,Tahun;
     public SuratBedaNamaFragment() {
         // Required empty public constructor
     }
@@ -95,6 +97,9 @@ public class SuratBedaNamaFragment extends Fragment {
         NoKTP = view.findViewById(R.id.etNoKTP);
         Alamat = view.findViewById(R.id.etAlamat);
         NamaKTPBaru = view.findViewById(R.id.etNamaKTPBaru);
+        Hari = view.findViewById(R.id.spHari);
+        Bulan = view.findViewById(R.id.spBulan);
+        Tahun = view.findViewById(R.id.spTahun);
         //DB Helper
         dbHelper = new DB_Helper(getActivity());
         Cursor cursor = dbHelper.checkUser();
@@ -123,8 +128,8 @@ public class SuratBedaNamaFragment extends Fragment {
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         final Call<Ress> data =api.PostSuratBedaNamaKTP(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,
-                IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
-                Nama.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),
+                IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(), Nama.getText().toString(),
+                destiny.TTL(TTL,Tahun,Bulan,Tahun),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),
                 Pekerjaan.getText().toString(),StatusPernikahan.getText().toString(), WargaNegara.getText().toString(),
                 NoKTP.getText().toString(),Alamat.getText().toString(), NamaKTPBaru.getText().toString());
         data.enqueue(new Callback<Ress>() {
@@ -133,7 +138,7 @@ public class SuratBedaNamaFragment extends Fragment {
                 pd.hide();
                 try {
                     Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
                     startActivity(intent);
                 }catch (Exception e){
                     Log.d("Zyarga Error",e.toString());

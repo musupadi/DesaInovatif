@@ -32,6 +32,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Activity.HomeActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.Ress;
@@ -61,7 +62,7 @@ public class SuratBedaNamaPNSFragment extends Fragment {
     String Username,Password,Namas,Photo,ID,ID_Desa,Level;
     //Cut Here
     EditText Nama,TTL,Agama,Pekerjaan,StatusPernikahan,WargaNegara,NoKTP,Alamat,NamaPNSBaru;
-    Spinner JenisKelamin;
+    Spinner JenisKelamin,Tahun,Bulan,Hari;
     public SuratBedaNamaPNSFragment() {
         // Required empty public constructor
     }
@@ -107,7 +108,7 @@ public class SuratBedaNamaPNSFragment extends Fragment {
         //Cut Here
         Nama = view.findViewById(R.id.etNama);
         TTL = view.findViewById(R.id.etTTL);
-        JenisKelamin = view.findViewById(R.id.etJenisKelamin);
+        JenisKelamin = view.findViewById(R.id.spJenisKelamin);
         Agama = view.findViewById(R.id.etAgama);
         Pekerjaan = view.findViewById(R.id.etPekerjaan);
         StatusPernikahan = view.findViewById(R.id.etStatusPernikahan);
@@ -115,6 +116,9 @@ public class SuratBedaNamaPNSFragment extends Fragment {
         NoKTP = view.findViewById(R.id.etNoKTP);
         Alamat = view.findViewById(R.id.etAlamat);
         NamaPNSBaru = view.findViewById(R.id.etNamaPNSBaru);
+        Tahun = view.findViewById(R.id.spTahun);
+        Bulan = view.findViewById(R.id.spBulan);
+        Hari = view.findViewById(R.id.spHari);
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +134,7 @@ public class SuratBedaNamaPNSFragment extends Fragment {
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         final Call<Ress> data =api.PostSuratBedaNamaPNS(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
-                Nama.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),
+                Nama.getText().toString(),destiny.TTL(TTL,Tahun,Bulan,Hari),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),
                 Pekerjaan.getText().toString(),StatusPernikahan.getText().toString(),WargaNegara.getText().toString(),NoKTP.getText().toString(),
                 Alamat.getText().toString(),NamaPNSBaru.getText().toString());
         data.enqueue(new Callback<Ress>() {
@@ -139,7 +143,7 @@ public class SuratBedaNamaPNSFragment extends Fragment {
                 pd.hide();
                 try {
                     Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
                     startActivity(intent);
                 }catch (Exception e){
                     Log.d("Zyarga Error",e.toString());

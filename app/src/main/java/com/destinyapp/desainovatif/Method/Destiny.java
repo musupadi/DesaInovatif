@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.destinyapp.desainovatif.API.ApiRequest;
@@ -17,6 +20,7 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -25,6 +29,47 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Destiny {
+    public String Tanggal(Spinner Tahun,Spinner Bulan,Spinner Hari){
+        String Tanggal = Tahun.getSelectedItem().toString()+"-"+Bulan.getSelectedItem().toString()+"-"+Hari.getSelectedItem().toString();
+        return Tanggal;
+    }
+    public String TTL(EditText TTL, Spinner Tahun, Spinner Bulan, Spinner Hari){
+        String TempatTanggalLahir=TTL.getText()+", "+Tahun.getSelectedItem().toString()+"-"+Bulan.getSelectedItem().toString()+"-"+Hari.getSelectedItem().toString();
+        return TempatTanggalLahir;
+    }
+    public void SpinnerHari(Spinner sp, ArrayList<String> arrayList,Context ctx){
+        for (int i=1;i<=31;i++){
+            arrayList.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(ctx,  android.R.layout.simple_spinner_dropdown_item, arrayList);
+        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+        sp.setAdapter(adapter);
+    }
+
+
+    public void SpinnerBulan(Spinner sp, ArrayList<String> arrayList,Context ctx){
+        for (int i=1;i<=31;i++){
+            arrayList.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(ctx,  android.R.layout.simple_spinner_dropdown_item, arrayList);
+        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+        sp.setAdapter(adapter);
+    }
+
+    public void SpinnerTahun(Spinner sp, ArrayList<String> arrayList,Context ctx){
+        for (int i=1950;i<=2022;i++){
+            arrayList.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(ctx,  android.R.layout.simple_spinner_dropdown_item, arrayList);
+        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+        sp.setAdapter(adapter);
+    }
     public String Kunci(){
         String Key = "hazxclkadkSA0Ijsad20sl02335sjlso20";
         return Key;
@@ -227,7 +272,7 @@ public class Destiny {
         }else if (month.equals("12")){
             MONTH = "Desember";
         }
-        result = day+"-"+MONTH+"-"+year;
+        result = day+" "+MONTH+" "+year;
         return result;
 
     }

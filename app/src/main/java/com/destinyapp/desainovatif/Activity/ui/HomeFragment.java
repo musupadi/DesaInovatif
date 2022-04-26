@@ -307,7 +307,6 @@ public class HomeFragment extends Fragment {
                 }else{
                     Intent intent = new Intent(getActivity(), BankSampah.class);
                     startActivity(intent);
-
                 }
             }
         });

@@ -50,17 +50,21 @@ public class AdapterSurat extends RecyclerView.Adapter<AdapterSurat.HolderData> 
         holderData.Nama.setText(dm.getNama_surat());
         holderData.Tanggal.setText(destiny.MagicDateChange(dm.getTgl_request()));
         if (dm.getStatus_surat().equals("requested")){
-            holderData.Status.setText(" Meminta");
+            holderData.Status.setText(" Pengajuan");
             holderData.Status.setTextColor(Color.rgb(255,165,0));
             holderData.StatusImage.setImageResource(R.drawable.round_secondary);
         }else if(dm.getStatus_surat().equals("diterima")){
             holderData.Status.setText(" Diterima");
-            holderData.Status.setTextColor(Color.rgb(83,210,220));
+            holderData.Status.setTextColor(Color.rgb(81,181,142));
             holderData.StatusImage.setImageResource(R.drawable.round_primary);
-        }else{
+        }else if(dm.getStatus_surat().equals("ditolak")){
             holderData.Status.setText(" Ditolak");
             holderData.Status.setTextColor(Color.rgb(255,0,0));
             holderData.StatusImage.setImageResource(R.drawable.round_red);
+        }else{
+            holderData.Status.setText(" Terproses");
+            holderData.Status.setTextColor(Color.rgb(1,85,142));
+            holderData.StatusImage.setImageResource(R.drawable.round_blue);
         }
         holderData.card.setOnClickListener(new View.OnClickListener() {
             @Override

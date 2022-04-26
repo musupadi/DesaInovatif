@@ -60,8 +60,8 @@ public class SuratKeteranganBelumMenikah1Fragment extends Fragment {
     DB_Helper dbHelper;
     String Username, Password, Namas, Photo, ID, ID_Desa, Level;
     //Cut Here
-    EditText Nama,TTL,Agama,Pekerjaan,Alamat,NoKTP,Wali,RT,RW,PembuatPernyataan;
-    Spinner JenisKelamin;
+    EditText Nama,TTL,Pekerjaan,Alamat,NoKTP,Wali,RT,RW,PembuatPernyataan;
+    Spinner JenisKelamin,Tahun,Bulan,Hari,Agama;
     public SuratKeteranganBelumMenikah1Fragment() {
         // Required empty public constructor
     }
@@ -105,8 +105,8 @@ public class SuratKeteranganBelumMenikah1Fragment extends Fragment {
         //Cut Here
         Nama = view.findViewById(R.id.etNama);
         TTL = view.findViewById(R.id.etTTL);
-        JenisKelamin = view.findViewById(R.id.etJenisKelamin);
-        Agama = view.findViewById(R.id.etAgama);
+        JenisKelamin = view.findViewById(R.id.spJenisKelamin);
+        Agama = view.findViewById(R.id.spAgama);
         Pekerjaan = view.findViewById(R.id.etPekerjaan);
         Alamat = view.findViewById(R.id.etAlamat);
         NoKTP = view.findViewById(R.id.etNoKTP);
@@ -114,6 +114,10 @@ public class SuratKeteranganBelumMenikah1Fragment extends Fragment {
         RT = view.findViewById(R.id.etSaksiRT);
         RW = view.findViewById(R.id.etSaksiRW);
         PembuatPernyataan = view.findViewById(R.id.etPembuatPernyataan);
+        Tahun = view.findViewById(R.id.spTahun);
+        Bulan = view.findViewById(R.id.spBulan);
+        Hari = view.findViewById(R.id.spHari);
+
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,8 +133,9 @@ public class SuratKeteranganBelumMenikah1Fragment extends Fragment {
         pd.setCancelable(false);
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         final Call<Ress> data =api.PostSuratBelumMenikah1(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
-                Nama.getText().toString(),TTL.getText().toString(),JenisKelamin.getSelectedItem().toString(),Agama.getText().toString(),Pekerjaan.getText().toString(),
-                NoKTP.getText().toString(),Alamat.getText().toString(),Wali.getText().toString(),PembuatPernyataan.getText().toString(),RT.getText().toString(),RW.getText().toString());
+                Nama.getText().toString(), destiny.TTL(TTL,Tahun,Bulan,Hari), JenisKelamin.getSelectedItem().toString(),
+                Agama.getSelectedItem().toString(),Pekerjaan.getText().toString(),NoKTP.getText().toString(),Alamat.getText().toString(),
+                Wali.getText().toString(),PembuatPernyataan.getText().toString(),RT.getText().toString(),RW.getText().toString());
         data.enqueue(new Callback<Ress>() {
             @Override
             public void onResponse(Call<Ress> call, Response<Ress> response) {

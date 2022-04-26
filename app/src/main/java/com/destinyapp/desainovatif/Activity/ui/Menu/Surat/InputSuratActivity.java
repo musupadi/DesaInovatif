@@ -17,19 +17,24 @@ import android.widget.TextView;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.BlankFragment;
-import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratAdministrasiumumFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.DataFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNIKFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNamaBSTFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNamaFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratBedaNamaPNSFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratEKTPFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKelahiranFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKematianFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeteranganBedaDomisiliSementaraFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeteranganBelumMenikah1Fragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeteranganBelumMenikah2Fragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeteranganTidakBekerjaFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratKeteranganUsaha;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN1Fragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN2Fragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratNikahN4Fragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratPernyataanIzinDomisiliUsahaFragment;
+import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratPernyataanOrangTuaWaliFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKKMBPJSFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKTMFragment;
 import com.destinyapp.desainovatif.Activity.ui.Menu.Surat.Fragment.SuratSKTMRSFragment;
@@ -60,6 +65,7 @@ public class InputSuratActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mManager;
     Fragment fragment;
     Destiny destiny;
+    LinearLayout Back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,12 +99,21 @@ public class InputSuratActivity extends AppCompatActivity {
         lSubSurat = findViewById(R.id.linearSubSurat);
         lUntuk = findViewById(R.id.linearUntuk);
         spinnerUntuk = findViewById(R.id.spinnerUntuk);
-        if (Level.equals("member")){
-            lUntuk.setVisibility(View.GONE);
-            lOrangBersangkutan.setVisibility(View.GONE);
-        }
+//        if (Level.equals("member")){
+//            lUntuk.setVisibility(View.GONE);
+//            lOrangBersangkutan.setVisibility(View.GONE);
+//        }
+        lUntuk.setVisibility(View.GONE);
+        lOrangBersangkutan.setVisibility(View.GONE);
         GetKategori();
-        GetOrangBersangkutan();
+        Back  = findViewById(R.id.linearBack);
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+//        GetOrangBersangkutan();
         spinnerUntuk.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -148,6 +163,20 @@ public class InputSuratActivity extends AppCompatActivity {
                         bundle.putString("ID", "9");
                         lSubSurat.setVisibility(View.GONE);
                         fragment = new SuratNikahN1Fragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("11")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "11");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratEKTPFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("16")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "16");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratPernyataanOrangTuaWaliFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else if (clickedItems.equals("19")){
@@ -227,6 +256,27 @@ public class InputSuratActivity extends AppCompatActivity {
                         fragment = new SuratKeteranganBedaDomisiliSementaraFragment();
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
+                    }else if (clickedItems.equals("30")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "30");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratPernyataanIzinDomisiliUsahaFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("35")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "35");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratKeteranganTidakBekerjaFragment();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
+                    }else if (clickedItems.equals("36")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", "36");
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new SuratKeteranganUsaha();
+                        fragment.setArguments(bundle);
+                        ChangeFragment(fragment);
                     }else if (clickedItems.equals("41")){
                         Bundle bundle = new Bundle();
                         bundle.putString("ID", "41");
@@ -235,7 +285,11 @@ public class InputSuratActivity extends AppCompatActivity {
                         fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }else{
-                        fragment = new BlankFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ID", clickedItems);
+                        lSubSurat.setVisibility(View.GONE);
+                        fragment = new DataFragment();
+                        fragment.setArguments(bundle);
                         ChangeFragment(fragment);
                     }
 

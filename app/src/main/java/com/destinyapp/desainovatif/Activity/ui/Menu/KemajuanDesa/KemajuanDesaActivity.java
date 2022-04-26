@@ -70,7 +70,7 @@ public class KemajuanDesaActivity extends AppCompatActivity {
         ID_RW = findViewById(R.id.tvIDRW);
         RW  = findViewById(R.id.spRW);
 //        getKegiatan();
-        Toast.makeText(KemajuanDesaActivity.this, Username, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(KemajuanDesaActivity.this, Username, Toast.LENGTH_SHORT).show();
         Kegiatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.destinyapp.desainovatif.API.ApiRequest;
 import com.destinyapp.desainovatif.API.RetroServer2;
+import com.destinyapp.desainovatif.Activity.HomeActivity;
 import com.destinyapp.desainovatif.Activity.MainActivity;
 import com.destinyapp.desainovatif.Method.Destiny;
 import com.destinyapp.desainovatif.Model.Ress;
@@ -60,11 +64,14 @@ public class SuratKelahiranFragment extends Fragment {
     LinearLayout lOrangBersangkutan;
 
     //Main Surat
-    EditText NamaSurat,NoteSurat,AnakKe,TglLahrBayi,Pukul,NamaBayi;
+    EditText NamaSurat,NoteSurat,AnakKe,TglLahrBayi,Jam,Menit,NamaBayi;
+    Spinner Tahun,Bulan,Hari;
     //Ayah
-    EditText NamaAyah,TempatTglLahirAyah,PekerjaanAyah,AgamaAyah,NoKTPAyah,AlamatAyah;
+    EditText NamaAyah,TempatTglLahirAyah,PekerjaanAyah,NoKTPAyah,AlamatAyah;
+    Spinner TahunAyah,BulanAyah,HariAyah,AgamaAyah;
     //Ibu
-    EditText NamaIbu,TempatTanggalLahirIbu,PekerjaanIbu,AgamaIbu,NoKTPIbu,AlamatIbu;
+    EditText NamaIbu,TempatTanggalLahirIbu,PekerjaanIbu,NoKTPIbu,AlamatIbu;
+    Spinner TahunIbu,BulanIbu,HariIbu,AgamaIbu;
 
     String IDS;
 
@@ -92,23 +99,34 @@ public class SuratKelahiranFragment extends Fragment {
         NamaSurat = view.findViewById(R.id.etNamaSurat);
         NoteSurat = view.findViewById(R.id.etNoteSurat);
         AnakKe = view.findViewById(R.id.etAnakKe);
-        TglLahrBayi = view.findViewById(R.id.etTanggalLahir);
-        Pukul = view.findViewById(R.id.etPukul);
+        TglLahrBayi = view.findViewById(R.id.etTTL);
         NamaBayi = view.findViewById(R.id.etNamaBayi);
+        Tahun = view.findViewById(R.id.spTahun);
+        Bulan = view.findViewById(R.id.spBulan);
+        Hari = view.findViewById(R.id.spHari);
+        Jam = view.findViewById(R.id.etJam);
+        Menit = view.findViewById(R.id.etMenit);
 
         NamaAyah = view.findViewById(R.id.etNamaAyah);
         TempatTglLahirAyah = view.findViewById(R.id.etTTLAyah);
         PekerjaanAyah = view.findViewById(R.id.etPekerjaanAyah);
-        AgamaAyah = view.findViewById(R.id.etAgamaAyah);
+        AgamaAyah = view.findViewById(R.id.spAgamaAyah);
         NoKTPAyah = view.findViewById(R.id.etNoKTPAyah);
         AlamatAyah = view.findViewById(R.id.etAlamatAyah);
+        TahunAyah = view.findViewById(R.id.spTahunAyah);
+        BulanAyah = view.findViewById(R.id.spBulanAyah);
+        HariAyah = view.findViewById(R.id.spHariAyah);
 
         NamaIbu = view.findViewById(R.id.etNamaIbu);
         TempatTanggalLahirIbu = view.findViewById(R.id.etTTLIbu);
         PekerjaanIbu = view.findViewById(R.id.etPekerjaanIbu);
-        AgamaIbu = view.findViewById(R.id.etAgamaIbu);
+        AgamaIbu = view.findViewById(R.id.spAgamaIbu);
         NoKTPIbu = view.findViewById(R.id.etNoKTPIbu);
         AlamatIbu = view.findViewById(R.id.etAlamatIbu);
+        TahunIbu = view.findViewById(R.id.spTahunIbu);
+        BulanIbu = view.findViewById(R.id.spBulanIbu);
+        HariIbu = view.findViewById(R.id.spHariIbu);
+
         Submit = view.findViewById(R.id.btnSubmit);
         destiny = new Destiny();
         Bundle bundle = getArguments();
@@ -129,6 +147,50 @@ public class SuratKelahiranFragment extends Fragment {
             }
         }
 
+        Jam.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try {
+                    if (Integer.parseInt(Jam.getText().toString()) >24 || Integer.parseInt(Jam.getText().toString()) < 0){
+                        Jam.setText("24");
+                    }
+                }catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        Menit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try {
+                    if (Integer.parseInt(Menit.getText().toString()) >60 || Integer.parseInt(Menit.getText().toString()) < 0){
+                        Menit.setText("60");
+                    }
+                }catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,10 +207,10 @@ public class SuratKelahiranFragment extends Fragment {
         ApiRequest api = RetroServer2.getClient().create(ApiRequest.class);
         final Call<Ress> data =api.PostSuratKelahiran(destiny.AUTH(),destiny.Kunci(),ID,ID_Desa,
                 IDS,"0",NamaSurat.getText().toString(),NoteSurat.getText().toString(),
-                AnakKe.getText().toString(),NamaAyah.getText().toString(),TempatTglLahirAyah.getText().toString(),PekerjaanAyah.getText().toString(),AgamaAyah.getText().toString(),
-                NoKTPAyah.getText().toString(),AlamatAyah.getText().toString(),NamaIbu.getText().toString(),TempatTanggalLahirIbu.getText().toString(),
-                PekerjaanIbu.getText().toString(),AgamaIbu.getText().toString(),NoKTPIbu.getText().toString(),AlamatIbu.getText().toString(),
-                TglLahrBayi.getText().toString(),Pukul.getText().toString(),NamaBayi.getText().toString()
+                AnakKe.getText().toString(),NamaAyah.getText().toString(),destiny.TTL(TempatTglLahirAyah,Tahun,Bulan,Hari),PekerjaanAyah.getText().toString(),AgamaAyah.getSelectedItem().toString(),
+                NoKTPAyah.getText().toString(),AlamatAyah.getText().toString(),NamaIbu.getText().toString(),destiny.TTL(TempatTanggalLahirIbu,Tahun,Bulan,Hari),
+                PekerjaanIbu.getText().toString(),AgamaIbu.getSelectedItem().toString(),NoKTPIbu.getText().toString(),AlamatIbu.getText().toString(),
+                destiny.TTL(TglLahrBayi,Tahun,Bulan,Hari),Jam.getText().toString()+":"+Menit.getText().toString(),NamaBayi.getText().toString()
         );
         data.enqueue(new Callback<Ress>() {
             @Override
@@ -157,7 +219,7 @@ public class SuratKelahiranFragment extends Fragment {
                 try {
                     if (response.body().getData().equals("Sukses, data akan ditinjau oleh petugas")){
                         Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getActivity(),MainActivity.class);
+                        Intent intent = new Intent(getActivity(), HomeActivity.class);
                         startActivity(intent);
                     }else{
                         Toast.makeText(getActivity(), response.body().getData(), Toast.LENGTH_SHORT).show();
